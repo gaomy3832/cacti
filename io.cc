@@ -192,8 +192,8 @@ InputParameter::parse_cfg(const string & in_file)
     	  //is_main_mem = false;
       }
 
-	  if (g_ip->print_detail_debug)
-	  {cout << "io.cc: is_3d_mem = " << is_3d_mem << endl;}
+      if (g_ip->print_detail_debug)
+      {cout << "io.cc: is_3d_mem = " << is_3d_mem << endl;}
 
       if (!strncmp("cam", temp_var, sizeof("cam"))) {
         pure_cam = true;
@@ -699,109 +699,109 @@ InputParameter::parse_cfg(const string & in_file)
       continue;
     }
 
-	// Parameters related to off-chip interconnect
+    // Parameters related to off-chip interconnect
 
     if(!strncmp("-dram type", line, strlen("-dram type"))) {
       sscanf(line, "-dram type%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("DDR3", temp_var, strlen("DDR3")))
       {
-		  io_type = DDR3;
-	  }
-	  else if(!strncmp("DDR4", temp_var, strlen("DDR4")))
-	  {
-		  io_type = DDR4;
-	  }
-	  else if(!strncmp("LPDDR2", temp_var, strlen("LPDDR2")))
-	  {
-		  io_type = LPDDR2;
-	  }
-	  else if(!strncmp("WideIO", temp_var, strlen("WideIO")))
-	  {
-		  io_type = WideIO;
-	  }
-	  else if(!strncmp("Low_Swing_Diff", temp_var, strlen("Low_Swing_Diff")))
-	  {
-		  io_type = Low_Swing_Diff;
-	  }
-	   else if(!strncmp("Serial", temp_var, strlen("Serial")))
-	  {
-		  io_type = Serial;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for dram type!" << endl;
-		  exit(1);
-	  }
+      io_type = DDR3;
+      }
+      else if(!strncmp("DDR4", temp_var, strlen("DDR4")))
+      {
+      io_type = DDR4;
+      }
+      else if(!strncmp("LPDDR2", temp_var, strlen("LPDDR2")))
+      {
+      io_type = LPDDR2;
+      }
+      else if(!strncmp("WideIO", temp_var, strlen("WideIO")))
+      {
+      io_type = WideIO;
+      }
+      else if(!strncmp("Low_Swing_Diff", temp_var, strlen("Low_Swing_Diff")))
+      {
+      io_type = Low_Swing_Diff;
+      }
+       else if(!strncmp("Serial", temp_var, strlen("Serial")))
+      {
+      io_type = Serial;
+      }
+      else
+      {
+      cout << "Invalid Input for dram type!" << endl;
+      exit(1);
+      }
      // sscanf(line, "-io_type \"%c\"\n", &(io_type));
     }
     if(!strncmp("-io state", line, strlen("-io state"))) {
       sscanf(line, "-io state%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("READ", temp_var, strlen("READ")))
       {
-		  iostate = READ;
-	  }
-	  else if(!strncmp("WRITE", temp_var, strlen("WRITE")))
-	  {
-		  iostate = WRITE;
-	  }
-	  else if(!strncmp("IDLE", temp_var, strlen("IDLE")))
-	  {
-		  iostate = IDLE;
-	  }
-	  else if(!strncmp("SLEEP", temp_var, strlen("SLEEP")))
-	  {
-		  iostate = SLEEP;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for io state!" << endl;
-		  exit(1);
-	  }
+      iostate = READ;
+      }
+      else if(!strncmp("WRITE", temp_var, strlen("WRITE")))
+      {
+      iostate = WRITE;
+      }
+      else if(!strncmp("IDLE", temp_var, strlen("IDLE")))
+      {
+      iostate = IDLE;
+      }
+      else if(!strncmp("SLEEP", temp_var, strlen("SLEEP")))
+      {
+      iostate = SLEEP;
+      }
+      else
+      {
+      cout << "Invalid Input for io state!" << endl;
+      exit(1);
+      }
       //sscanf(line, "-iostate \"%c\"\n", &(iostate));
     }
     if(!strncmp("-addr_timing", line, strlen("-addr_timing"))) {
       sscanf(line, "-addr_timing %lf", &(addr_timing));
     }
     if(!strncmp("-dram ecc", line, strlen("-dram ecc"))) {
-	  sscanf(line, "-dram ecc%[^\"]\"%[^\"]\"", jk, temp_var);
+      sscanf(line, "-dram ecc%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("NO_ECC", temp_var, strlen("NO_ECC")))
       {
-		  dram_ecc = NO_ECC;
-	  }
-	  else if(!strncmp("SECDED", temp_var, strlen("SECDED")))
-	  {
-		  dram_ecc = SECDED;
-	  }
-	  else if(!strncmp("CHIP_KILL", temp_var, strlen("CHIP_KILL")))
-	  {
-		  dram_ecc = CHIP_KILL;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for dram ecc!" << endl;
-		  exit(1);
-	  }
+      dram_ecc = NO_ECC;
+      }
+      else if(!strncmp("SECDED", temp_var, strlen("SECDED")))
+      {
+      dram_ecc = SECDED;
+      }
+      else if(!strncmp("CHIP_KILL", temp_var, strlen("CHIP_KILL")))
+      {
+      dram_ecc = CHIP_KILL;
+      }
+      else
+      {
+      cout << "Invalid Input for dram ecc!" << endl;
+      exit(1);
+      }
       //sscanf(line, "-dram_ecc \"%c\"\n", &(dram_ecc));
     }
     if(!strncmp("-dram dimm", line, strlen("-dram dimm"))) {
-	  sscanf(line, "-dram dimm%[^\"]\"%[^\"]\"", jk, temp_var);
+      sscanf(line, "-dram dimm%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("UDIMM", temp_var, strlen("UDIMM")))
       {
-		  dram_dimm = UDIMM;
-	  }
-	  else if(!strncmp("RDIMM", temp_var, strlen("RDIMM")))
-	  {
-		  dram_dimm = RDIMM;
-	  }
-	  else if(!strncmp("LRDIMM", temp_var, strlen("LRDIMM")))
-	  {
-		  dram_dimm = LRDIMM;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for dram dimm!" << endl;
-		  exit(1);
-	  }
+      dram_dimm = UDIMM;
+      }
+      else if(!strncmp("RDIMM", temp_var, strlen("RDIMM")))
+      {
+      dram_dimm = RDIMM;
+      }
+      else if(!strncmp("LRDIMM", temp_var, strlen("LRDIMM")))
+      {
+      dram_dimm = LRDIMM;
+      }
+      else
+      {
+      cout << "Invalid Input for dram dimm!" << endl;
+      exit(1);
+      }
       //sscanf(line, "-dram_ecc \"%c\"\n", &(dram_ecc));
     }
 
@@ -837,9 +837,9 @@ InputParameter::parse_cfg(const string & in_file)
       sscanf(line, "-num_clk %d", &num_clk);
       if(num_clk<=0)
       {
-		  cout << "num_clk should be greater than zero!\n";
-		  exit(1);
-	  }
+      cout << "num_clk should be greater than zero!\n";
+      exit(1);
+      }
     }
     if(!strncmp("-num_mem_dq", line, strlen("-num_mem_dq"))) {
       sscanf(line, "-num_mem_dq %d", &num_mem_dq);
@@ -848,197 +848,197 @@ InputParameter::parse_cfg(const string & in_file)
       sscanf(line, "-mem_data_width %d", &mem_data_width);
     }
 
-	// added just for memcad
+    // added just for memcad
 
-	if(!strncmp("-num_bobs", line, strlen("-num_bobs"))) {
+    if(!strncmp("-num_bobs", line, strlen("-num_bobs"))) {
       sscanf(line, "-num_bobs %d", &num_bobs);
     }
-	if(!strncmp("-capacity", line, strlen("-capacity"))) {
+    if(!strncmp("-capacity", line, strlen("-capacity"))) {
       sscanf(line, "-capacity %d", &capacity);
     }
-	if(!strncmp("-num_channels_per_bob", line, strlen("-num_channels_per_bob"))) {
+    if(!strncmp("-num_channels_per_bob", line, strlen("-num_channels_per_bob"))) {
       sscanf(line, "-num_channels_per_bob %d", &num_channels_per_bob);
     }
-	if(!strncmp("-first metric", line, strlen("-first metric"))) {
-	  sscanf(line, "-first metric%[^\"]\"%[^\"]\"", jk, temp_var);
+    if(!strncmp("-first metric", line, strlen("-first metric"))) {
+      sscanf(line, "-first metric%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("Cost", temp_var, strlen("Cost")))
       {
-		  first_metric = Cost;
-	  }
-	  else if(!strncmp("Energy", temp_var, strlen("Energy")))
-	  {
-		  first_metric = Energy;
-	  }
-	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
-	  {
-		  first_metric = Bandwidth;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for first metric!" << endl;
-		  exit(1);
-	  }
+      first_metric = Cost;
+      }
+      else if(!strncmp("Energy", temp_var, strlen("Energy")))
+      {
+      first_metric = Energy;
+      }
+      else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
+      {
+      first_metric = Bandwidth;
+      }
+      else
+      {
+      cout << "Invalid Input for first metric!" << endl;
+      exit(1);
+      }
 
     }
     if(!strncmp("-second metric", line, strlen("-second metric"))) {
-	  sscanf(line, "-second metric%[^\"]\"%[^\"]\"", jk, temp_var);
+      sscanf(line, "-second metric%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("Cost", temp_var, strlen("Cost")))
       {
-		  second_metric = Cost;
-	  }
-	  else if(!strncmp("Energy", temp_var, strlen("Energy")))
-	  {
-		  second_metric = Energy;
-	  }
-	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
-	  {
-		  second_metric = Bandwidth;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for second metric!" << endl;
-		  exit(1);
-	  }
+      second_metric = Cost;
+      }
+      else if(!strncmp("Energy", temp_var, strlen("Energy")))
+      {
+      second_metric = Energy;
+      }
+      else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
+      {
+      second_metric = Bandwidth;
+      }
+      else
+      {
+      cout << "Invalid Input for second metric!" << endl;
+      exit(1);
+      }
 
     }
     if(!strncmp("-third metric", line, strlen("-third metric"))) {
-	  sscanf(line, "-third metric%[^\"]\"%[^\"]\"", jk, temp_var);
+      sscanf(line, "-third metric%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("Cost", temp_var, strlen("Cost")))
       {
-		  third_metric = Cost;
-	  }
-	  else if(!strncmp("Energy", temp_var, strlen("Energy")))
-	  {
-		  third_metric = Energy;
-	  }
-	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
-	  {
-		  third_metric = Bandwidth;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for third metric!" << endl;
-		  exit(1);
-	  }
+      third_metric = Cost;
+      }
+      else if(!strncmp("Energy", temp_var, strlen("Energy")))
+      {
+      third_metric = Energy;
+      }
+      else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
+      {
+      third_metric = Bandwidth;
+      }
+      else
+      {
+      cout << "Invalid Input for third metric!" << endl;
+      exit(1);
+      }
 
     }
-	if(!strncmp("-DIMM model", line, strlen("-DIMM model"))) {
-	  sscanf(line, "-DIMM model%[^\"]\"%[^\"]\"", jk, temp_var);
+    if(!strncmp("-DIMM model", line, strlen("-DIMM model"))) {
+      sscanf(line, "-DIMM model%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("JUST_UDIMM", temp_var, strlen("JUST_UDIMM")))
       {
-		  dimm_model = JUST_UDIMM;
-	  }
-	  else if(!strncmp("JUST_RDIMM", temp_var, strlen("JUST_RDIMM")))
-	  {
-		  dimm_model = JUST_RDIMM;
-	  }
-	  else if(!strncmp("JUST_LRDIMM", temp_var, strlen("JUST_LRDIMM")))
-	  {
-		  dimm_model = JUST_LRDIMM;
-	  }
-	  else if(!strncmp("ALL", temp_var, strlen("ALL")))
-	  {
-		  dimm_model = ALL;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for DIMM model!" << endl;
-		  exit(1);
-	  }
+      dimm_model = JUST_UDIMM;
+      }
+      else if(!strncmp("JUST_RDIMM", temp_var, strlen("JUST_RDIMM")))
+      {
+      dimm_model = JUST_RDIMM;
+      }
+      else if(!strncmp("JUST_LRDIMM", temp_var, strlen("JUST_LRDIMM")))
+      {
+      dimm_model = JUST_LRDIMM;
+      }
+      else if(!strncmp("ALL", temp_var, strlen("ALL")))
+      {
+      dimm_model = ALL;
+      }
+      else
+      {
+      cout << "Invalid Input for DIMM model!" << endl;
+      exit(1);
+      }
 
     }
-	if(!strncmp("-Low Power Permitted", line, strlen("-Low Power Permitted"))) {
-	  sscanf(line, "-Low Power Permitted%[^\"]\"%[^\"]\"", jk, temp_var);
+    if(!strncmp("-Low Power Permitted", line, strlen("-Low Power Permitted"))) {
+      sscanf(line, "-Low Power Permitted%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("T", temp_var, strlen("T")))
       {
-		  low_power_permitted = true;
-	  }
-	  else if(!strncmp("F", temp_var, strlen("F")))
-	  {
-		  low_power_permitted = false;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for Low Power Permitted!" << endl;
-		  exit(1);
-	  }
+      low_power_permitted = true;
+      }
+      else if(!strncmp("F", temp_var, strlen("F")))
+      {
+      low_power_permitted = false;
+      }
+      else
+      {
+      cout << "Invalid Input for Low Power Permitted!" << endl;
+      exit(1);
+      }
 
     }
-	if(!strncmp("-load", line, strlen("-load"))) {
+    if(!strncmp("-load", line, strlen("-load"))) {
       sscanf(line, "-load %lf", &(load));
     }
-	if(!strncmp("-row_buffer_hit_rate", line, strlen("-row_buffer_hit_rate"))) {
+    if(!strncmp("-row_buffer_hit_rate", line, strlen("-row_buffer_hit_rate"))) {
       sscanf(line, "-row_buffer_hit_rate %lf", &(row_buffer_hit_rate));
     }
-	if(!strncmp("-rd_2_wr_ratio", line, strlen("-rd_2_wr_ratio"))) {
+    if(!strncmp("-rd_2_wr_ratio", line, strlen("-rd_2_wr_ratio"))) {
       sscanf(line, "-rd_2_wr_ratio %lf", &(rd_2_wr_ratio));
     }
-	if(!strncmp("-same_bw_in_bob", line, strlen("-same_bw_in_bob"))) {
-	  sscanf(line, "-same_bw_in_bob%[^\"]\"%[^\"]\"", jk, temp_var);
+    if(!strncmp("-same_bw_in_bob", line, strlen("-same_bw_in_bob"))) {
+      sscanf(line, "-same_bw_in_bob%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("T", temp_var, strlen("T")))
       {
-		  same_bw_in_bob = true;
-	  }
-	  else if(!strncmp("F", temp_var, strlen("F")))
-	  {
-		  same_bw_in_bob = false;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for same_bw_in_bob!" << endl;
-		  exit(1);
-	  }
+      same_bw_in_bob = true;
+      }
+      else if(!strncmp("F", temp_var, strlen("F")))
+      {
+      same_bw_in_bob = false;
+      }
+      else
+      {
+      cout << "Invalid Input for same_bw_in_bob!" << endl;
+      exit(1);
+      }
 
     }
-	if(!strncmp("-mirror_in_bob", line, strlen("-mirror_in_bob"))) {
-	  sscanf(line, "-mirror_in_bob%[^\"]\"%[^\"]\"", jk, temp_var);
+    if(!strncmp("-mirror_in_bob", line, strlen("-mirror_in_bob"))) {
+      sscanf(line, "-mirror_in_bob%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("T", temp_var, strlen("T")))
       {
-		  mirror_in_bob = true;
-	  }
-	  else if(!strncmp("F", temp_var, strlen("F")))
-	  {
-		  mirror_in_bob = false;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for mirror_in_bob!" << endl;
-		  exit(1);
-	  }
+      mirror_in_bob = true;
+      }
+      else if(!strncmp("F", temp_var, strlen("F")))
+      {
+      mirror_in_bob = false;
+      }
+      else
+      {
+      cout << "Invalid Input for mirror_in_bob!" << endl;
+      exit(1);
+      }
 
     }
     if(!strncmp("-total_power", line, strlen("-total_power"))) {
-	  sscanf(line, "-total_power%[^\"]\"%[^\"]\"", jk, temp_var);
+      sscanf(line, "-total_power%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("T", temp_var, strlen("T")))
       {
-		  total_power = true;
-	  }
-	  else if(!strncmp("F", temp_var, strlen("F")))
-	  {
-		  total_power = false;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for total_power!" << endl;
-		  exit(1);
-	  }
+      total_power = true;
+      }
+      else if(!strncmp("F", temp_var, strlen("F")))
+      {
+      total_power = false;
+      }
+      else
+      {
+      cout << "Invalid Input for total_power!" << endl;
+      exit(1);
+      }
 
     }
     if(!strncmp("-verbose", line, strlen("-verbose"))) {
-	  sscanf(line, "-verbose%[^\"]\"%[^\"]\"", jk, temp_var);
+      sscanf(line, "-verbose%[^\"]\"%[^\"]\"", jk, temp_var);
       if (!strncmp("T", temp_var, strlen("T")))
       {
-		  verbose = true;
-	  }
-	  else if(!strncmp("F", temp_var, strlen("F")))
-	  {
-		  verbose = false;
-	  }
-	  else
-	  {
-		  cout << "Invalid Input for same_bw_in_bob!" << endl;
-		  exit(1);
-	  }
+      verbose = true;
+      }
+      else if(!strncmp("F", temp_var, strlen("F")))
+      {
+      verbose = false;
+      }
+      else
+      {
+      cout << "Invalid Input for same_bw_in_bob!" << endl;
+      exit(1);
+      }
 
     }
 
@@ -1062,7 +1062,7 @@ InputParameter::display_ip()
   cout << "Single ended read ports       : " << num_se_rd_ports << endl;
   if (fully_assoc||pure_cam)
   {
-	  cout << "Search ports                  : " << num_search_ports << endl;
+      cout << "Search ports                  : " << num_search_ports << endl;
   }
   cout << "Cache banks (UCA)             : " << nbanks << endl;
   cout << "Technology                    : " << F_sz_um << endl;
@@ -1132,37 +1132,37 @@ InputParameter::display_ip()
   cout << "iostate                       : " ;
   switch(iostate)
   {
-	  case(READ): cout << "READ" << endl; break;
-	  case(WRITE): cout << "WRITE" << endl; break;
-	  case(IDLE): cout << "IDLE" << endl; break;
-	  case(SLEEP): cout << "SLEEP" << endl; break;
-	  default: assert(false);
+      case(READ): cout << "READ" << endl; break;
+      case(WRITE): cout << "WRITE" << endl; break;
+      case(IDLE): cout << "IDLE" << endl; break;
+      case(SLEEP): cout << "SLEEP" << endl; break;
+      default: assert(false);
   }
   cout << "dram_ecc                      : " ;
   switch(dram_ecc)
   {
-	  case(NO_ECC): cout << "NO_ECC" << endl; break;
-	  case(SECDED): cout << "SECDED" << endl; break;
-	  case(CHIP_KILL): cout << "CHIP_KILL" << endl; break;
-	  default: assert(false);
+      case(NO_ECC): cout << "NO_ECC" << endl; break;
+      case(SECDED): cout << "SECDED" << endl; break;
+      case(CHIP_KILL): cout << "CHIP_KILL" << endl; break;
+      default: assert(false);
   }
   cout << "io_type                     : " ;
   switch(io_type)
   {
-	  case(DDR3): cout << "DDR3" << endl; break;
-	  case(DDR4): cout << "DDR4" << endl; break;
-	  case(LPDDR2): cout << "LPDDR2" << endl; break;
-	  case(WideIO): cout << "WideIO" << endl; break;
-	  case(Low_Swing_Diff): cout << "Low_Swing_Diff" << endl; break;
-	  default: assert(false);
+      case(DDR3): cout << "DDR3" << endl; break;
+      case(DDR4): cout << "DDR4" << endl; break;
+      case(LPDDR2): cout << "LPDDR2" << endl; break;
+      case(WideIO): cout << "WideIO" << endl; break;
+      case(Low_Swing_Diff): cout << "Low_Swing_Diff" << endl; break;
+      default: assert(false);
   }
   cout << "dram_dimm                      : " ;
   switch(dram_dimm)
   {
-	  case(UDIMM): cout << "UDIMM" << endl; break;
-	  case(RDIMM): cout << "RDIMM" << endl; break;
-	  case(LRDIMM): cout << "LRDIMM" << endl; break;
-	  default: assert(false);
+      case(UDIMM): cout << "UDIMM" << endl; break;
+      case(RDIMM): cout << "RDIMM" << endl; break;
+      case(LRDIMM): cout << "LRDIMM" << endl; break;
+      default: assert(false);
   }
 
 
@@ -1221,7 +1221,7 @@ powerDef operator*(const powerDef & x, double const * const y)
 uca_org_t cacti_interface(const string & infile_name)
 {
 
-	//cout<<"TSV_proj_type: " << g_ip->TSV_proj_type << endl;
+    //cout<<"TSV_proj_type: " << g_ip->TSV_proj_type << endl;
   uca_org_t fin_res;
   //uca_org_t result;
   fin_res.valid = false;
@@ -1229,7 +1229,7 @@ uca_org_t cacti_interface(const string & infile_name)
   g_ip = new InputParameter();
   g_ip->parse_cfg(infile_name);
   if(!g_ip->error_checking())
-	  exit(0);
+      exit(0);
  // if (g_ip->print_input_args)
     g_ip->display_ip();
 
@@ -1247,7 +1247,7 @@ uca_org_t cacti_interface(const string & infile_name)
   TSV tsv_test(Coarse);// ********* double len_ /* in um*/, 	double diam_, 	double TSV_pitch_,
   if(g_ip->print_detail_debug)
   {
-	  tsv_test.print_TSV();
+      tsv_test.print_TSV();
   }
 
 //  For HighRadix Only
@@ -1307,26 +1307,26 @@ uca_org_t cacti_interface(const string & infile_name)
 
   for(int j=0;j<1;j++)
   {
-	  for(int connection=0;connection<3;connection++)
-	  {
-		  for(int frq=3;frq<4;frq++)
-		  {
-			  for(int load=1;load<=max_load[connection];load++)
-			  {
-				  IOTechParam iot(g_ip, types[j], load, 8, 72, connection, load, freq[j][frq]);
-				  Extio testextio(&iot);
-				 // testextio.extio_area();
-				 // testextio.extio_eye();
-				  testextio.extio_power_dynamic();
-				  testextio.extio_power_phy();
-				  testextio.extio_power_term();
+      for(int connection=0;connection<3;connection++)
+      {
+      for(int frq=3;frq<4;frq++)
+      {
+      for(int load=1;load<=max_load[connection];load++)
+      {
+      IOTechParam iot(g_ip, types[j], load, 8, 72, connection, load, freq[j][frq]);
+      Extio testextio(&iot);
+     // testextio.extio_area();
+     // testextio.extio_eye();
+      testextio.extio_power_dynamic();
+      testextio.extio_power_phy();
+      testextio.extio_power_term();
 
-			  }
-			  cout << endl;
-		  }
-		  cout << endl;
-	  }
-	   cout << endl;
+      }
+      cout << endl;
+      }
+      cout << endl;
+      }
+       cout << endl;
   }
   */
 
@@ -1481,26 +1481,26 @@ uca_org_t cacti_interface(
 
   if (force_wiretype == 0)
   {
-	  g_ip->wt = Global;
+      g_ip->wt = Global;
       g_ip->force_wiretype = false;
   }
   else
   {   g_ip->force_wiretype = true;
-	  if (wiretype==10) {
-		  g_ip->wt = Global_10;
-	        }
-	  if (wiretype==20) {
-		  g_ip->wt = Global_20;
-	        }
-	  if (wiretype==30) {
-		  g_ip->wt = Global_30;
-	        }
-	  if (wiretype==5) {
-	      g_ip->wt = Global_5;
-	        }
-	  if (wiretype==0) {
-		  g_ip->wt = Low_swing;
-	  }
+      if (wiretype==10) {
+      g_ip->wt = Global_10;
+            }
+      if (wiretype==20) {
+      g_ip->wt = Global_20;
+            }
+      if (wiretype==30) {
+      g_ip->wt = Global_30;
+            }
+      if (wiretype==5) {
+          g_ip->wt = Global_5;
+            }
+      if (wiretype==0) {
+      g_ip->wt = Low_swing;
+      }
   }
   //g_ip->wt = Global_5;
   if (force_config == 0)
@@ -1521,11 +1521,11 @@ uca_org_t cacti_interface(
     }
 
   if (ecc==0){
-	  g_ip->add_ecc_b_=false;
+      g_ip->add_ecc_b_=false;
   }
   else
   {
-	  g_ip->add_ecc_b_=true;
+      g_ip->add_ecc_b_=true;
   }
 
   //CACTI3DD
@@ -1542,12 +1542,12 @@ uca_org_t cacti_interface(
   g_ip->num_tier_row_sprd = num_tier_row_sprd;
   g_ip->num_tier_col_sprd = num_tier_col_sprd;
   if(partition_level == 3)
-	  g_ip->fine_gran_bank_lvl = true;
+      g_ip->fine_gran_bank_lvl = true;
   else
-	  g_ip->fine_gran_bank_lvl = false;
+      g_ip->fine_gran_bank_lvl = false;
 
   if(!g_ip->error_checking())
-	  exit(0);
+      exit(0);
 
   init_tech_params(g_ip->F_sz_um, false);
   Wire winit; // Do not delete this line. It initializes wires.
@@ -1878,26 +1878,26 @@ uca_org_t cacti_interface(
 
   if (force_wiretype == 0)
   {
-	  g_ip->wt = Global;
+      g_ip->wt = Global;
       g_ip->force_wiretype = false;
   }
   else
   {   g_ip->force_wiretype = true;
-	  if (wiretype==10) {
-		  g_ip->wt = Global_10;
-	        }
-	  if (wiretype==20) {
-		  g_ip->wt = Global_20;
-	        }
-	  if (wiretype==30) {
-		  g_ip->wt = Global_30;
-	        }
-	  if (wiretype==5) {
-	      g_ip->wt = Global_5;
-	        }
-	  if (wiretype==0) {
-		  g_ip->wt = Low_swing;
-	  }
+      if (wiretype==10) {
+      g_ip->wt = Global_10;
+            }
+      if (wiretype==20) {
+      g_ip->wt = Global_20;
+            }
+      if (wiretype==30) {
+      g_ip->wt = Global_30;
+            }
+      if (wiretype==5) {
+          g_ip->wt = Global_5;
+            }
+      if (wiretype==0) {
+      g_ip->wt = Low_swing;
+      }
   }
   //g_ip->wt = Global_5;
   if (force_config == 0)
@@ -1918,16 +1918,16 @@ uca_org_t cacti_interface(
     }
 
   if (ecc==0){
-	  g_ip->add_ecc_b_=false;
+      g_ip->add_ecc_b_=false;
   }
   else
   {
-	  g_ip->add_ecc_b_=true;
+      g_ip->add_ecc_b_=true;
   }
 
 
   if(!g_ip->error_checking())
-	  exit(0);
+      exit(0);
 
   init_tech_params(g_ip->F_sz_um, false);
   Wire winit; // Do not delete this line. It initializes wires.
@@ -1967,7 +1967,7 @@ bool InputParameter::error_checking()
 
   if(is_main_mem)
   {
-	if(ic_proj_type == 0 && !g_ip->is_3d_mem)
+    if(ic_proj_type == 0 && !g_ip->is_3d_mem)
     {
       cerr << "DRAM model supports only conservative interconnect projection!\n\n";
       return false;
@@ -2098,8 +2098,8 @@ bool InputParameter::error_checking()
 
     if ((fully_assoc || pure_cam) && SCHP<1)
     {
-	  cerr << "CAM and fully associative must have at least 1 search port" << endl;
-	  return false;
+      cerr << "CAM and fully associative must have at least 1 search port" << endl;
+      return false;
     }
 
    if (RWP==0 && ERP==0 && SCHP>0 && ((fully_assoc || pure_cam)))
@@ -2186,10 +2186,10 @@ bool InputParameter::error_checking()
   }
 
   power_gating = (array_power_gated
-				  || bitline_floating
-				  || wl_power_gated
-				  || cl_power_gated
-				  || interconect_power_gated)?true:false;
+      || bitline_floating
+      || wl_power_gated
+      || cl_power_gated
+      || interconect_power_gated)?true:false;
 
   return true;
 }
@@ -2208,7 +2208,7 @@ void output_data_csv_3dd(const uca_org_t & fin_res)
   }
   else
   {
-	//print_index = false;
+    //print_index = false;
     if (print_index == true)
     {
       file << "Tech node (nm), ";
@@ -2497,33 +2497,33 @@ void output_data_csv_3dd(const uca_org_t & fin_res)
     file << fin_res.data_array2->delay_data_buffer * 1e9 << ", " ;
     file << fin_res.data_array2->delay_subarray_output_driver * 1e9 << ", " ;
 
-	file << fin_res.data_array2->energy_row_activate_net * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_row_predecode_driver_and_block * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_row_decoder * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_local_wordline * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_bitlines * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_sense_amp * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_row_activate_net * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_row_predecode_driver_and_block * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_row_decoder * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_local_wordline * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_bitlines * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_sense_amp * 1e9 << ", " ;
 
-	file << fin_res.data_array2->energy_column_access_net * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_column_predecoder * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_column_decoder * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_column_selectline * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_datapath_net * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_global_data * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_local_data_and_drv * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_subarray_output_driver * 1e9 << ", " ;
-	file << fin_res.data_array2->energy_data_buffer * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_column_access_net * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_column_predecoder * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_column_decoder * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_column_selectline * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_datapath_net * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_global_data * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_local_data_and_drv * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_subarray_output_driver * 1e9 << ", " ;
+    file << fin_res.data_array2->energy_data_buffer * 1e9 << ", " ;
 
-	file << fin_res.data_array2->area_subarray / 1e6 << ", " ;
-	file << fin_res.data_array2->area_lwl_drv / 1e6 << ", " ;
-	file << fin_res.data_array2->area_row_predec_dec / 1e6 << ", " ;
-	file << fin_res.data_array2->area_col_predec_dec / 1e6 << ", " ;
-	file << fin_res.data_array2->area_bus / 1e6 << ", " ;
-	file << fin_res.data_array2->area_address_bus / 1e6 << ", " ;
-	file << fin_res.data_array2->area_data_bus / 1e6 << ", " ;
-	file << fin_res.data_array2->area_data_drv / 1e6 << ", " ;
-	file << fin_res.data_array2->area_IOSA / 1e6 << ", " ;
-	file << fin_res.data_array2->area_sense_amp / 1e6 << ", " ;
+    file << fin_res.data_array2->area_subarray / 1e6 << ", " ;
+    file << fin_res.data_array2->area_lwl_drv / 1e6 << ", " ;
+    file << fin_res.data_array2->area_row_predec_dec / 1e6 << ", " ;
+    file << fin_res.data_array2->area_col_predec_dec / 1e6 << ", " ;
+    file << fin_res.data_array2->area_bus / 1e6 << ", " ;
+    file << fin_res.data_array2->area_address_bus / 1e6 << ", " ;
+    file << fin_res.data_array2->area_data_bus / 1e6 << ", " ;
+    file << fin_res.data_array2->area_data_drv / 1e6 << ", " ;
+    file << fin_res.data_array2->area_IOSA / 1e6 << ", " ;
+    file << fin_res.data_array2->area_sense_amp / 1e6 << ", " ;
     file<<endl;
   }
   file.close();
@@ -2730,78 +2730,78 @@ void output_data_csv(const uca_org_t & fin_res, string fn)
 
 void output_UCA(uca_org_t *fr)
 {
-	if(g_ip->is_3d_mem)
-	{
+    if(g_ip->is_3d_mem)
+    {
 
-		cout<<"-------  CACTI (version "<< VER_MAJOR_CACTI <<"."<< VER_MINOR_CACTI<<"."VER_COMMENT_CACTI
-								<< " of " << VER_UPDATE_CACTI << ") 3D DRAM Main Memory  -------"<<endl;
+    cout<<"-------  CACTI (version "<< VER_MAJOR_CACTI <<"."<< VER_MINOR_CACTI<<"."VER_COMMENT_CACTI
+    << " of " << VER_UPDATE_CACTI << ") 3D DRAM Main Memory  -------"<<endl;
 
-		cout << "\nMemory Parameters:\n";
-		cout << "	Total memory size (Gb): " <<
-				(int) (g_ip->cache_sz) << endl;
-		if(g_ip->num_die_3d>1)
-		{
-			cout << "	Stacked die count: " << (int) g_ip->num_die_3d << endl;
-			if(g_ip->TSV_proj_type == 1)
-				cout << "	TSV projection: industrial conservative"  << endl;
-			else
-				cout << "	TSV projection: ITRS aggressive"  << endl;
-		}
-		cout << "	Number of banks: " << (int) g_ip->nbanks << endl;
-		cout << "	Technology size (nm): " << g_ip->F_sz_nm << endl;
-		cout << "	Page size (bits): " << g_ip->page_sz_bits << endl;
-		cout << "	Burst depth: " << g_ip->burst_depth << endl;
-		cout << "	Chip IO width: " << g_ip->io_width << endl;
-		cout << "	Best Ndwl: " << fr->data_array2->Ndwl << endl;
-		cout << "	Best Ndbl: " << fr->data_array2->Ndbl << endl;
-		cout << "	# rows in subarray: " << fr->data_array2->num_row_subarray << endl;
-		cout << "	# columns in subarray: " << fr->data_array2->num_col_subarray << endl;
+    cout << "\nMemory Parameters:\n";
+    cout << "	Total memory size (Gb): " <<
+    (int) (g_ip->cache_sz) << endl;
+    if(g_ip->num_die_3d>1)
+    {
+    cout << "	Stacked die count: " << (int) g_ip->num_die_3d << endl;
+    if(g_ip->TSV_proj_type == 1)
+    cout << "	TSV projection: industrial conservative"  << endl;
+    else
+    cout << "	TSV projection: ITRS aggressive"  << endl;
+    }
+    cout << "	Number of banks: " << (int) g_ip->nbanks << endl;
+    cout << "	Technology size (nm): " << g_ip->F_sz_nm << endl;
+    cout << "	Page size (bits): " << g_ip->page_sz_bits << endl;
+    cout << "	Burst depth: " << g_ip->burst_depth << endl;
+    cout << "	Chip IO width: " << g_ip->io_width << endl;
+    cout << "	Best Ndwl: " << fr->data_array2->Ndwl << endl;
+    cout << "	Best Ndbl: " << fr->data_array2->Ndbl << endl;
+    cout << "	# rows in subarray: " << fr->data_array2->num_row_subarray << endl;
+    cout << "	# columns in subarray: " << fr->data_array2->num_col_subarray << endl;
 
-		cout <<"\nResults:\n";
-		cout<<"Timing Components:"<<endl;
-	    cout<<"	   t_RCD (Row to column command delay): "<< fr->data_array2->t_RCD * 1e9 << " ns" <<endl;
-		cout<<"	   t_RAS (Row access strobe latency): "<< fr->data_array2->t_RAS * 1e9  << " ns" <<endl;
-		cout<<"	   t_RC (Row cycle): "<< fr->data_array2->t_RC * 1e9  << " ns" <<endl;
-		cout<<"	   t_CAS (Column access strobe latency): "<< fr->data_array2->t_CAS * 1e9  << " ns" <<endl;
-		cout<<"	   t_RP (Row precharge latency): "<< fr->data_array2->t_RP* 1e9  << " ns" <<endl;
-		//cout<<"	   t_RRD (Rank to rank latency): "<< fr->data_array2->t_RRD* 1e9  << " ns" <<endl;
-		cout<<"	   t_RRD (Row activation to row activation delay): "<< fr->data_array2->t_RRD * 1e9 << " ns"<<endl;
+    cout <<"\nResults:\n";
+    cout<<"Timing Components:"<<endl;
+        cout<<"	   t_RCD (Row to column command delay): "<< fr->data_array2->t_RCD * 1e9 << " ns" <<endl;
+    cout<<"	   t_RAS (Row access strobe latency): "<< fr->data_array2->t_RAS * 1e9  << " ns" <<endl;
+    cout<<"	   t_RC (Row cycle): "<< fr->data_array2->t_RC * 1e9  << " ns" <<endl;
+    cout<<"	   t_CAS (Column access strobe latency): "<< fr->data_array2->t_CAS * 1e9  << " ns" <<endl;
+    cout<<"	   t_RP (Row precharge latency): "<< fr->data_array2->t_RP* 1e9  << " ns" <<endl;
+    //cout<<"	   t_RRD (Rank to rank latency): "<< fr->data_array2->t_RRD* 1e9  << " ns" <<endl;
+    cout<<"	   t_RRD (Row activation to row activation delay): "<< fr->data_array2->t_RRD * 1e9 << " ns"<<endl;
 
-		cout<<"Power Components:"<<endl;
-		cout<<"	   Activation energy: "<< fr->data_array2->activate_energy * 1e9  << " nJ" <<endl;
-		cout<<"	   Read energy: "<< fr->data_array2->read_energy * 1e9  << " nJ" <<endl;
-		cout<<"	   Write energy: "<< fr->data_array2->write_energy * 1e9  << " nJ" <<endl;
-		cout<<"	   Precharge energy: "<< fr->data_array2->precharge_energy * 1e9  << " nJ" <<endl;
-		//cout<<"	Activation power: "<<  fr->data_array2->activate_power * 1e3   << " mW" <<endl;
-		//cout<<"	Read power: "<<  fr->data_array2->read_power * 1e3 << " mW" <<endl;
-		//cout<<"	Write power: "<<  fr->data_array2->write_power * 1e3  << " mW" <<endl;
-		//cout<<"	Peak read power: "<< read_energy/((g_ip->burst_depth)/(g_ip->sys_freq_MHz*1e6)/2) * 1e3  << " mW" <<endl;
-		cout<<"Area Components:"<<endl;
-		//cout<<"	Height: "<<area.h/1e3<<" mm"<<endl;
-		//cout<<"	Length: "<<area.w/1e3<<" mm"<<endl;
-		//cout<<"	DRAM+peri Area: "<< fr->data_array2->area/1e6<<" mm2"<<endl;
+    cout<<"Power Components:"<<endl;
+    cout<<"	   Activation energy: "<< fr->data_array2->activate_energy * 1e9  << " nJ" <<endl;
+    cout<<"	   Read energy: "<< fr->data_array2->read_energy * 1e9  << " nJ" <<endl;
+    cout<<"	   Write energy: "<< fr->data_array2->write_energy * 1e9  << " nJ" <<endl;
+    cout<<"	   Precharge energy: "<< fr->data_array2->precharge_energy * 1e9  << " nJ" <<endl;
+    //cout<<"	Activation power: "<<  fr->data_array2->activate_power * 1e3   << " mW" <<endl;
+    //cout<<"	Read power: "<<  fr->data_array2->read_power * 1e3 << " mW" <<endl;
+    //cout<<"	Write power: "<<  fr->data_array2->write_power * 1e3  << " mW" <<endl;
+    //cout<<"	Peak read power: "<< read_energy/((g_ip->burst_depth)/(g_ip->sys_freq_MHz*1e6)/2) * 1e3  << " mW" <<endl;
+    cout<<"Area Components:"<<endl;
+    //cout<<"	Height: "<<area.h/1e3<<" mm"<<endl;
+    //cout<<"	Length: "<<area.w/1e3<<" mm"<<endl;
+    //cout<<"	DRAM+peri Area: "<< fr->data_array2->area/1e6<<" mm2"<<endl;
 
-		//double DRAM_area_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area : (fr->data_array2->area/0.5);
-		double DRAM_area_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area : (fr->data_array2->area + fr->data_array2->area_ram_cells*0.65);
-		//double DRAM_area_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area : (fr->data_array2->area + 2.5e9*(double)(g_ip->F_sz_um)*(g_ip->F_sz_um));
-		double area_efficiency_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area_efficiency : (fr->data_array2->area_ram_cells / DRAM_area_per_die *100);
-		double DRAM_width = (g_ip->partition_gran>0) ? fr->data_array2->all_banks_width : (fr->data_array2->all_banks_width + (DRAM_area_per_die-fr->data_array2->area)/fr->data_array2->all_banks_height);
-		cout<<"	   DRAM core area: "<< fr->data_array2->area/1e6 <<" mm2"<<endl;
-		if (g_ip->partition_gran == 0)
-			cout<<"	   DRAM area per die: "<< DRAM_area_per_die/1e6 <<" mm2"<<endl;
-		cout<<"	   Area efficiency: "<< area_efficiency_per_die <<"%"<<endl;
-		cout<<"	   DRAM die width: "<< DRAM_width/1e3 <<" mm"<<endl;
-		cout<<"	   DRAM die height: "<< fr->data_array2->all_banks_height/1e3 <<" mm"<<endl;
-		if (g_ip->num_die_3d>1)
-		{
-			cout<<"TSV Components:"<<endl;
-			cout<<"	   TSV area overhead: "<< fr->data_array2->area_TSV_tot /1e6 <<" mm2"<<endl;
-			cout<<"	   TSV latency overhead: "<< fr->data_array2->delay_TSV_tot * 1e9 <<" ns"<<endl;
-			cout<<"	   TSV energy overhead per access: "<< fr->data_array2->dyn_pow_TSV_per_access * 1e9 <<" nJ"<<endl;
-		}
-	}
-	else // if(!g_ip->is_3d_mem)
-	{
+    //double DRAM_area_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area : (fr->data_array2->area/0.5);
+    double DRAM_area_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area : (fr->data_array2->area + fr->data_array2->area_ram_cells*0.65);
+    //double DRAM_area_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area : (fr->data_array2->area + 2.5e9*(double)(g_ip->F_sz_um)*(g_ip->F_sz_um));
+    double area_efficiency_per_die = (g_ip->partition_gran>0) ? fr->data_array2->area_efficiency : (fr->data_array2->area_ram_cells / DRAM_area_per_die *100);
+    double DRAM_width = (g_ip->partition_gran>0) ? fr->data_array2->all_banks_width : (fr->data_array2->all_banks_width + (DRAM_area_per_die-fr->data_array2->area)/fr->data_array2->all_banks_height);
+    cout<<"	   DRAM core area: "<< fr->data_array2->area/1e6 <<" mm2"<<endl;
+    if (g_ip->partition_gran == 0)
+    cout<<"	   DRAM area per die: "<< DRAM_area_per_die/1e6 <<" mm2"<<endl;
+    cout<<"	   Area efficiency: "<< area_efficiency_per_die <<"%"<<endl;
+    cout<<"	   DRAM die width: "<< DRAM_width/1e3 <<" mm"<<endl;
+    cout<<"	   DRAM die height: "<< fr->data_array2->all_banks_height/1e3 <<" mm"<<endl;
+    if (g_ip->num_die_3d>1)
+    {
+    cout<<"TSV Components:"<<endl;
+    cout<<"	   TSV area overhead: "<< fr->data_array2->area_TSV_tot /1e6 <<" mm2"<<endl;
+    cout<<"	   TSV latency overhead: "<< fr->data_array2->delay_TSV_tot * 1e9 <<" ns"<<endl;
+    cout<<"	   TSV energy overhead per access: "<< fr->data_array2->dyn_pow_TSV_per_access * 1e9 <<" nJ"<<endl;
+    }
+    }
+    else // if(!g_ip->is_3d_mem)
+    {
   //    if (NUCA)
   if (0) {
     cout << "\n\n Detailed Bank Stats:\n";
@@ -2811,17 +2811,17 @@ void output_UCA(uca_org_t *fr)
   else {
     if (g_ip->data_arr_ram_cell_tech_type == 3) {
       cout << "\n---------- CACTI (version "<< VER_MAJOR_CACTI <<"."<< VER_MINOR_CACTI<<"."VER_COMMENT_CACTI
-								<< " of " << VER_UPDATE_CACTI << "), Uniform Cache Access " <<
+    << " of " << VER_UPDATE_CACTI << "), Uniform Cache Access " <<
         "Logic Process Based DRAM Model ----------\n";
     }
     else if (g_ip->data_arr_ram_cell_tech_type == 4) {
       cout << "\n---------- CACTI (version "<< VER_MAJOR_CACTI <<"."<< VER_MINOR_CACTI<<"."VER_COMMENT_CACTI
-								<< " of " << VER_UPDATE_CACTI << "), Uniform" <<
+    << " of " << VER_UPDATE_CACTI << "), Uniform" <<
         "Cache Access Commodity DRAM Model ----------\n";
     }
     else {
       cout << "\n---------- CACTI (version "<< VER_MAJOR_CACTI <<"."<< VER_MINOR_CACTI<<"."VER_COMMENT_CACTI
-								<< " of " << VER_UPDATE_CACTI << "), Uniform Cache Access "
+    << " of " << VER_UPDATE_CACTI << "), Uniform Cache Access "
         "SRAM Model ----------\n";
     }
     cout << "\nCache Parameters:\n";
@@ -2849,8 +2849,8 @@ void output_UCA(uca_org_t *fr)
   cout << "    Write ports: " <<
     g_ip->num_wr_ports << endl;
   if (g_ip->fully_assoc|| g_ip->pure_cam)
-	  cout << "    search ports: " <<
-	      g_ip->num_search_ports << endl;
+      cout << "    search ports: " <<
+          g_ip->num_search_ports << endl;
   cout << "    Technology size (nm): " <<
     g_ip->F_sz_nm << endl << endl;
 
@@ -2869,26 +2869,26 @@ void output_UCA(uca_org_t *fr)
       fr->data_array2->refresh_power*1e3 << endl;
   }
   else {
-	  if ((g_ip->fully_assoc|| g_ip->pure_cam))
-	  {
-		  cout << "    Total dynamic associative search energy per access (nJ): " <<
-		  fr->power.searchOp.dynamic*1e9 << endl;
+      if ((g_ip->fully_assoc|| g_ip->pure_cam))
+      {
+      cout << "    Total dynamic associative search energy per access (nJ): " <<
+      fr->power.searchOp.dynamic*1e9 << endl;
 //		  cout << "    Total dynamic read energy per access (nJ): " <<
 //		  fr->power.readOp.dynamic*1e9 << endl;
 //		  cout << "    Total dynamic write energy per access (nJ): " <<
 //		  fr->power.writeOp.dynamic*1e9 << endl;
-	  }
+      }
 //	  else
 //	  {
-		  cout << "    Total dynamic read energy per access (nJ): " <<
-		  fr->power.readOp.dynamic*1e9 << endl;
-		  cout << "    Total dynamic write energy per access (nJ): " <<
-		  fr->power.writeOp.dynamic*1e9 << endl;
+      cout << "    Total dynamic read energy per access (nJ): " <<
+      fr->power.readOp.dynamic*1e9 << endl;
+      cout << "    Total dynamic write energy per access (nJ): " <<
+      fr->power.writeOp.dynamic*1e9 << endl;
 //	  }
-	  cout << "    Total leakage power of a bank"
-	  " (mW): " << fr->power.readOp.leakage*1e3 << endl;
-	  cout << "    Total gate leakage power of a bank"
-	  " (mW): " << fr->power.readOp.gate_leakage*1e3 << endl;
+      cout << "    Total leakage power of a bank"
+      " (mW): " << fr->power.readOp.leakage*1e3 << endl;
+      cout << "    Total gate leakage power of a bank"
+      " (mW): " << fr->power.readOp.gate_leakage*1e3 << endl;
   }
 
   if (g_ip->data_arr_ram_cell_tech_type ==3 || g_ip->data_arr_ram_cell_tech_type ==4)
@@ -2964,170 +2964,170 @@ void output_UCA(uca_org_t *fr)
         exit(-1);
     }
   }
-	} //end if(!g_ip->is_3d_mem)
+    } //end if(!g_ip->is_3d_mem)
   if (g_ip->print_detail)
   {
     //if(g_ip->fully_assoc) return;
 
-	  if (g_ip->is_3d_mem)
-	  {
-		  cout << endl << endl << "3D DRAM Detail Components:" << endl << endl;
-		  cout << endl << "Time Components:" << endl << endl;
-		  cout << "\t row activation bus delay (ns): "  << fr->data_array2->delay_row_activate_net*1e9 << endl;
-		  cout << "\t row predecoder delay (ns): "  << fr->data_array2->delay_row_predecode_driver_and_block*1e9 << endl;
-		  cout << "\t row decoder delay (ns): "  << fr->data_array2->delay_row_decoder*1e9 << endl;
-		  cout << "\t local wordline delay (ns): "  << fr->data_array2->delay_local_wordline*1e9 << endl;
-		  cout << "\t bitline delay (ns): "  << fr->data_array2->delay_bitlines*1e9 << endl;
-		  cout << "\t sense amp delay (ns): "  << fr->data_array2->delay_sense_amp*1e9 << endl;
-		  cout << "\t column access bus delay (ns): "  << fr->data_array2->delay_column_access_net*1e9 << endl;
-		  cout << "\t column predecoder delay (ns): "  << fr->data_array2->delay_column_predecoder*1e9 << endl;
-		  cout << "\t column decoder delay (ns): "  << fr->data_array2->delay_column_decoder*1e9 << endl;
-		  //cout << "\t column selectline delay (ns): "  << fr->data_array2->delay_column_selectline*1e9 << endl;
-		  cout << "\t datapath bus delay (ns): "  << fr->data_array2->delay_datapath_net*1e9 << endl;
-		  cout << "\t global dataline delay (ns): "  << fr->data_array2->delay_global_data*1e9 << endl;
-		  cout << "\t local dataline delay (ns): "  << fr->data_array2->delay_local_data_and_drv*1e9 << endl;
-		  cout << "\t data buffer delay (ns): "  << fr->data_array2->delay_data_buffer*1e9 << endl;
-		  cout << "\t subarray output driver delay (ns): "  << fr->data_array2->delay_subarray_output_driver*1e9 << endl;
+      if (g_ip->is_3d_mem)
+      {
+      cout << endl << endl << "3D DRAM Detail Components:" << endl << endl;
+      cout << endl << "Time Components:" << endl << endl;
+      cout << "\t row activation bus delay (ns): "  << fr->data_array2->delay_row_activate_net*1e9 << endl;
+      cout << "\t row predecoder delay (ns): "  << fr->data_array2->delay_row_predecode_driver_and_block*1e9 << endl;
+      cout << "\t row decoder delay (ns): "  << fr->data_array2->delay_row_decoder*1e9 << endl;
+      cout << "\t local wordline delay (ns): "  << fr->data_array2->delay_local_wordline*1e9 << endl;
+      cout << "\t bitline delay (ns): "  << fr->data_array2->delay_bitlines*1e9 << endl;
+      cout << "\t sense amp delay (ns): "  << fr->data_array2->delay_sense_amp*1e9 << endl;
+      cout << "\t column access bus delay (ns): "  << fr->data_array2->delay_column_access_net*1e9 << endl;
+      cout << "\t column predecoder delay (ns): "  << fr->data_array2->delay_column_predecoder*1e9 << endl;
+      cout << "\t column decoder delay (ns): "  << fr->data_array2->delay_column_decoder*1e9 << endl;
+      //cout << "\t column selectline delay (ns): "  << fr->data_array2->delay_column_selectline*1e9 << endl;
+      cout << "\t datapath bus delay (ns): "  << fr->data_array2->delay_datapath_net*1e9 << endl;
+      cout << "\t global dataline delay (ns): "  << fr->data_array2->delay_global_data*1e9 << endl;
+      cout << "\t local dataline delay (ns): "  << fr->data_array2->delay_local_data_and_drv*1e9 << endl;
+      cout << "\t data buffer delay (ns): "  << fr->data_array2->delay_data_buffer*1e9 << endl;
+      cout << "\t subarray output driver delay (ns): "  << fr->data_array2->delay_subarray_output_driver*1e9 << endl;
 
-		  cout << endl << "Energy Components:" << endl << endl;
-		  cout << "\t row activation bus energy (nJ): "  << fr->data_array2->energy_row_activate_net*1e9 << endl;
-		  cout << "\t row predecoder energy (nJ): "  << fr->data_array2->energy_row_predecode_driver_and_block*1e9 << endl;
-		  cout << "\t row decoder energy (nJ): "  << fr->data_array2->energy_row_decoder*1e9 << endl;
-		  cout << "\t local wordline energy (nJ): "  << fr->data_array2->energy_local_wordline*1e9 << endl;
-		  cout << "\t bitline energy (nJ): "  << fr->data_array2->energy_bitlines*1e9 << endl;
-		  cout << "\t sense amp energy (nJ): "  << fr->data_array2->energy_sense_amp*1e9 << endl;
-		  cout << "\t column access bus energy (nJ): "  << fr->data_array2->energy_column_access_net*1e9 << endl;
-		  cout << "\t column predecoder energy (nJ): "  << fr->data_array2->energy_column_predecoder*1e9 << endl;
-		  cout << "\t column decoder energy (nJ): "  << fr->data_array2->energy_column_decoder*1e9 << endl;
-		  cout << "\t column selectline energy (nJ): "  << fr->data_array2->energy_column_selectline*1e9 << endl;
-		  cout << "\t datapath bus energy (nJ): "  << fr->data_array2->energy_datapath_net*1e9 << endl;
-		  cout << "\t global dataline energy (nJ): "  << fr->data_array2->energy_global_data*1e9 << endl;
-		  cout << "\t local dataline energy (nJ): "  << fr->data_array2->energy_local_data_and_drv*1e9 << endl;
-		  cout << "\t data buffer energy (nJ): "  << fr->data_array2->energy_subarray_output_driver*1e9 << endl;
-		  //cout << "\t subarray output driver energy (nJ): "  << fr->data_array2->energy_data_buffer*1e9 << endl;
+      cout << endl << "Energy Components:" << endl << endl;
+      cout << "\t row activation bus energy (nJ): "  << fr->data_array2->energy_row_activate_net*1e9 << endl;
+      cout << "\t row predecoder energy (nJ): "  << fr->data_array2->energy_row_predecode_driver_and_block*1e9 << endl;
+      cout << "\t row decoder energy (nJ): "  << fr->data_array2->energy_row_decoder*1e9 << endl;
+      cout << "\t local wordline energy (nJ): "  << fr->data_array2->energy_local_wordline*1e9 << endl;
+      cout << "\t bitline energy (nJ): "  << fr->data_array2->energy_bitlines*1e9 << endl;
+      cout << "\t sense amp energy (nJ): "  << fr->data_array2->energy_sense_amp*1e9 << endl;
+      cout << "\t column access bus energy (nJ): "  << fr->data_array2->energy_column_access_net*1e9 << endl;
+      cout << "\t column predecoder energy (nJ): "  << fr->data_array2->energy_column_predecoder*1e9 << endl;
+      cout << "\t column decoder energy (nJ): "  << fr->data_array2->energy_column_decoder*1e9 << endl;
+      cout << "\t column selectline energy (nJ): "  << fr->data_array2->energy_column_selectline*1e9 << endl;
+      cout << "\t datapath bus energy (nJ): "  << fr->data_array2->energy_datapath_net*1e9 << endl;
+      cout << "\t global dataline energy (nJ): "  << fr->data_array2->energy_global_data*1e9 << endl;
+      cout << "\t local dataline energy (nJ): "  << fr->data_array2->energy_local_data_and_drv*1e9 << endl;
+      cout << "\t data buffer energy (nJ): "  << fr->data_array2->energy_subarray_output_driver*1e9 << endl;
+      //cout << "\t subarray output driver energy (nJ): "  << fr->data_array2->energy_data_buffer*1e9 << endl;
 
-		  cout << endl << "Area Components:" << endl << endl;
-		  //cout << "\t subarray area (mm2): "  << fr->data_array2->area_subarray/1e6 << endl;
-		  cout << "\t DRAM cell area (mm2): "  << fr->data_array2->area_ram_cells/1e6 << endl;
-		  cout << "\t local WL driver area (mm2): "  << fr->data_array2->area_lwl_drv/1e6 << endl;
-		  cout << "\t subarray sense amp area (mm2): "  << fr->data_array2->area_sense_amp/1e6 << endl;
-		  cout << "\t row predecoder/decoder area (mm2): "  << fr->data_array2->area_row_predec_dec/1e6 << endl;
-		  cout << "\t column predecoder/decoder area (mm2): "  << fr->data_array2->area_col_predec_dec/1e6 << endl;
-		  cout << "\t center stripe bus area (mm2): "  << fr->data_array2->area_bus/1e6 << endl;
-		  cout << "\t address bus area (mm2): "  << fr->data_array2->area_address_bus/1e6 << endl;
-		  cout << "\t data bus area (mm2): "  << fr->data_array2->area_data_bus/1e6 << endl;
-		  cout << "\t data driver area (mm2): "  << fr->data_array2->area_data_drv/1e6 << endl;
-		  cout << "\t IO secondary sense amp area (mm2): "  << fr->data_array2->area_IOSA/1e6 << endl;
-		  cout << "\t TSV area (mm2): "<< fr->data_array2->area_TSV_tot /1e6 << endl;
+      cout << endl << "Area Components:" << endl << endl;
+      //cout << "\t subarray area (mm2): "  << fr->data_array2->area_subarray/1e6 << endl;
+      cout << "\t DRAM cell area (mm2): "  << fr->data_array2->area_ram_cells/1e6 << endl;
+      cout << "\t local WL driver area (mm2): "  << fr->data_array2->area_lwl_drv/1e6 << endl;
+      cout << "\t subarray sense amp area (mm2): "  << fr->data_array2->area_sense_amp/1e6 << endl;
+      cout << "\t row predecoder/decoder area (mm2): "  << fr->data_array2->area_row_predec_dec/1e6 << endl;
+      cout << "\t column predecoder/decoder area (mm2): "  << fr->data_array2->area_col_predec_dec/1e6 << endl;
+      cout << "\t center stripe bus area (mm2): "  << fr->data_array2->area_bus/1e6 << endl;
+      cout << "\t address bus area (mm2): "  << fr->data_array2->area_address_bus/1e6 << endl;
+      cout << "\t data bus area (mm2): "  << fr->data_array2->area_data_bus/1e6 << endl;
+      cout << "\t data driver area (mm2): "  << fr->data_array2->area_data_drv/1e6 << endl;
+      cout << "\t IO secondary sense amp area (mm2): "  << fr->data_array2->area_IOSA/1e6 << endl;
+      cout << "\t TSV area (mm2): "<< fr->data_array2->area_TSV_tot /1e6 << endl;
 
-	  }
-	  else //if (!g_ip->is_3d_mem)
-	  {
-	  if (g_ip->power_gating)
-	  {
-		  /* Energy/Power stats */
-		  cout << endl << endl << "Power-gating Components:" << endl << endl;
-		  /* Data array power-gating stats */
-		  if (!(g_ip->pure_cam || g_ip->fully_assoc))
-			  cout <<  "  Data array: " << endl;
-		  else if (g_ip->pure_cam)
-			  cout <<  "  CAM array: " << endl;
-		  else
-			  cout <<  "  Fully associative cache array: " << endl;
+      }
+      else //if (!g_ip->is_3d_mem)
+      {
+      if (g_ip->power_gating)
+      {
+      /* Energy/Power stats */
+      cout << endl << endl << "Power-gating Components:" << endl << endl;
+      /* Data array power-gating stats */
+      if (!(g_ip->pure_cam || g_ip->fully_assoc))
+      cout <<  "  Data array: " << endl;
+      else if (g_ip->pure_cam)
+      cout <<  "  CAM array: " << endl;
+      else
+      cout <<  "  Fully associative cache array: " << endl;
 
-		  cout <<  "\t Sub-array Sleep Tx size (um) - " <<
-		  fr->data_array2->sram_sleep_tx_width << endl;
+      cout <<  "\t Sub-array Sleep Tx size (um) - " <<
+      fr->data_array2->sram_sleep_tx_width << endl;
 
-		  //    cout <<  "\t Sub-array Sleep Tx total size (um) - " <<
-		  //      fr->data_array2->sram_sleep_tx_width << endl;
+      //    cout <<  "\t Sub-array Sleep Tx total size (um) - " <<
+      //      fr->data_array2->sram_sleep_tx_width << endl;
 
-		  cout <<  "\t Sub-array Sleep Tx total area (mm^2) - " <<
-		  fr->data_array2->sram_sleep_tx_area*1e-6 << endl;
+      cout <<  "\t Sub-array Sleep Tx total area (mm^2) - " <<
+      fr->data_array2->sram_sleep_tx_area*1e-6 << endl;
 
-		  cout <<  "\t Sub-array wakeup time (ns) - " <<
-		  fr->data_array2->sram_sleep_wakeup_latency*1e9 << endl;
+      cout <<  "\t Sub-array wakeup time (ns) - " <<
+      fr->data_array2->sram_sleep_wakeup_latency*1e9 << endl;
 
-		  cout <<  "\t Sub-array Tx energy (nJ) - " <<
-		  fr->data_array2->sram_sleep_wakeup_energy*1e9 << endl;
-		  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		  cout << endl;
-		  cout <<  "\t WL Sleep Tx size (um) - " <<
-		  fr->data_array2->wl_sleep_tx_width << endl;
+      cout <<  "\t Sub-array Tx energy (nJ) - " <<
+      fr->data_array2->sram_sleep_wakeup_energy*1e9 << endl;
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      cout << endl;
+      cout <<  "\t WL Sleep Tx size (um) - " <<
+      fr->data_array2->wl_sleep_tx_width << endl;
 
-		  //    cout <<  "\t WL Sleep total Tx size (um) - " <<
-		  //      fr->data_array2->wl_sleep_tx_width << endl;
+      //    cout <<  "\t WL Sleep total Tx size (um) - " <<
+      //      fr->data_array2->wl_sleep_tx_width << endl;
 
-		  cout <<  "\t WL Sleep Tx total area (mm^2) - " <<
-		  fr->data_array2->wl_sleep_tx_area*1e-6 << endl;
+      cout <<  "\t WL Sleep Tx total area (mm^2) - " <<
+      fr->data_array2->wl_sleep_tx_area*1e-6 << endl;
 
-		  cout <<  "\t WL wakeup time (ns) - " <<
-		  fr->data_array2->wl_sleep_wakeup_latency*1e9 << endl;
+      cout <<  "\t WL wakeup time (ns) - " <<
+      fr->data_array2->wl_sleep_wakeup_latency*1e9 << endl;
 
-		  cout <<  "\t WL Tx energy (nJ) - " <<
-		  fr->data_array2->wl_sleep_wakeup_energy*1e9 << endl;
-		  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		  cout << endl;
-		  cout <<  "\t BL floating wakeup time (ns) - " <<
-		  fr->data_array2->bl_floating_wakeup_latency*1e9 << endl;
+      cout <<  "\t WL Tx energy (nJ) - " <<
+      fr->data_array2->wl_sleep_wakeup_energy*1e9 << endl;
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      cout << endl;
+      cout <<  "\t BL floating wakeup time (ns) - " <<
+      fr->data_array2->bl_floating_wakeup_latency*1e9 << endl;
 
-		  cout <<  "\t BL floating Tx energy (nJ) - " <<
-		  fr->data_array2->bl_floating_wakeup_energy*1e9 << endl;
-		  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      cout <<  "\t BL floating Tx energy (nJ) - " <<
+      fr->data_array2->bl_floating_wakeup_energy*1e9 << endl;
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-		  cout << endl;
+      cout << endl;
 
-		  cout <<  "\t Active mats per access - " << fr->data_array2->num_active_mats<<endl;
-		  cout <<  "\t Active subarrays per mat - " << fr->data_array2->num_submarray_mats<<endl;
-		  cout << endl;
-		  /* Tag array area stats */
-		  if ((!(g_ip->pure_ram|| g_ip->pure_cam || g_ip->fully_assoc)) && !g_ip->is_main_mem)
-		  {
-			  cout <<  "  Tag array: " << endl;
-			  cout <<  "\t Sub-array Sleep Tx size (um) - " <<
-			  fr->tag_array2->sram_sleep_tx_width << endl;
+      cout <<  "\t Active mats per access - " << fr->data_array2->num_active_mats<<endl;
+      cout <<  "\t Active subarrays per mat - " << fr->data_array2->num_submarray_mats<<endl;
+      cout << endl;
+      /* Tag array area stats */
+      if ((!(g_ip->pure_ram|| g_ip->pure_cam || g_ip->fully_assoc)) && !g_ip->is_main_mem)
+      {
+      cout <<  "  Tag array: " << endl;
+      cout <<  "\t Sub-array Sleep Tx size (um) - " <<
+      fr->tag_array2->sram_sleep_tx_width << endl;
 
-			  //    cout <<  "\t Sub-array Sleep Tx total size (um) - " <<
-			  //      fr->tag_array2->sram_sleep_tx_width << endl;
+      //    cout <<  "\t Sub-array Sleep Tx total size (um) - " <<
+      //      fr->tag_array2->sram_sleep_tx_width << endl;
 
-			  cout <<  "\t Sub-array Sleep Tx total area (mm^2) - " <<
-			  fr->tag_array2->sram_sleep_tx_area*1e-6 << endl;
+      cout <<  "\t Sub-array Sleep Tx total area (mm^2) - " <<
+      fr->tag_array2->sram_sleep_tx_area*1e-6 << endl;
 
-			  cout <<  "\t Sub-array wakeup time (ns) - " <<
-			  fr->tag_array2->sram_sleep_wakeup_latency*1e9 << endl;
+      cout <<  "\t Sub-array wakeup time (ns) - " <<
+      fr->tag_array2->sram_sleep_wakeup_latency*1e9 << endl;
 
-			  cout <<  "\t Sub-array Tx energy (nJ) - " <<
-			  fr->tag_array2->sram_sleep_wakeup_energy*1e9 << endl;
-			  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			  cout << endl;
-			  cout <<  "\t WL Sleep Tx size (um) - " <<
-			  fr->tag_array2->wl_sleep_tx_width << endl;
+      cout <<  "\t Sub-array Tx energy (nJ) - " <<
+      fr->tag_array2->sram_sleep_wakeup_energy*1e9 << endl;
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      cout << endl;
+      cout <<  "\t WL Sleep Tx size (um) - " <<
+      fr->tag_array2->wl_sleep_tx_width << endl;
 
-			  //    cout <<  "\t WL Sleep total Tx size (um) - " <<
-			  //      fr->tag_array2->wl_sleep_tx_width << endl;
+      //    cout <<  "\t WL Sleep total Tx size (um) - " <<
+      //      fr->tag_array2->wl_sleep_tx_width << endl;
 
-			  cout <<  "\t WL Sleep Tx total area (mm^2) - " <<
-			  fr->tag_array2->wl_sleep_tx_area*1e-6 << endl;
+      cout <<  "\t WL Sleep Tx total area (mm^2) - " <<
+      fr->tag_array2->wl_sleep_tx_area*1e-6 << endl;
 
-			  cout <<  "\t WL wakeup time (ns) - " <<
-			  fr->tag_array2->wl_sleep_wakeup_latency*1e9 << endl;
+      cout <<  "\t WL wakeup time (ns) - " <<
+      fr->tag_array2->wl_sleep_wakeup_latency*1e9 << endl;
 
-			  cout <<  "\t WL Tx energy (nJ) - " <<
-			  fr->tag_array2->wl_sleep_wakeup_energy*1e9 << endl;
-			  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			  cout << endl;
-			  cout <<  "\t BL floating wakeup time (ns) - " <<
-			  fr->tag_array2->bl_floating_wakeup_latency*1e9 << endl;
+      cout <<  "\t WL Tx energy (nJ) - " <<
+      fr->tag_array2->wl_sleep_wakeup_energy*1e9 << endl;
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      cout << endl;
+      cout <<  "\t BL floating wakeup time (ns) - " <<
+      fr->tag_array2->bl_floating_wakeup_latency*1e9 << endl;
 
-			  cout <<  "\t BL floating Tx energy (nJ) - " <<
-			  fr->tag_array2->bl_floating_wakeup_energy*1e9 << endl;
-			  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			  cout << endl;
+      cout <<  "\t BL floating Tx energy (nJ) - " <<
+      fr->tag_array2->bl_floating_wakeup_energy*1e9 << endl;
+      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      cout << endl;
 
-			  cout <<  "\t Active mats per access - " << fr->tag_array2->num_active_mats<<endl;
-			  cout <<  "\t Active subarrays per mat - " << fr->tag_array2->num_submarray_mats<<endl;
-			  cout << endl;
-		  }
-	  }
+      cout <<  "\t Active mats per access - " << fr->tag_array2->num_active_mats<<endl;
+      cout <<  "\t Active subarrays per mat - " << fr->tag_array2->num_submarray_mats<<endl;
+      cout << endl;
+      }
+      }
 
     /* Delay stats */
     /* data array stats */
@@ -3322,63 +3322,63 @@ void output_UCA(uca_org_t *fr)
         	cout << "  Fully associative array:"<<endl;
         	cout << "  Total dynamic associative search energy/access  (nJ): " <<
                   fr->data_array2->power.searchOp.dynamic * 1e9 << endl;
-	        cout << "\tTotal energy in H-tree (that includes both "
-	            	      "match key and data transfer) (nJ): " <<
-	              (fr->data_array2->power_htree_in_search.searchOp.dynamic +
-	               fr->data_array2->power_htree_out_search.searchOp.dynamic +
-	               fr->data_array2->power_routing_to_bank.searchOp.dynamic) * 1e9 << endl;
-	        cout << "\tKeyword input and result output Htrees inside bank Energy (nJ): " <<
-	              (fr->data_array2->power_htree_in_search.searchOp.dynamic +
-	       	               fr->data_array2->power_htree_out_search.searchOp.dynamic) * 1e9 << endl;
-	        cout <<  "\tSearchlines (nJ): " <<
-	          	   fr->data_array2->power_searchline.searchOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_searchline_precharge.searchOp.dynamic * 1e9 << endl;
-	        cout <<  "\tMatchlines  (nJ): " <<
-	               fr->data_array2->power_matchlines.searchOp.dynamic * 1e9 +
-	        	   fr->data_array2->power_matchline_precharge.searchOp.dynamic * 1e9 << endl;
-	        cout <<  "\tData portion wordline (nJ): " <<
-	          	   fr->data_array2->power_matchline_to_wordline_drv.searchOp.dynamic * 1e9 << endl;
-	        cout <<  "\tData Bitlines (nJ): " <<
-	          	   fr->data_array2->power_bitlines.searchOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_prechg_eq_drivers.searchOp.dynamic * 1e9 << endl;
-	        cout <<  "\tSense amplifier energy (nJ): " <<
-	          	   fr->data_array2->power_sense_amps.searchOp.dynamic * 1e9 << endl;
-	        cout <<  "\tSub-array output driver (nJ): " <<
-	          	   fr->data_array2->power_output_drivers_at_subarray.searchOp.dynamic * 1e9 << endl;
+            cout << "\tTotal energy in H-tree (that includes both "
+                	      "match key and data transfer) (nJ): " <<
+                  (fr->data_array2->power_htree_in_search.searchOp.dynamic +
+                   fr->data_array2->power_htree_out_search.searchOp.dynamic +
+                   fr->data_array2->power_routing_to_bank.searchOp.dynamic) * 1e9 << endl;
+            cout << "\tKeyword input and result output Htrees inside bank Energy (nJ): " <<
+                  (fr->data_array2->power_htree_in_search.searchOp.dynamic +
+           	               fr->data_array2->power_htree_out_search.searchOp.dynamic) * 1e9 << endl;
+            cout <<  "\tSearchlines (nJ): " <<
+              	   fr->data_array2->power_searchline.searchOp.dynamic * 1e9 +
+              	   fr->data_array2->power_searchline_precharge.searchOp.dynamic * 1e9 << endl;
+            cout <<  "\tMatchlines  (nJ): " <<
+                   fr->data_array2->power_matchlines.searchOp.dynamic * 1e9 +
+            	   fr->data_array2->power_matchline_precharge.searchOp.dynamic * 1e9 << endl;
+            cout <<  "\tData portion wordline (nJ): " <<
+              	   fr->data_array2->power_matchline_to_wordline_drv.searchOp.dynamic * 1e9 << endl;
+            cout <<  "\tData Bitlines (nJ): " <<
+              	   fr->data_array2->power_bitlines.searchOp.dynamic * 1e9 +
+              	   fr->data_array2->power_prechg_eq_drivers.searchOp.dynamic * 1e9 << endl;
+            cout <<  "\tSense amplifier energy (nJ): " <<
+              	   fr->data_array2->power_sense_amps.searchOp.dynamic * 1e9 << endl;
+            cout <<  "\tSub-array output driver (nJ): " <<
+              	   fr->data_array2->power_output_drivers_at_subarray.searchOp.dynamic * 1e9 << endl;
 
 
         	cout <<endl<< "  Total dynamic read energy/access  (nJ): " <<
         	      fr->data_array2->power.readOp.dynamic * 1e9 << endl;
-	        cout << "\tTotal energy in H-tree (that includes both "
-	            	      "address and data transfer) (nJ): " <<
-	              (fr->data_array2->power_addr_input_htree.readOp.dynamic +
-	               fr->data_array2->power_data_output_htree.readOp.dynamic +
-	               fr->data_array2->power_routing_to_bank.readOp.dynamic) * 1e9 << endl;
-	        cout << "\tOutput Htree inside bank Energy (nJ): " <<
-	          	   fr->data_array2->power_data_output_htree.readOp.dynamic * 1e9 << endl;
-	        cout <<  "\tDecoder (nJ): " <<
-	          	   fr->data_array2->power_row_predecoder_drivers.readOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_row_predecoder_blocks.readOp.dynamic * 1e9 << endl;
-	        cout <<  "\tWordline (nJ): " <<
-	          	   fr->data_array2->power_row_decoders.readOp.dynamic * 1e9 << endl;
-	        cout <<  "\tBitline mux & associated drivers (nJ): " <<
-	          	   fr->data_array2->power_bit_mux_predecoder_drivers.readOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_bit_mux_predecoder_blocks.readOp.dynamic * 1e9 +
-	           	   fr->data_array2->power_bit_mux_decoders.readOp.dynamic * 1e9 << endl;
-	        cout <<  "\tSense amp mux & associated drivers (nJ): " <<
-	         	   fr->data_array2->power_senseamp_mux_lev_1_predecoder_drivers.readOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_senseamp_mux_lev_1_predecoder_blocks.readOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_senseamp_mux_lev_1_decoders.readOp.dynamic * 1e9  +
-	           	   fr->data_array2->power_senseamp_mux_lev_2_predecoder_drivers.readOp.dynamic * 1e9 +
-	           	   fr->data_array2->power_senseamp_mux_lev_2_predecoder_blocks.readOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_senseamp_mux_lev_2_decoders.readOp.dynamic * 1e9 << endl;
-	        cout <<  "\tBitlines (nJ): " <<
-	          	   fr->data_array2->power_bitlines.readOp.dynamic * 1e9 +
-	          	   fr->data_array2->power_prechg_eq_drivers.readOp.dynamic * 1e9<< endl;
-	        cout <<  "\tSense amplifier energy (nJ): " <<
-	          	   fr->data_array2->power_sense_amps.readOp.dynamic * 1e9 << endl;
-	        cout <<  "\tSub-array output driver (nJ): " <<
-	          	   fr->data_array2->power_output_drivers_at_subarray.readOp.dynamic * 1e9 << endl;
+            cout << "\tTotal energy in H-tree (that includes both "
+                	      "address and data transfer) (nJ): " <<
+                  (fr->data_array2->power_addr_input_htree.readOp.dynamic +
+                   fr->data_array2->power_data_output_htree.readOp.dynamic +
+                   fr->data_array2->power_routing_to_bank.readOp.dynamic) * 1e9 << endl;
+            cout << "\tOutput Htree inside bank Energy (nJ): " <<
+              	   fr->data_array2->power_data_output_htree.readOp.dynamic * 1e9 << endl;
+            cout <<  "\tDecoder (nJ): " <<
+              	   fr->data_array2->power_row_predecoder_drivers.readOp.dynamic * 1e9 +
+              	   fr->data_array2->power_row_predecoder_blocks.readOp.dynamic * 1e9 << endl;
+            cout <<  "\tWordline (nJ): " <<
+              	   fr->data_array2->power_row_decoders.readOp.dynamic * 1e9 << endl;
+            cout <<  "\tBitline mux & associated drivers (nJ): " <<
+              	   fr->data_array2->power_bit_mux_predecoder_drivers.readOp.dynamic * 1e9 +
+              	   fr->data_array2->power_bit_mux_predecoder_blocks.readOp.dynamic * 1e9 +
+               	   fr->data_array2->power_bit_mux_decoders.readOp.dynamic * 1e9 << endl;
+            cout <<  "\tSense amp mux & associated drivers (nJ): " <<
+             	   fr->data_array2->power_senseamp_mux_lev_1_predecoder_drivers.readOp.dynamic * 1e9 +
+              	   fr->data_array2->power_senseamp_mux_lev_1_predecoder_blocks.readOp.dynamic * 1e9 +
+              	   fr->data_array2->power_senseamp_mux_lev_1_decoders.readOp.dynamic * 1e9  +
+               	   fr->data_array2->power_senseamp_mux_lev_2_predecoder_drivers.readOp.dynamic * 1e9 +
+               	   fr->data_array2->power_senseamp_mux_lev_2_predecoder_blocks.readOp.dynamic * 1e9 +
+              	   fr->data_array2->power_senseamp_mux_lev_2_decoders.readOp.dynamic * 1e9 << endl;
+            cout <<  "\tBitlines (nJ): " <<
+              	   fr->data_array2->power_bitlines.readOp.dynamic * 1e9 +
+              	   fr->data_array2->power_prechg_eq_drivers.readOp.dynamic * 1e9<< endl;
+            cout <<  "\tSense amplifier energy (nJ): " <<
+              	   fr->data_array2->power_sense_amps.readOp.dynamic * 1e9 << endl;
+            cout <<  "\tSub-array output driver (nJ): " <<
+              	   fr->data_array2->power_output_drivers_at_subarray.readOp.dynamic * 1e9 << endl;
 
         	cout << endl <<"  Total leakage power of a bank (mW): " <<
                   fr->data_array2->power.readOp.leakage * 1e3 << endl;
@@ -3493,7 +3493,7 @@ void output_UCA(uca_org_t *fr)
       }
     }
 
-	  }//if (!g_ip->is_3d_mem)
+      }//if (!g_ip->is_3d_mem)
 
 
 

@@ -108,59 +108,59 @@ enum Wire_type
 
 enum TSV_type
 {
-	Fine, /*ITRS high density*/
-	Coarse /*Industry reported in 2010*/
+    Fine, /*ITRS high density*/
+    Coarse /*Industry reported in 2010*/
 };
 
 // ali
 
 enum Mem_IO_type
 {
-	DDR3,
-	DDR4,
-	LPDDR2,
-	WideIO,
-	Low_Swing_Diff,
-	Serial
+    DDR3,
+    DDR4,
+    LPDDR2,
+    WideIO,
+    Low_Swing_Diff,
+    Serial
 };
 
 enum Mem_DIMM
 {
-	UDIMM,
-	RDIMM,
-	LRDIMM
+    UDIMM,
+    RDIMM,
+    LRDIMM
 };
 
 enum Mem_state
 {
-	READ,
-	WRITE,
-	IDLE,
-	SLEEP
+    READ,
+    WRITE,
+    IDLE,
+    SLEEP
 };
 
 enum Mem_ECC
 {
-	NO_ECC,
-	SECDED, // single error correction, double error detection
-	CHIP_KILL
+    NO_ECC,
+    SECDED, // single error correction, double error detection
+    CHIP_KILL
 };
 
 enum DIMM_Model
 {
-	JUST_UDIMM,JUST_RDIMM,JUST_LRDIMM,ALL
+    JUST_UDIMM,JUST_RDIMM,JUST_LRDIMM,ALL
 };
 
 enum MemCad_metrics
 {
-	Bandwidth, Energy, Cost
+    Bandwidth, Energy, Cost
 };
 
 /**
 enum BoB_LINK
 {
-	PARALLEL, // e.g. Intel SMB c104
-	SERIAL // e.g. Intel SMB 7510, IBM AMB
+    PARALLEL, // e.g. Intel SMB c104
+    SERIAL // e.g. Intel SMB 7510, IBM AMB
 };
 **/
 // end ali
@@ -270,69 +270,69 @@ class InputParameter
 
 
     bool     add_ecc_b_;
-	//parameters for design constraint
-	double throughput;
-	double latency;
-	bool pipelinable;
-	int pipeline_stages;
-	int per_stage_vector;
-	bool with_clock_grid;
+    //parameters for design constraint
+    double throughput;
+    double latency;
+    bool pipelinable;
+    int pipeline_stages;
+    int per_stage_vector;
+    bool with_clock_grid;
 
-	bool array_power_gated;
-	bool bitline_floating;
-	bool wl_power_gated;
-	bool cl_power_gated;
-	bool interconect_power_gated;
-	bool power_gating;
+    bool array_power_gated;
+    bool bitline_floating;
+    bool wl_power_gated;
+    bool cl_power_gated;
+    bool interconect_power_gated;
+    bool power_gating;
 
-	double perfloss;
+    double perfloss;
 
-	bool cl_vertical;
+    bool cl_vertical;
 
-	// Parameters related to off-chip I/O
+    // Parameters related to off-chip I/O
 
-	double addr_timing, duty_cycle, mem_density, bus_bw, activity_dq, activity_ca, bus_freq;
-	int mem_data_width, num_mem_dq, num_clk, num_ca, num_dqs, num_dq;
+    double addr_timing, duty_cycle, mem_density, bus_bw, activity_dq, activity_ca, bus_freq;
+    int mem_data_width, num_mem_dq, num_clk, num_ca, num_dqs, num_dq;
 
-	double rtt_value, ron_value, tflight_value; //FIXME
+    double rtt_value, ron_value, tflight_value; //FIXME
 
-	Mem_state iostate;
+    Mem_state iostate;
 
-	///char iostate, dram_ecc, io_type;
+    ///char iostate, dram_ecc, io_type;
 
-	Mem_ECC dram_ecc;
-	Mem_IO_type io_type;
-	Mem_DIMM dram_dimm;
+    Mem_ECC dram_ecc;
+    Mem_IO_type io_type;
+    Mem_DIMM dram_dimm;
 
-	int num_bobs; // BoB is buffer-on-board such as Intel SMB c102
+    int num_bobs; // BoB is buffer-on-board such as Intel SMB c102
 
-	int capacity; // in GB
+    int capacity; // in GB
 
-	int num_channels_per_bob; // 1 means no bob
+    int num_channels_per_bob; // 1 means no bob
 
-	MemCad_metrics first_metric;
+    MemCad_metrics first_metric;
 
-	MemCad_metrics second_metric;
+    MemCad_metrics second_metric;
 
-	MemCad_metrics third_metric;
+    MemCad_metrics third_metric;
 
-	DIMM_Model dimm_model;
+    DIMM_Model dimm_model;
 
-	bool low_power_permitted; // Not yet implemented. It determines acceptable VDDs.
+    bool low_power_permitted; // Not yet implemented. It determines acceptable VDDs.
 
-	double load; // between 0 to 1
+    double load; // between 0 to 1
 
-	double row_buffer_hit_rate;
+    double row_buffer_hit_rate;
 
-	double rd_2_wr_ratio;
+    double rd_2_wr_ratio;
 
-	bool same_bw_in_bob; // true if all the channels in the bob have the same bandwidth.
+    bool same_bw_in_bob; // true if all the channels in the bob have the same bandwidth.
 
-	bool mirror_in_bob;// true if all the channels in the bob have the same configs
+    bool mirror_in_bob;// true if all the channels in the bob have the same configs
 
-	bool total_power; // false means just considering I/O Power
+    bool total_power; // false means just considering I/O Power
 
-	bool verbose;
+    bool verbose;
 
 
 
@@ -519,17 +519,17 @@ class uca_org_t
 
 class IO_org_t
 {
-	public:
-	double io_area;
-	double io_timing_margin;
-	double io_voltage_margin;
-	double io_dynamic_power;
-	double io_phy_power;
-	double io_wakeup_time;
-	double io_termination_power;
-	IO_org_t():io_area(0),io_timing_margin(0),io_voltage_margin(0)
-	,io_dynamic_power(0),io_phy_power(0),io_wakeup_time(0),io_termination_power(0)
-	{}
+    public:
+    double io_area;
+    double io_timing_margin;
+    double io_voltage_margin;
+    double io_dynamic_power;
+    double io_phy_power;
+    double io_wakeup_time;
+    double io_termination_power;
+    IO_org_t():io_area(0),io_timing_margin(0),io_voltage_margin(0)
+    ,io_dynamic_power(0),io_phy_power(0),io_wakeup_time(0),io_termination_power(0)
+    {}
 };
 
 
@@ -542,58 +542,58 @@ uca_org_t cacti_interface(InputParameter * const local_interface);
 uca_org_t init_interface(InputParameter * const local_interface);
 //McPAT's plain interface, please keep !!!
 uca_org_t cacti_interface(
-	    int cache_size,
-	    int line_size,
-	    int associativity,
-	    int rw_ports,
-	    int excl_read_ports,
-	    int excl_write_ports,
-	    int single_ended_read_ports,
-	    int search_ports,
-	    int banks,
-	    double tech_node,
-	    int output_width,
-	    int specific_tag,
-	    int tag_width,
-	    int access_mode,
-	    int cache,
-	    int main_mem,
-	    int obj_func_delay,
-	    int obj_func_dynamic_power,
-	    int obj_func_leakage_power,
-	    int obj_func_cycle_time,
-	    int obj_func_area,
-	    int dev_func_delay,
-	    int dev_func_dynamic_power,
-	    int dev_func_leakage_power,
-	    int dev_func_area,
-	    int dev_func_cycle_time,
-	    int ed_ed2_none, // 0 - ED, 1 - ED^2, 2 - use weight and deviate
-	    int temp,
-	    int wt, //0 - default(search across everything), 1 - global, 2 - 5% delay penalty, 3 - 10%, 4 - 20 %, 5 - 30%, 6 - low-swing
-	    int data_arr_ram_cell_tech_flavor_in,
-	    int data_arr_peri_global_tech_flavor_in,
-	    int tag_arr_ram_cell_tech_flavor_in,
-	    int tag_arr_peri_global_tech_flavor_in,
-	    int interconnect_projection_type_in,
-	    int wire_inside_mat_type_in,
-	    int wire_outside_mat_type_in,
-	    int REPEATERS_IN_HTREE_SEGMENTS_in,
-	    int VERTICAL_HTREE_WIRES_OVER_THE_ARRAY_in,
-	    int BROADCAST_ADDR_DATAIN_OVER_VERTICAL_HTREES_in,
-	    int PAGE_SIZE_BITS_in,
-	    int BURST_LENGTH_in,
-	    int INTERNAL_PREFETCH_WIDTH_in,
-	    int force_wiretype,
-	    int wiretype,
-	    int force_config,
-	    int ndwl,
-	    int ndbl,
-	    int nspd,
-	    int ndcm,
-	    int ndsam1,
-	    int ndsam2,
-	    int ecc);
+        int cache_size,
+        int line_size,
+        int associativity,
+        int rw_ports,
+        int excl_read_ports,
+        int excl_write_ports,
+        int single_ended_read_ports,
+        int search_ports,
+        int banks,
+        double tech_node,
+        int output_width,
+        int specific_tag,
+        int tag_width,
+        int access_mode,
+        int cache,
+        int main_mem,
+        int obj_func_delay,
+        int obj_func_dynamic_power,
+        int obj_func_leakage_power,
+        int obj_func_cycle_time,
+        int obj_func_area,
+        int dev_func_delay,
+        int dev_func_dynamic_power,
+        int dev_func_leakage_power,
+        int dev_func_area,
+        int dev_func_cycle_time,
+        int ed_ed2_none, // 0 - ED, 1 - ED^2, 2 - use weight and deviate
+        int temp,
+        int wt, //0 - default(search across everything), 1 - global, 2 - 5% delay penalty, 3 - 10%, 4 - 20 %, 5 - 30%, 6 - low-swing
+        int data_arr_ram_cell_tech_flavor_in,
+        int data_arr_peri_global_tech_flavor_in,
+        int tag_arr_ram_cell_tech_flavor_in,
+        int tag_arr_peri_global_tech_flavor_in,
+        int interconnect_projection_type_in,
+        int wire_inside_mat_type_in,
+        int wire_outside_mat_type_in,
+        int REPEATERS_IN_HTREE_SEGMENTS_in,
+        int VERTICAL_HTREE_WIRES_OVER_THE_ARRAY_in,
+        int BROADCAST_ADDR_DATAIN_OVER_VERTICAL_HTREES_in,
+        int PAGE_SIZE_BITS_in,
+        int BURST_LENGTH_in,
+        int INTERNAL_PREFETCH_WIDTH_in,
+        int force_wiretype,
+        int wiretype,
+        int force_config,
+        int ndwl,
+        int ndbl,
+        int nspd,
+        int ndcm,
+        int ndsam1,
+        int ndsam2,
+        int ecc);
 //    int cache_size,
 //    int line_size,
 //    int associativity,
@@ -800,32 +800,32 @@ class mem_array
          delay_matchlines;
   //CACTI3DD 3d stats
   double delay_row_activate_net,
-		  delay_local_wordline,
+      delay_local_wordline,
 
-		  delay_column_access_net,
-		  delay_column_predecoder,
-		  delay_column_decoder,
-		  delay_column_selectline,
-		  delay_datapath_net,
-		  delay_global_data,
-		  delay_local_data_and_drv,
-		  delay_data_buffer;
+      delay_column_access_net,
+      delay_column_predecoder,
+      delay_column_decoder,
+      delay_column_selectline,
+      delay_datapath_net,
+      delay_global_data,
+      delay_local_data_and_drv,
+      delay_data_buffer;
 
   double energy_row_activate_net,
-		  energy_row_predecode_driver_and_block,
-		  energy_row_decoder,
-		  energy_local_wordline,
-		  energy_bitlines,
-		  energy_sense_amp,
-		  energy_column_access_net,
-		  energy_column_predecoder,
-		  energy_column_decoder,
-		  energy_column_selectline,
-		  energy_datapath_net,
-		  energy_global_data,
-		  energy_local_data_and_drv,
-		  energy_data_buffer,
-		  energy_subarray_output_driver;
+      energy_row_predecode_driver_and_block,
+      energy_row_decoder,
+      energy_local_wordline,
+      energy_bitlines,
+      energy_sense_amp,
+      energy_column_access_net,
+      energy_column_predecoder,
+      energy_column_decoder,
+      energy_column_selectline,
+      energy_datapath_net,
+      energy_global_data,
+      energy_local_data_and_drv,
+      energy_data_buffer,
+      energy_subarray_output_driver;
 
   double all_banks_height,
          all_banks_width,

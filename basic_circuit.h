@@ -75,24 +75,24 @@ enum Htree_type {
 
 //CACTI3DD
 enum Memorybus_type {
-	Row_add_path,
-	Col_add_path,
-	Data_path
-	/*in_network,
-	out_network*/
+    Row_add_path,
+    Col_add_path,
+    Data_path
+    /*in_network,
+    out_network*/
 };
 
 /*enum Part_grain {
-	Coarse_rank_level, //amsung 2009 3D DRAM
-	Fine_rank_level, //Micron HMC 2011
-	Coarse_bank_level, //ITRS fine TSV supported
-	Fine_bank_level
+    Coarse_rank_level, //amsung 2009 3D DRAM
+    Fine_rank_level, //Micron HMC 2011
+    Coarse_bank_level, //ITRS fine TSV supported
+    Fine_bank_level
 };*/
 
 enum Gate_type {
     nmos,
     pmos,
-	inv,
+    inv,
     nand,
     nor,
     tri,
@@ -262,29 +262,29 @@ double shortcircuit_simple(
     double vdd);
 //set power point product mask; strictly speaking this is not real point product
 inline void set_pppm(
-	double * pppv,
-	double a=1,
+    double * pppv,
+    double a=1,
     double b=1,
     double c=1,
     double d=1
     ){
-		pppv[0]= a;
-		pppv[1]= b;
-		pppv[2]= c;
-		pppv[3]= d;
+    pppv[0]= a;
+    pppv[1]= b;
+    pppv[2]= c;
+    pppv[3]= d;
 
 }
 
 inline void set_sppm(
-	double * sppv,
-	double a=1,
+    double * sppv,
+    double a=1,
     double b=1,
     double c=1,
     double d=1
     ){
-		sppv[0]= a;
-		sppv[1]= b;
-		sppv[2]= c;
+    sppv[0]= a;
+    sppv[1]= b;
+    sppv[2]= c;
 }
 
 //ali

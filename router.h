@@ -71,8 +71,8 @@ class Router : public Component
     double vc_buffer_size; /* vc size = vc_buffer_size * flit_size */
 
   private:
-	/*TechnologyParameter::*/DeviceType *deviceType;
-	double FREQUENCY; // move this to config file --TODO
+    /*TechnologyParameter::*/DeviceType *deviceType;
+    double FREQUENCY; // move this to config file --TODO
     double Cw3(double len);
     double gate_cap(double w);
     double diff_cap(double w, int type /*0 for n-mos and 1 for p-mos*/, double stack);

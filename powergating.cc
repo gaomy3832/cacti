@@ -43,8 +43,8 @@ using namespace std;
 //single sleep tx cases
 
 Sleep_tx::Sleep_tx(
-			double  _perf_with_sleep_tx,
-			double  _active_Isat,//of circuit block, not sleep tx
+    double  _perf_with_sleep_tx,
+    double  _active_Isat,//of circuit block, not sleep tx
             bool    _is_footer,
             double _c_circuit_wakeup,
             double _V_delta,
@@ -53,7 +53,7 @@ Sleep_tx::Sleep_tx(
 //			double  _vt_sleep_tx,
 //			double  _mobility,//of sleep tx
 //			double  _c_ox,//of sleep tx
-			const  Area & cell_)
+    const  Area & cell_)
 :perf_with_sleep_tx(_perf_with_sleep_tx),
  active_Isat(_active_Isat),
  is_footer(_is_footer),
@@ -68,9 +68,9 @@ Sleep_tx::Sleep_tx(
  is_sleep_tx(true)
 {
 
-	//a single sleep tx in a network
-	double raw_area, raw_width, raw_hight;
-	double p_to_n_sz_ratio = pmos_to_nmos_sz_ratio(false, false, true);
+    //a single sleep tx in a network
+    double raw_area, raw_width, raw_hight;
+    double p_to_n_sz_ratio = pmos_to_nmos_sz_ratio(false, false, true);
     vdd = g_tp.peri_global.Vdd;
     vt_circuit = g_tp.peri_global.Vth;
     vt_sleep_tx = g_tp.sleep_tx.Vth;
@@ -92,37 +92,37 @@ Sleep_tx::Sleep_tx(
 
 double Sleep_tx::compute_penalty()
 {
-	//V_delta = VDD - VCCmin nothing to do with threshold of sleep tx. Although it might be OK to use sleep tx to control the V_delta
+    //V_delta = VDD - VCCmin nothing to do with threshold of sleep tx. Although it might be OK to use sleep tx to control the V_delta
 //	double c_load;
-	double p_to_n_sz_ratio = pmos_to_nmos_sz_ratio(false, false, true);
+    double p_to_n_sz_ratio = pmos_to_nmos_sz_ratio(false, false, true);
 
-	if (is_footer)
-	{
-		c_intrinsic_sleep = drain_C_(width, NCH, 1, 1, area.h, false, false, false,is_sleep_tx);
+    if (is_footer)
+    {
+    c_intrinsic_sleep = drain_C_(width, NCH, 1, 1, area.h, false, false, false,is_sleep_tx);
 //		V_delta = _V_delta;
-		wakeup_delay = (c_circuit_wakeup + c_intrinsic_sleep)*V_delta/(simplified_nmos_Isat(width, false, false, false,is_sleep_tx)/Ilinear_to_Isat_ratio);
-		wakeup_power.readOp.dynamic = (c_circuit_wakeup + c_intrinsic_sleep)*g_tp.sram_cell.Vdd*V_delta;
-		//no 0.5 because the half of the energy spend in entering sleep and half of the energy will be spent in waking up. And they are pairs
-	}
-	else
-	{
-		c_intrinsic_sleep = drain_C_(width*p_to_n_sz_ratio, PCH, 1, 1, area.h, false, false, false,is_sleep_tx);
+    wakeup_delay = (c_circuit_wakeup + c_intrinsic_sleep)*V_delta/(simplified_nmos_Isat(width, false, false, false,is_sleep_tx)/Ilinear_to_Isat_ratio);
+    wakeup_power.readOp.dynamic = (c_circuit_wakeup + c_intrinsic_sleep)*g_tp.sram_cell.Vdd*V_delta;
+    //no 0.5 because the half of the energy spend in entering sleep and half of the energy will be spent in waking up. And they are pairs
+    }
+    else
+    {
+    c_intrinsic_sleep = drain_C_(width*p_to_n_sz_ratio, PCH, 1, 1, area.h, false, false, false,is_sleep_tx);
 //		V_delta = _V_delta;
-		wakeup_delay = (c_circuit_wakeup + c_intrinsic_sleep)*V_delta/(simplified_pmos_Isat(width, false, false, false,is_sleep_tx)/Ilinear_to_Isat_ratio);
-		wakeup_power.readOp.dynamic = (c_circuit_wakeup + c_intrinsic_sleep)*g_tp.sram_cell.Vdd*V_delta;
-	}
+    wakeup_delay = (c_circuit_wakeup + c_intrinsic_sleep)*V_delta/(simplified_pmos_Isat(width, false, false, false,is_sleep_tx)/Ilinear_to_Isat_ratio);
+    wakeup_power.readOp.dynamic = (c_circuit_wakeup + c_intrinsic_sleep)*g_tp.sram_cell.Vdd*V_delta;
+    }
 
-	return wakeup_delay;
+    return wakeup_delay;
 
 /*
-	The number of cycles in the wake-up latency set the constraint on the
-	minimum number of idle clock cycles needed before a processor
-	can enter in the corresponding sleep mode without any wakeup
-	overhead.
+    The number of cycles in the wake-up latency set the constraint on the
+    minimum number of idle clock cycles needed before a processor
+    can enter in the corresponding sleep mode without any wakeup
+    overhead.
 
-	If the circuit is half way to sleep then waken up, it is still OK
-	just the wakeup latency will be shorter than the wakeup time from full asleep.
-	So, the sleep time and energy does not matter
+    If the circuit is half way to sleep then waken up, it is still OK
+    just the wakeup latency will be shorter than the wakeup time from full asleep.
+    So, the sleep time and energy does not matter
 */
 
 }

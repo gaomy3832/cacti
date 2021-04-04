@@ -47,17 +47,17 @@ UCA::UCA(const DynamicParameter & dyn_p)
 
   if (dp.use_inp_params)
   {
-	  RWP  = dp.num_rw_ports;
-	  ERP  = dp.num_rd_ports;
-	  EWP  = dp.num_wr_ports;
-	  SCHP = dp.num_search_ports;
+      RWP  = dp.num_rw_ports;
+      ERP  = dp.num_rd_ports;
+      EWP  = dp.num_wr_ports;
+      SCHP = dp.num_search_ports;
   }
   else
   {
-	  RWP  = g_ip->num_rw_ports;
-	  ERP  = g_ip->num_rd_ports;
-	  EWP  = g_ip->num_wr_ports;
-	  SCHP = g_ip->num_search_ports;
+      RWP  = g_ip->num_rw_ports;
+      ERP  = g_ip->num_rd_ports;
+      EWP  = g_ip->num_wr_ports;
+      SCHP = g_ip->num_search_ports;
   }
 
   num_addr_b_bank = (dp.number_addr_bits_mat + dp.number_subbanks_decode)*(RWP+ERP+EWP);
@@ -69,32 +69,32 @@ UCA::UCA(const DynamicParameter & dyn_p)
   if (!dp.fully_assoc && !dp.pure_cam)
   {
 
-	  if (g_ip->fast_access && dp.is_tag == false)
-	  {
-		  num_do_b_bank *= g_ip->data_assoc;
-	  }
+      if (g_ip->fast_access && dp.is_tag == false)
+      {
+      num_do_b_bank *= g_ip->data_assoc;
+      }
 
-	  htree_in_add   = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank,0, num_do_b_bank,0,num_banks_ver_dir*2, num_banks_hor_dir*2, Add_htree, true);
-	  htree_in_data  = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank, 0, num_do_b_bank, 0, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_in_htree, true);
-	  htree_out_data = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank, 0, num_do_b_bank, 0, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_out_htree, true);
+      htree_in_add   = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank,0, num_do_b_bank,0,num_banks_ver_dir*2, num_banks_hor_dir*2, Add_htree, true);
+      htree_in_data  = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank, 0, num_do_b_bank, 0, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_in_htree, true);
+      htree_out_data = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank, 0, num_do_b_bank, 0, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_out_htree, true);
   }
 
   else
   {
 
-	  htree_in_add   = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank, num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Add_htree, true);
-	  htree_in_data  = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_in_htree, true);
-	  htree_out_data = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_out_htree, true);
-	  htree_in_search  = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_in_htree, true);
-	  htree_out_search = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
-			  num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_out_htree, true);
+      htree_in_add   = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank, num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Add_htree, true);
+      htree_in_data  = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_in_htree, true);
+      htree_out_data = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_out_htree, true);
+      htree_in_search  = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_in_htree, true);
+      htree_out_search = new Htree2(g_ip->wt, bank.area.w, bank.area.h,
+      num_addr_b_bank, num_di_b_bank,num_si_b_bank, num_do_b_bank, num_so_b_bank, num_banks_ver_dir*2, num_banks_hor_dir*2, Data_out_htree, true);
   }
 
   area.w = htree_in_data->area.w;
@@ -105,236 +105,236 @@ UCA::UCA(const DynamicParameter & dyn_p)
 //  cout<<area.get_area()<<endl;
 
   if (g_ip->print_detail_debug)
-	  cout << "uca.cc: g_ip->is_3d_mem = " << g_ip->is_3d_mem << endl;
+      cout << "uca.cc: g_ip->is_3d_mem = " << g_ip->is_3d_mem << endl;
   if(g_ip->is_3d_mem)
   {
-	  membus_RAS = new Memorybus(g_ip->wt, bank.mat.area.w, bank.mat.area.h, bank.mat.subarray.area.w, bank.mat.subarray.area.h,
-			  _log2(dp.num_r_subarray * dp.Ndbl), _log2(dp.num_c_subarray * dp.Ndwl), g_ip->burst_depth*g_ip->io_width, dp.Ndbl, dp.Ndwl, Row_add_path, dp);
-	  membus_CAS = new Memorybus(g_ip->wt, bank.mat.area.w, bank.mat.area.h, bank.mat.subarray.area.w, bank.mat.subarray.area.h,
-			  _log2(dp.num_r_subarray * dp.Ndbl), _log2(dp.num_c_subarray * dp.Ndwl), g_ip->burst_depth*g_ip->io_width, dp.Ndbl, dp.Ndwl, Col_add_path, dp);
-	  membus_data = new Memorybus(g_ip->wt, bank.mat.area.w, bank.mat.area.h, bank.mat.subarray.area.w, bank.mat.subarray.area.h,
-			  _log2(dp.num_r_subarray * dp.Ndbl), _log2(dp.num_c_subarray * dp.Ndwl), g_ip->burst_depth*g_ip->io_width, dp.Ndbl, dp.Ndwl, Data_path, dp);
-	  area.h = membus_RAS->area.h;
-	  area.w = membus_RAS->area.w;
+      membus_RAS = new Memorybus(g_ip->wt, bank.mat.area.w, bank.mat.area.h, bank.mat.subarray.area.w, bank.mat.subarray.area.h,
+      _log2(dp.num_r_subarray * dp.Ndbl), _log2(dp.num_c_subarray * dp.Ndwl), g_ip->burst_depth*g_ip->io_width, dp.Ndbl, dp.Ndwl, Row_add_path, dp);
+      membus_CAS = new Memorybus(g_ip->wt, bank.mat.area.w, bank.mat.area.h, bank.mat.subarray.area.w, bank.mat.subarray.area.h,
+      _log2(dp.num_r_subarray * dp.Ndbl), _log2(dp.num_c_subarray * dp.Ndwl), g_ip->burst_depth*g_ip->io_width, dp.Ndbl, dp.Ndwl, Col_add_path, dp);
+      membus_data = new Memorybus(g_ip->wt, bank.mat.area.w, bank.mat.area.h, bank.mat.subarray.area.w, bank.mat.subarray.area.h,
+      _log2(dp.num_r_subarray * dp.Ndbl), _log2(dp.num_c_subarray * dp.Ndwl), g_ip->burst_depth*g_ip->io_width, dp.Ndbl, dp.Ndwl, Data_path, dp);
+      area.h = membus_RAS->area.h;
+      area.w = membus_RAS->area.w;
 
-	  if (g_ip->print_detail_debug)
-	  {
-		  cout<<"uca.cc: area.h = "<<area.h/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: area.w = "<<area.w/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: bank.area.h = "<<bank.area.h/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: bank.area.w = "<<bank.area.w/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: bank.mat.area.h = "<<bank.mat.area.h/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: bank.mat.area.w = "<<bank.mat.area.w/1e3<<" mm"<<endl;
+      if (g_ip->print_detail_debug)
+      {
+      cout<<"uca.cc: area.h = "<<area.h/1e3<<" mm"<<endl;
+      cout<<"uca.cc: area.w = "<<area.w/1e3<<" mm"<<endl;
+      cout<<"uca.cc: bank.area.h = "<<bank.area.h/1e3<<" mm"<<endl;
+      cout<<"uca.cc: bank.area.w = "<<bank.area.w/1e3<<" mm"<<endl;
+      cout<<"uca.cc: bank.mat.area.h = "<<bank.mat.area.h/1e3<<" mm"<<endl;
+      cout<<"uca.cc: bank.mat.area.w = "<<bank.mat.area.w/1e3<<" mm"<<endl;
 
-		  cout<<"uca.cc: bank.mat.subarray.area.h = "<<bank.mat.subarray.area.h/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: bank.mat.subarray.area.w = "<<bank.mat.subarray.area.w/1e3<<" mm"<<endl;
-		  cout<<"uca.cc: dp.num_subarrays = "<<dp.num_subarrays<<endl;
+      cout<<"uca.cc: bank.mat.subarray.area.h = "<<bank.mat.subarray.area.h/1e3<<" mm"<<endl;
+      cout<<"uca.cc: bank.mat.subarray.area.w = "<<bank.mat.subarray.area.w/1e3<<" mm"<<endl;
+      cout<<"uca.cc: dp.num_subarrays = "<<dp.num_subarrays<<endl;
 
-		  //cout<<"uca.cc: area_all_dataramcells: "<<area_all_dataramcells/1e6<<" mm2"<<endl;
-		  //****************** Final results for output ****************
-		  cout<<"uca.cc: area efficiency = "<<area_all_dataramcells/(area.w*area.h)*100 <<" %"<<endl;
-		  //cout<<area.get_area()<<endl;
-		  cout<<"uca.cc: area = "<<area.get_area()/1e6<<" mm2"<<endl;
+      //cout<<"uca.cc: area_all_dataramcells: "<<area_all_dataramcells/1e6<<" mm2"<<endl;
+      //****************** Final results for output ****************
+      cout<<"uca.cc: area efficiency = "<<area_all_dataramcells/(area.w*area.h)*100 <<" %"<<endl;
+      //cout<<area.get_area()<<endl;
+      cout<<"uca.cc: area = "<<area.get_area()/1e6<<" mm2"<<endl;
 
-	  }
+      }
 
 
   }
-	  // delay calculation
-	  double inrisetime = 0.0;
-	  compute_delays(inrisetime);
-	  compute_power_energy();
+      // delay calculation
+      double inrisetime = 0.0;
+      compute_delays(inrisetime);
+      compute_power_energy();
 
-	if(g_ip->is_3d_mem)
-	{
-		// Add TSV delay to the terms
-		// --- Although there are coarse and fine, because is_array and os_bank TSV are the same, so they are the same
-		TSV tsv_os_bank(Coarse);
-		TSV tsv_is_subarray(Fine);
-		if(g_ip->print_detail_debug)
-		{
-			tsv_os_bank.print_TSV();
-			tsv_is_subarray.print_TSV();
-		}
+    if(g_ip->is_3d_mem)
+    {
+    // Add TSV delay to the terms
+    // --- Although there are coarse and fine, because is_array and os_bank TSV are the same, so they are the same
+    TSV tsv_os_bank(Coarse);
+    TSV tsv_is_subarray(Fine);
+    if(g_ip->print_detail_debug)
+    {
+    tsv_os_bank.print_TSV();
+    tsv_is_subarray.print_TSV();
+    }
 
-	comm_bits = 6;
-	row_add_bits = _log2(dp.num_r_subarray * dp.Ndbl);
-	col_add_bits = _log2(dp.num_c_subarray * dp.Ndwl);
-	data_bits = g_ip->burst_depth * g_ip->io_width;
+    comm_bits = 6;
+    row_add_bits = _log2(dp.num_r_subarray * dp.Ndbl);
+    col_add_bits = _log2(dp.num_c_subarray * dp.Ndwl);
+    data_bits = g_ip->burst_depth * g_ip->io_width;
 
-	//enum Part_grain part_gran = Fine_rank_level;
+    //enum Part_grain part_gran = Fine_rank_level;
 
-	double redundancy_perc_TSV = 0.5;
-	switch(g_ip->partition_gran)
-	{
-	case 0:// Coarse_rank_level:
-		delay_TSV_tot = (g_ip->num_die_3d-1) * tsv_os_bank.delay;
-		num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits*2) * (1 + redundancy_perc_TSV); //* (g_ip->nbanks/4)
-		area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
-		dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d-1) * tsv_os_bank.power.readOp.dynamic;
-		dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d-1) * tsv_os_bank.power.readOp.dynamic;
-		area_address_bus = membus_RAS->area_address_bus * (1.0 + (double)comm_bits/(double)(row_add_bits + col_add_bits));
-		area_data_bus = membus_RAS->area_data_bus;
-		break;
-	case 1://Fine_rank_level:
-		delay_TSV_tot = (g_ip->num_die_3d) * tsv_os_bank.delay;
-		num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits/2) * g_ip->nbanks * (1 + redundancy_perc_TSV);
-		area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
-		dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
-		dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
-		//area_address_bus = (comm_bits + row_add_bits + col_add_bits) * 25.0;
-		//area_data_bus = membus_RAS->area_data_bus + (double)data_bits/2 * 25.0;
-		break;
-	case 2://Coarse_bank_level:
-		delay_TSV_tot = (g_ip->num_die_3d) * tsv_os_bank.delay;
-		num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits/2) * g_ip->nbanks
-		* g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd * (1 + redundancy_perc_TSV);
-		area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
-		dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
-		dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
-		//area_address_bus = (comm_bits + row_add_bits + col_add_bits) * 25.0;
-		//area_data_bus = (double)data_bits/2 * 25.0;
+    double redundancy_perc_TSV = 0.5;
+    switch(g_ip->partition_gran)
+    {
+    case 0:// Coarse_rank_level:
+    delay_TSV_tot = (g_ip->num_die_3d-1) * tsv_os_bank.delay;
+    num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits*2) * (1 + redundancy_perc_TSV); //* (g_ip->nbanks/4)
+    area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
+    dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d-1) * tsv_os_bank.power.readOp.dynamic;
+    dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d-1) * tsv_os_bank.power.readOp.dynamic;
+    area_address_bus = membus_RAS->area_address_bus * (1.0 + (double)comm_bits/(double)(row_add_bits + col_add_bits));
+    area_data_bus = membus_RAS->area_data_bus;
+    break;
+    case 1://Fine_rank_level:
+    delay_TSV_tot = (g_ip->num_die_3d) * tsv_os_bank.delay;
+    num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits/2) * g_ip->nbanks * (1 + redundancy_perc_TSV);
+    area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
+    dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
+    dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
+    //area_address_bus = (comm_bits + row_add_bits + col_add_bits) * 25.0;
+    //area_data_bus = membus_RAS->area_data_bus + (double)data_bits/2 * 25.0;
+    break;
+    case 2://Coarse_bank_level:
+    delay_TSV_tot = (g_ip->num_die_3d) * tsv_os_bank.delay;
+    num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits/2) * g_ip->nbanks
+    * g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd * (1 + redundancy_perc_TSV);
+    area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
+    dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
+    dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
+    //area_address_bus = (comm_bits + row_add_bits + col_add_bits) * 25.0;
+    //area_data_bus = (double)data_bits/2 * 25.0;
 
-		//activate_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		//read_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		//write_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		//precharge_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		break;
-	case 3://Fine_bank_level:
-		delay_TSV_tot = (g_ip->num_die_3d) * tsv_os_bank.delay;
-		num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits) * g_ip->nbanks *g_ip->ndwl *g_ip->ndbl
-		/g_ip->num_tier_col_sprd /g_ip->num_tier_row_sprd * (1 + redundancy_perc_TSV);
-		area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
-		dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
-		dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
-		//area_address_bus = pow(2, (comm_bits + row_add_bits + col_add_bits)) * 25.0;
-		//area_data_bus = pow(2, data_bits/2) * 25.0;
-		//activate_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		//read_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		//write_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		//precharge_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
-		break;
-	default:
-		assert(0);
-		break;
-	}
+    //activate_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    //read_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    //write_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    //precharge_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    break;
+    case 3://Fine_bank_level:
+    delay_TSV_tot = (g_ip->num_die_3d) * tsv_os_bank.delay;
+    num_TSV_tot = (comm_bits + row_add_bits + col_add_bits + data_bits) * g_ip->nbanks *g_ip->ndwl *g_ip->ndbl
+    /g_ip->num_tier_col_sprd /g_ip->num_tier_row_sprd * (1 + redundancy_perc_TSV);
+    area_TSV_tot = num_TSV_tot * tsv_os_bank.area.get_area();
+    dyn_pow_TSV_tot = num_TSV_tot * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
+    dyn_pow_TSV_per_access = (comm_bits + row_add_bits + col_add_bits + data_bits) * (g_ip->num_die_3d) * tsv_os_bank.power.readOp.dynamic;
+    //area_address_bus = pow(2, (comm_bits + row_add_bits + col_add_bits)) * 25.0;
+    //area_data_bus = pow(2, data_bits/2) * 25.0;
+    //activate_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    //read_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    //write_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    //precharge_energy *= g_ip->num_tier_row_sprd * g_ip->num_tier_col_sprd;
+    break;
+    default:
+    assert(0);
+    break;
+    }
 
-	if(g_ip->print_detail_debug)
-	{
-		cout << "uca.cc: num_TSV_tot = " << num_TSV_tot << endl;
-	}
+    if(g_ip->print_detail_debug)
+    {
+    cout << "uca.cc: num_TSV_tot = " << num_TSV_tot << endl;
+    }
 
-	area_lwl_drv = membus_RAS->area_lwl_drv * g_ip->nbanks;
-	area_row_predec_dec = membus_RAS->area_row_predec_dec * g_ip->nbanks;
-	area_col_predec_dec = membus_CAS->area_col_predec_dec * g_ip->nbanks;
+    area_lwl_drv = membus_RAS->area_lwl_drv * g_ip->nbanks;
+    area_row_predec_dec = membus_RAS->area_row_predec_dec * g_ip->nbanks;
+    area_col_predec_dec = membus_CAS->area_col_predec_dec * g_ip->nbanks;
 
-	area_subarray = membus_RAS->area_subarray * g_ip->nbanks;
-	area_bus = membus_RAS->area_bus * g_ip->nbanks;
-
-
-	area_data_drv = membus_data->area_data_drv * g_ip->nbanks;
-	area_IOSA = membus_data->area_IOSA * g_ip->nbanks;
-	area_sense_amp = membus_data->area_sense_amp * g_ip->nbanks;
-
-	area_address_bus = membus_RAS->area_address_bus * (1.0 + (double)comm_bits/(double)(row_add_bits + col_add_bits))  * g_ip->nbanks;;
-	area_data_bus = membus_RAS->area_data_bus + membus_data->area_local_dataline * g_ip->nbanks;
-
-	area_per_bank = (area_lwl_drv + area_row_predec_dec + area_col_predec_dec
-			+ area_subarray + area_bus + area_data_drv + area_IOSA
-			+ area_address_bus + area_data_bus)/g_ip->nbanks + area_sense_amp;
+    area_subarray = membus_RAS->area_subarray * g_ip->nbanks;
+    area_bus = membus_RAS->area_bus * g_ip->nbanks;
 
 
-		t_RCD += delay_TSV_tot;
-		t_RAS += delay_TSV_tot;
-		t_RC += delay_TSV_tot;
-		t_RP += delay_TSV_tot;
-		t_CAS += 2 * delay_TSV_tot;
-		t_RRD += delay_TSV_tot;
+    area_data_drv = membus_data->area_data_drv * g_ip->nbanks;
+    area_IOSA = membus_data->area_IOSA * g_ip->nbanks;
+    area_sense_amp = membus_data->area_sense_amp * g_ip->nbanks;
 
-		activate_energy += dyn_pow_TSV_per_access;
-		read_energy += dyn_pow_TSV_per_access;
-		write_energy += dyn_pow_TSV_per_access;
-		precharge_energy += dyn_pow_TSV_per_access;
+    area_address_bus = membus_RAS->area_address_bus * (1.0 + (double)comm_bits/(double)(row_add_bits + col_add_bits))  * g_ip->nbanks;;
+    area_data_bus = membus_RAS->area_data_bus + membus_data->area_local_dataline * g_ip->nbanks;
 
-		//double area_per_die = area.get_area();
-		//double area_stack_tot = g_ip->num_die_3d * (area.get_area() + area_TSV_tot);
-		//int num_die = g_ip->num_die_3d;
-		//area.set_area(area_stack_tot);
-
-		if(g_ip->num_die_3d > 1 || g_ip->partition_gran > 0)
-			total_area_per_die = area_all_dataramcells + area_TSV_tot;
-		else
-			total_area_per_die = area_all_dataramcells;
+    area_per_bank = (area_lwl_drv + area_row_predec_dec + area_col_predec_dec
+    + area_subarray + area_bus + area_data_drv + area_IOSA
+    + area_address_bus + area_data_bus)/g_ip->nbanks + area_sense_amp;
 
 
+    t_RCD += delay_TSV_tot;
+    t_RAS += delay_TSV_tot;
+    t_RC += delay_TSV_tot;
+    t_RP += delay_TSV_tot;
+    t_CAS += 2 * delay_TSV_tot;
+    t_RRD += delay_TSV_tot;
 
-	if(g_ip->is_3d_mem && g_ip->print_detail_debug)
-	{
+    activate_energy += dyn_pow_TSV_per_access;
+    read_energy += dyn_pow_TSV_per_access;
+    write_energy += dyn_pow_TSV_per_access;
+    precharge_energy += dyn_pow_TSV_per_access;
 
-		cout<<"-------  CACTI 3D DRAM Main Memory -------"<<endl;
+    //double area_per_die = area.get_area();
+    //double area_stack_tot = g_ip->num_die_3d * (area.get_area() + area_TSV_tot);
+    //int num_die = g_ip->num_die_3d;
+    //area.set_area(area_stack_tot);
 
-		cout << "\nMemory Parameters:\n";
-		cout << "	Total memory size (Gb): " <<
-				(int) (g_ip->cache_sz) << endl;
-		cout << "	Number of banks: " << (int) g_ip->nbanks << endl;
-		cout << "	Technology size (nm): " <<
-				g_ip->F_sz_nm << endl;
-		cout << "	Page size (bits): " << g_ip->page_sz_bits << endl;
-		cout << "	Burst depth: " << g_ip->burst_depth << endl;
-		cout << "	Chip IO width: " << g_ip->io_width << endl;
-		cout << "	Ndwl: " << dp.Ndwl << endl;
-		cout << "	Ndbl: " << dp.Ndbl << endl;
-		cout << "	# rows in subarray: " << dp.num_r_subarray << endl;
-		cout << "	# columns in subarray: " << dp.num_c_subarray << endl;
+    if(g_ip->num_die_3d > 1 || g_ip->partition_gran > 0)
+    total_area_per_die = area_all_dataramcells + area_TSV_tot;
+    else
+    total_area_per_die = area_all_dataramcells;
 
-		cout << "\nResults:\n";
-		cout<<"	******************Timing terms******************"<<endl;
-		cout<<"	t_RCD (Row to Column command Delay): "<<t_RCD * 1e9 << " ns" <<endl;
-		cout<<"	t_RAS (Row Access Strobe latency): "<<t_RAS * 1e9  << " ns" <<endl;
-		cout<<"	t_RC (Row Cycle): "<<t_RC * 1e9  << " ns" <<endl;
-		cout<<"	t_CAS (Column Access Strobe latency): "<<t_CAS * 1e9  << " ns" <<endl;
-		cout<<"	t_RP (Row Precharge latency): "<<t_RP* 1e9  << " ns" <<endl;
-		//cout<<"	t_RRD (Row activation to Row activation Delay): "<<t_RRD * 1e9 << " ns"<<endl;
-		cout<<"	*******************Power terms******************"<<endl;
-		cout<<"	Activation energy: "<<activate_energy * 1e9  << " nJ" <<endl;
-		cout<<"	Read energy: "<<read_energy * 1e9  << " nJ" <<endl;
-		cout<<"	Write energy: "<<write_energy * 1e9  << " nJ" <<endl;
-		//cout<<"	Precharge energy: "<<precharge_energy * 1e9  << " nJ" <<endl;
-		cout<<"	Activation power: "<< activate_power * 1e3   << " mW" <<endl;
-		cout<<"	Read power: "<< read_power * 1e3 << " mW" <<endl;
-		cout<<"	Write power: "<< write_power * 1e3  << " mW" <<endl;
-		//cout<<"	Peak read power: "<< read_energy/((g_ip->burst_depth)/(g_ip->sys_freq_MHz*1e6)/2) * 1e3  << " mW" <<endl;
-		cout<<"	********************Area terms******************"<<endl;
-		//cout<<"	Height: "<<area.h/1e3<<" mm"<<endl;
-		//cout<<"	Length: "<<area.w/1e3<<" mm"<<endl;
-		cout<<"	DRAM+peri Area: "<<area.get_area()/1e6<<" mm2"<<endl;
-		//cout<<"	Area efficiency: "<<area_all_dataramcells/area.get_area()*100 <<" %"<<endl;
-		cout<<"	Total Area: "<<total_area_per_die/1e6/0.5<<" mm2"<<endl;
 
-		if(g_ip->print_detail_debug)
-		{
-			cout<<"	********************Other terms******************"<<endl;
-			double act_bus_energy = membus_RAS->center_stripe->power.readOp.dynamic + membus_RAS->bank_bus->power.readOp.dynamic
-					+ membus_RAS->add_predec->power.readOp.dynamic + membus_RAS->add_dec->power.readOp.dynamic;
-			cout<<"	Act Bus Energy: "<< act_bus_energy * 1e9 <<" nJ"<<endl;
-			cout<<"	Act Bank Energy: "<< (activate_energy - act_bus_energy) * 1e9 <<" nJ"<<endl;
-			double act_bus_latency = membus_RAS->center_stripe->delay + membus_RAS->bank_bus->delay
-					+ membus_RAS->add_predec->delay + membus_RAS->add_dec->delay;
-			cout<<"	Act Bus Latency: "<< act_bus_latency * 1e9 <<" ns"<<endl;
-			cout<<"	Act Bank Latency: "<< (t_RCD - act_bus_latency) * 1e9 <<" ns"<<endl;
-			cout<<"	activate_energy: "<< activate_energy*1e9 <<" nJ"<<endl;
-		}
 
-		if (g_ip->num_die_3d>1)
-		{
-			cout<<"	********************TSV terms******************"<<endl;
-			cout<<"	TSV area overhead: "<< area_TSV_tot /1e6 <<" mm2"<<endl;
-			cout<<"	TSV latency overhead: "<< delay_TSV_tot * 1e9 <<" ns"<<endl;
-			cout<<"	TSV energy overhead per access: "<< dyn_pow_TSV_per_access * 1e9 <<" nJ"<<endl;
-		}
-		cout<<endl<<endl<<endl;
-	}
-	}
+    if(g_ip->is_3d_mem && g_ip->print_detail_debug)
+    {
+
+    cout<<"-------  CACTI 3D DRAM Main Memory -------"<<endl;
+
+    cout << "\nMemory Parameters:\n";
+    cout << "	Total memory size (Gb): " <<
+    (int) (g_ip->cache_sz) << endl;
+    cout << "	Number of banks: " << (int) g_ip->nbanks << endl;
+    cout << "	Technology size (nm): " <<
+    g_ip->F_sz_nm << endl;
+    cout << "	Page size (bits): " << g_ip->page_sz_bits << endl;
+    cout << "	Burst depth: " << g_ip->burst_depth << endl;
+    cout << "	Chip IO width: " << g_ip->io_width << endl;
+    cout << "	Ndwl: " << dp.Ndwl << endl;
+    cout << "	Ndbl: " << dp.Ndbl << endl;
+    cout << "	# rows in subarray: " << dp.num_r_subarray << endl;
+    cout << "	# columns in subarray: " << dp.num_c_subarray << endl;
+
+    cout << "\nResults:\n";
+    cout<<"	******************Timing terms******************"<<endl;
+    cout<<"	t_RCD (Row to Column command Delay): "<<t_RCD * 1e9 << " ns" <<endl;
+    cout<<"	t_RAS (Row Access Strobe latency): "<<t_RAS * 1e9  << " ns" <<endl;
+    cout<<"	t_RC (Row Cycle): "<<t_RC * 1e9  << " ns" <<endl;
+    cout<<"	t_CAS (Column Access Strobe latency): "<<t_CAS * 1e9  << " ns" <<endl;
+    cout<<"	t_RP (Row Precharge latency): "<<t_RP* 1e9  << " ns" <<endl;
+    //cout<<"	t_RRD (Row activation to Row activation Delay): "<<t_RRD * 1e9 << " ns"<<endl;
+    cout<<"	*******************Power terms******************"<<endl;
+    cout<<"	Activation energy: "<<activate_energy * 1e9  << " nJ" <<endl;
+    cout<<"	Read energy: "<<read_energy * 1e9  << " nJ" <<endl;
+    cout<<"	Write energy: "<<write_energy * 1e9  << " nJ" <<endl;
+    //cout<<"	Precharge energy: "<<precharge_energy * 1e9  << " nJ" <<endl;
+    cout<<"	Activation power: "<< activate_power * 1e3   << " mW" <<endl;
+    cout<<"	Read power: "<< read_power * 1e3 << " mW" <<endl;
+    cout<<"	Write power: "<< write_power * 1e3  << " mW" <<endl;
+    //cout<<"	Peak read power: "<< read_energy/((g_ip->burst_depth)/(g_ip->sys_freq_MHz*1e6)/2) * 1e3  << " mW" <<endl;
+    cout<<"	********************Area terms******************"<<endl;
+    //cout<<"	Height: "<<area.h/1e3<<" mm"<<endl;
+    //cout<<"	Length: "<<area.w/1e3<<" mm"<<endl;
+    cout<<"	DRAM+peri Area: "<<area.get_area()/1e6<<" mm2"<<endl;
+    //cout<<"	Area efficiency: "<<area_all_dataramcells/area.get_area()*100 <<" %"<<endl;
+    cout<<"	Total Area: "<<total_area_per_die/1e6/0.5<<" mm2"<<endl;
+
+    if(g_ip->print_detail_debug)
+    {
+    cout<<"	********************Other terms******************"<<endl;
+    double act_bus_energy = membus_RAS->center_stripe->power.readOp.dynamic + membus_RAS->bank_bus->power.readOp.dynamic
+    + membus_RAS->add_predec->power.readOp.dynamic + membus_RAS->add_dec->power.readOp.dynamic;
+    cout<<"	Act Bus Energy: "<< act_bus_energy * 1e9 <<" nJ"<<endl;
+    cout<<"	Act Bank Energy: "<< (activate_energy - act_bus_energy) * 1e9 <<" nJ"<<endl;
+    double act_bus_latency = membus_RAS->center_stripe->delay + membus_RAS->bank_bus->delay
+    + membus_RAS->add_predec->delay + membus_RAS->add_dec->delay;
+    cout<<"	Act Bus Latency: "<< act_bus_latency * 1e9 <<" ns"<<endl;
+    cout<<"	Act Bank Latency: "<< (t_RCD - act_bus_latency) * 1e9 <<" ns"<<endl;
+    cout<<"	activate_energy: "<< activate_energy*1e9 <<" nJ"<<endl;
+    }
+
+    if (g_ip->num_die_3d>1)
+    {
+    cout<<"	********************TSV terms******************"<<endl;
+    cout<<"	TSV area overhead: "<< area_TSV_tot /1e6 <<" mm2"<<endl;
+    cout<<"	TSV latency overhead: "<< delay_TSV_tot * 1e9 <<" ns"<<endl;
+    cout<<"	TSV energy overhead per access: "<< dyn_pow_TSV_per_access * 1e9 <<" nJ"<<endl;
+    }
+    cout<<endl<<endl<<endl;
+    }
+    }
 }
 
 
@@ -347,9 +347,9 @@ UCA::~UCA()
 
   if(g_ip->is_3d_mem)
   {
-	  delete membus_RAS;
-	  delete membus_CAS;
-	  delete membus_data;
+      delete membus_RAS;
+      delete membus_CAS;
+      delete membus_data;
   }
 }
 
@@ -361,71 +361,71 @@ double UCA::compute_delays(double inrisetime)
   //CACTI3DD
   if (g_ip->is_3d_mem)
   {
-	  outrisetime = bank.compute_delays(membus_RAS->out_rise_time);
+      outrisetime = bank.compute_delays(membus_RAS->out_rise_time);
 
-	  //ram_delay_inside_mat = bank.mat.delay_bitline;// + bank.mat.delay_matchchline;
-	  //access_time = membus_RAS->delay + bank.mat.delay_bitline + bank.mat.delay_sa + membus_CAS->delay + membus_data->delay;
+      //ram_delay_inside_mat = bank.mat.delay_bitline;// + bank.mat.delay_matchchline;
+      //access_time = membus_RAS->delay + bank.mat.delay_bitline + bank.mat.delay_sa + membus_CAS->delay + membus_data->delay;
 
-	  //double t_rcd = membus_RAS->delay + bank.mat.delay_bitline + bank.mat.delay_sa;
-	  //t_RCD= membus_RAS->add_dec->delay + membus_RAS->lwl_drv->delay + bank.mat.delay_bitline + bank.mat.delay_sa;
-	  t_RCD = membus_RAS->add_dec->delay + membus_RAS->lwl_drv->delay + bank.mat.delay_bitline + bank.mat.delay_sa;
-	  t_RAS = membus_RAS->delay + bank.mat.delay_bitline + bank.mat.delay_sa + bank.mat.delay_bl_restore;
-	  precharge_delay = bank.mat.delay_writeback +
-			  bank.mat.delay_wl_reset + bank.mat.delay_bl_restore;
-	  t_RP = precharge_delay;
-	  t_RC = t_RAS + t_RP;
-	  t_CAS = membus_CAS->delay + bank.mat.delay_subarray_out_drv + membus_data->delay;
-	  t_RRD = membus_RAS->center_stripe->delay + membus_RAS->bank_bus->delay;
-	  //t_RRD = membus_RAS->delay;
-	  access_time = t_RCD + t_CAS;
-	  multisubbank_interleave_cycle_time = membus_RAS->center_stripe->delay + membus_RAS->bank_bus->delay;
-	  //cout<<"uca.cc: multisubbank_interleave_cycle_time = "<<multisubbank_interleave_cycle_time<<endl;
-	  cycle_time = t_RC + precharge_delay;
-	  //cout<<"uca.cc: cycle_time = "<<cycle_time<<endl;
-	  outrisetime = t_RCD/(1.0-0.5); // correct?
+      //double t_rcd = membus_RAS->delay + bank.mat.delay_bitline + bank.mat.delay_sa;
+      //t_RCD= membus_RAS->add_dec->delay + membus_RAS->lwl_drv->delay + bank.mat.delay_bitline + bank.mat.delay_sa;
+      t_RCD = membus_RAS->add_dec->delay + membus_RAS->lwl_drv->delay + bank.mat.delay_bitline + bank.mat.delay_sa;
+      t_RAS = membus_RAS->delay + bank.mat.delay_bitline + bank.mat.delay_sa + bank.mat.delay_bl_restore;
+      precharge_delay = bank.mat.delay_writeback +
+      bank.mat.delay_wl_reset + bank.mat.delay_bl_restore;
+      t_RP = precharge_delay;
+      t_RC = t_RAS + t_RP;
+      t_CAS = membus_CAS->delay + bank.mat.delay_subarray_out_drv + membus_data->delay;
+      t_RRD = membus_RAS->center_stripe->delay + membus_RAS->bank_bus->delay;
+      //t_RRD = membus_RAS->delay;
+      access_time = t_RCD + t_CAS;
+      multisubbank_interleave_cycle_time = membus_RAS->center_stripe->delay + membus_RAS->bank_bus->delay;
+      //cout<<"uca.cc: multisubbank_interleave_cycle_time = "<<multisubbank_interleave_cycle_time<<endl;
+      cycle_time = t_RC + precharge_delay;
+      //cout<<"uca.cc: cycle_time = "<<cycle_time<<endl;
+      outrisetime = t_RCD/(1.0-0.5); // correct?
 
 
 
-	  if (g_ip->print_detail_debug)
-	  {
-		  cout<<endl<<"Network delays: "<<endl;
-		  cout<<"uca.cc: membus_RAS->delay = "<<membus_RAS->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_CAS->delay = "<<membus_CAS->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_data->delay = "<<membus_data->delay * 1e9 << " ns" <<endl;
-		  cout<<"Row Address Delay components: "<<endl;
-		  cout<<"uca.cc: membus_RAS->center_stripe->delay = "<<membus_RAS->center_stripe->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_RAS->bank_bus->delay = "<<membus_RAS->bank_bus->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_RAS->add_predec->delay = "<<membus_RAS->add_predec->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_RAS->add_dec->delay = "<<membus_RAS->add_dec->delay * 1e9 << " ns" <<endl;
-		  //cout<<"uca.cc: membus_RAS->global_WL->delay = "<<membus_RAS->global_WL->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_RAS->lwl_drv->delay = "<<membus_RAS->lwl_drv->delay * 1e9 << " ns" <<endl;
-		  cout<<"Bank Delay components: "<<endl;
-		  cout<<"uca.cc: bank.mat.delay_bitline = "<<bank.mat.delay_bitline * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: bank.mat.delay_sa = "<<bank.mat.delay_sa * 1e9 << " ns" <<endl;
-		  cout<<"Column Address Delay components: "<<endl;
-		  //cout<<"uca.cc: membus_CAS->center_stripe->delay = "<<membus_CAS->center_stripe->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_CAS->bank_bus->delay = "<<membus_CAS->bank_bus->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_CAS->add_predec->delay = "<<membus_CAS->add_predec->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_CAS->add_dec->delay = "<<membus_CAS->add_dec->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_CAS->column_sel->delay = "<<membus_CAS->column_sel->delay * 1e9 << " ns" <<endl;
-		  cout<<"Data IO Path Delay components: "<<endl;
-		  cout<<"uca.cc: bank.mat.delay_subarray_out_drv = "<<bank.mat.delay_subarray_out_drv * 1e9 << " ns" <<endl;
-		  //cout<<"uca.cc: membus_data->center_stripe->delay = "<<membus_data->center_stripe->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_data->bank_bus->delay = "<<membus_data->bank_bus->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_data->global_data->delay = "<<membus_data->global_data->delay * 1e9 << " ns" <<endl;
-		  //cout<<"uca.cc: membus_data->data_drv->delay = "<<membus_data->data_drv->delay * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: membus_data->local_data->delay = "<<membus_data->local_data->delay * 1e9 << " ns" <<endl;
-		  cout<<"Bank precharge/restore delay components: "<<endl;
-		  cout<<"uca.cc: bank.mat.delay_bl_restore = "<<bank.mat.delay_bl_restore * 1e9 << " ns" <<endl;
+      if (g_ip->print_detail_debug)
+      {
+      cout<<endl<<"Network delays: "<<endl;
+      cout<<"uca.cc: membus_RAS->delay = "<<membus_RAS->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_CAS->delay = "<<membus_CAS->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_data->delay = "<<membus_data->delay * 1e9 << " ns" <<endl;
+      cout<<"Row Address Delay components: "<<endl;
+      cout<<"uca.cc: membus_RAS->center_stripe->delay = "<<membus_RAS->center_stripe->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_RAS->bank_bus->delay = "<<membus_RAS->bank_bus->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_RAS->add_predec->delay = "<<membus_RAS->add_predec->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_RAS->add_dec->delay = "<<membus_RAS->add_dec->delay * 1e9 << " ns" <<endl;
+      //cout<<"uca.cc: membus_RAS->global_WL->delay = "<<membus_RAS->global_WL->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_RAS->lwl_drv->delay = "<<membus_RAS->lwl_drv->delay * 1e9 << " ns" <<endl;
+      cout<<"Bank Delay components: "<<endl;
+      cout<<"uca.cc: bank.mat.delay_bitline = "<<bank.mat.delay_bitline * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: bank.mat.delay_sa = "<<bank.mat.delay_sa * 1e9 << " ns" <<endl;
+      cout<<"Column Address Delay components: "<<endl;
+      //cout<<"uca.cc: membus_CAS->center_stripe->delay = "<<membus_CAS->center_stripe->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_CAS->bank_bus->delay = "<<membus_CAS->bank_bus->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_CAS->add_predec->delay = "<<membus_CAS->add_predec->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_CAS->add_dec->delay = "<<membus_CAS->add_dec->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_CAS->column_sel->delay = "<<membus_CAS->column_sel->delay * 1e9 << " ns" <<endl;
+      cout<<"Data IO Path Delay components: "<<endl;
+      cout<<"uca.cc: bank.mat.delay_subarray_out_drv = "<<bank.mat.delay_subarray_out_drv * 1e9 << " ns" <<endl;
+      //cout<<"uca.cc: membus_data->center_stripe->delay = "<<membus_data->center_stripe->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_data->bank_bus->delay = "<<membus_data->bank_bus->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_data->global_data->delay = "<<membus_data->global_data->delay * 1e9 << " ns" <<endl;
+      //cout<<"uca.cc: membus_data->data_drv->delay = "<<membus_data->data_drv->delay * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: membus_data->local_data->delay = "<<membus_data->local_data->delay * 1e9 << " ns" <<endl;
+      cout<<"Bank precharge/restore delay components: "<<endl;
+      cout<<"uca.cc: bank.mat.delay_bl_restore = "<<bank.mat.delay_bl_restore * 1e9 << " ns" <<endl;
 
-		  cout<<"General delay components: "<<endl;
-		  cout<<"uca.cc: t_RCD = "<<t_RCD * 1e9 << " ns" <<endl;
-		  cout<<"uca.cc: t_RAS = "<<t_RAS * 1e9  << " ns" <<endl;
-		  cout<<"uca.cc: t_RC = "<<t_RC * 1e9  << " ns" <<endl;
-		  cout<<"uca.cc: t_CAS = "<<t_CAS * 1e9  << " ns" <<endl;
-		  cout<<"uca.cc: t_RRD = "<<t_RRD * 1e9 << " ns"<<endl;
-		  cout<<"uca.cc: access_time = "<<access_time * 1e9 << " ns" <<endl;
-	  }
+      cout<<"General delay components: "<<endl;
+      cout<<"uca.cc: t_RCD = "<<t_RCD * 1e9 << " ns" <<endl;
+      cout<<"uca.cc: t_RAS = "<<t_RAS * 1e9  << " ns" <<endl;
+      cout<<"uca.cc: t_RC = "<<t_RC * 1e9  << " ns" <<endl;
+      cout<<"uca.cc: t_CAS = "<<t_CAS * 1e9  << " ns" <<endl;
+      cout<<"uca.cc: t_RRD = "<<t_RRD * 1e9 << " ns"<<endl;
+      cout<<"uca.cc: access_time = "<<access_time * 1e9 << " ns" <<endl;
+      }
   }//CACTI3DD
   else
   {
@@ -490,13 +490,13 @@ double UCA::compute_delays(double inrisetime)
   }
   else
    {
-	  ram_delay_inside_mat = bank.mat.delay_bitline + bank.mat.delay_matchchline;
-	  temp = ram_delay_inside_mat + bank.mat.delay_cam_sl_restore + bank.mat.delay_cam_ml_reset + bank.mat.delay_bl_restore
-	         + bank.mat.delay_hit_miss_reset + bank.mat.delay_wl_reset;
+      ram_delay_inside_mat = bank.mat.delay_bitline + bank.mat.delay_matchchline;
+      temp = ram_delay_inside_mat + bank.mat.delay_cam_sl_restore + bank.mat.delay_cam_ml_reset + bank.mat.delay_bl_restore
+             + bank.mat.delay_hit_miss_reset + bank.mat.delay_wl_reset;
 
-	  temp = MAX(temp, bank.mat.b_mux_predec->delay);//TODO:  revisit whether distinguish cam and ram bitline etc.
-	  temp = MAX(temp, bank.mat.sa_mux_lev_1_predec->delay);
-	  temp = MAX(temp, bank.mat.sa_mux_lev_2_predec->delay);
+      temp = MAX(temp, bank.mat.b_mux_predec->delay);//TODO:  revisit whether distinguish cam and ram bitline etc.
+      temp = MAX(temp, bank.mat.sa_mux_lev_1_predec->delay);
+      temp = MAX(temp, bank.mat.sa_mux_lev_2_predec->delay);
    }
 
   // The following is true only if the input parameter "repeaters_in_htree" is set to false --Nav
@@ -543,69 +543,69 @@ void UCA::compute_power_energy()
   //CACTI3DD
   if (g_ip->is_3d_mem)
   {
-	  double datapath_energy = 0.505e-9 *g_ip->F_sz_nm / 55;
-	  //double chip_IO_width = 4;
-	  //g_ip->burst_len = 4;
-	  activate_energy = membus_RAS->power.readOp.dynamic + (bank.mat.power_bitline.readOp.dynamic +
-			  bank.mat.power_sa.readOp.dynamic) * dp.Ndwl; // /4
-	  read_energy    = (membus_CAS->power.readOp.dynamic + bank.mat.power_subarray_out_drv.readOp.dynamic +
-			  membus_data->power.readOp.dynamic ) + datapath_energy; //* g_ip->burst_len;
-	  write_energy   = (membus_CAS->power.readOp.dynamic + bank.mat.power_subarray_out_drv.readOp.dynamic +
-			  membus_data->power.readOp.dynamic + bank.mat.power_sa.readOp.dynamic * g_ip->burst_depth*g_ip->io_width/g_ip->page_sz_bits)  + datapath_energy; //* g_ip->burst_len;
-	  precharge_energy = (bank.mat.power_bitline.readOp.dynamic +
-			  bank.mat.power_bl_precharge_eq_drv.readOp.dynamic)* dp.Ndwl; // /4
+      double datapath_energy = 0.505e-9 *g_ip->F_sz_nm / 55;
+      //double chip_IO_width = 4;
+      //g_ip->burst_len = 4;
+      activate_energy = membus_RAS->power.readOp.dynamic + (bank.mat.power_bitline.readOp.dynamic +
+      bank.mat.power_sa.readOp.dynamic) * dp.Ndwl; // /4
+      read_energy    = (membus_CAS->power.readOp.dynamic + bank.mat.power_subarray_out_drv.readOp.dynamic +
+      membus_data->power.readOp.dynamic ) + datapath_energy; //* g_ip->burst_len;
+      write_energy   = (membus_CAS->power.readOp.dynamic + bank.mat.power_subarray_out_drv.readOp.dynamic +
+      membus_data->power.readOp.dynamic + bank.mat.power_sa.readOp.dynamic * g_ip->burst_depth*g_ip->io_width/g_ip->page_sz_bits)  + datapath_energy; //* g_ip->burst_len;
+      precharge_energy = (bank.mat.power_bitline.readOp.dynamic +
+      bank.mat.power_bl_precharge_eq_drv.readOp.dynamic)* dp.Ndwl; // /4
 
-	  activate_power = activate_energy / t_RC;
-	  double col_cycle_act_row;
-	  //col_cycle_act_row =  MAX(MAX(MAX(membus_CAS->center_stripe->delay + membus_CAS->bank_bus->delay, bank.mat.delay_subarray_out_drv),
-	  			  //membus_data->delay), membus_data->out_seg->delay *g_ip->burst_depth);
-	  //col_cycle_act_row = membus_data->out_seg->delay * g_ip->burst_depth;
-	  col_cycle_act_row = (1e-6/(double)g_ip->sys_freq_MHz)/2 * g_ip->burst_depth;
-	  //--- Activity factor assumption comes from Micron data spreadsheet.
-	  read_power = 0.25 * read_energy / col_cycle_act_row;
-	  write_power = 0.15 * write_energy / col_cycle_act_row;
+      activate_power = activate_energy / t_RC;
+      double col_cycle_act_row;
+      //col_cycle_act_row =  MAX(MAX(MAX(membus_CAS->center_stripe->delay + membus_CAS->bank_bus->delay, bank.mat.delay_subarray_out_drv),
+      			  //membus_data->delay), membus_data->out_seg->delay *g_ip->burst_depth);
+      //col_cycle_act_row = membus_data->out_seg->delay * g_ip->burst_depth;
+      col_cycle_act_row = (1e-6/(double)g_ip->sys_freq_MHz)/2 * g_ip->burst_depth;
+      //--- Activity factor assumption comes from Micron data spreadsheet.
+      read_power = 0.25 * read_energy / col_cycle_act_row;
+      write_power = 0.15 * write_energy / col_cycle_act_row;
 
-	  if (g_ip->print_detail_debug)
-	  {
-		  cout<<"Row Address Delay components: "<<endl;
-		  cout<<"Row Address Delay components: "<<endl;
-		  cout<<"Network power terms: "<<endl;
-		  cout<<"uca.cc: membus_RAS->power.readOp.dynamic = "<< membus_RAS->power.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_CAS->power.readOp.dynamic = "<< membus_CAS->power.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_data->power.readOp.dynamic = "<< membus_data->power.readOp.dynamic * 1e9  << " nJ" <<endl;
+      if (g_ip->print_detail_debug)
+      {
+      cout<<"Row Address Delay components: "<<endl;
+      cout<<"Row Address Delay components: "<<endl;
+      cout<<"Network power terms: "<<endl;
+      cout<<"uca.cc: membus_RAS->power.readOp.dynamic = "<< membus_RAS->power.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_CAS->power.readOp.dynamic = "<< membus_CAS->power.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_data->power.readOp.dynamic = "<< membus_data->power.readOp.dynamic * 1e9  << " nJ" <<endl;
 
-		  cout<<"Row Address Power components: "<<endl;
-		  cout<<"uca.cc: membus_RAS->power_bus.readOp.dynamic = "<<membus_RAS->power_bus.readOp.dynamic * 1e9 << " nJ" <<endl;
-		  cout<<"uca.cc: membus_RAS->power_add_predecoder.readOp.dynamic = "<< membus_RAS->power_add_predecoder.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_RAS->power_add_decoders.readOp.dynamic = "<< membus_RAS->power_add_decoders.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_RAS->power_lwl_drv.readOp.dynamic = "<< membus_RAS->power_lwl_drv.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"Row Address Power components: "<<endl;
+      cout<<"uca.cc: membus_RAS->power_bus.readOp.dynamic = "<<membus_RAS->power_bus.readOp.dynamic * 1e9 << " nJ" <<endl;
+      cout<<"uca.cc: membus_RAS->power_add_predecoder.readOp.dynamic = "<< membus_RAS->power_add_predecoder.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_RAS->power_add_decoders.readOp.dynamic = "<< membus_RAS->power_add_decoders.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_RAS->power_lwl_drv.readOp.dynamic = "<< membus_RAS->power_lwl_drv.readOp.dynamic * 1e9  << " nJ" <<endl;
 
-		  cout<<"Bank Power components: "<<endl;
-		  cout<<"uca.cc: bank.mat.power_bitline = "<< bank.mat.power_bitline.readOp.dynamic * dp.Ndwl * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: bank.mat.power_sa = "<< bank.mat.power_sa.readOp.dynamic * dp.Ndwl * 1e9  << " nJ" <<endl;
+      cout<<"Bank Power components: "<<endl;
+      cout<<"uca.cc: bank.mat.power_bitline = "<< bank.mat.power_bitline.readOp.dynamic * dp.Ndwl * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: bank.mat.power_sa = "<< bank.mat.power_sa.readOp.dynamic * dp.Ndwl * 1e9  << " nJ" <<endl;
 
-		  cout<<"Column Address Power components: "<<endl;
-		  cout<<"uca.cc: membus_CAS->power_bus.readOp.dynamic = "<< membus_CAS->power_bus.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_CAS->power_add_predecoder.readOp.dynamic = "<< membus_CAS->power_add_predecoder.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_CAS->power_add_decoders.readOp.dynamic = "<< membus_CAS->power_add_decoders.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_CAS->power.readOp.dynamic = "<< membus_CAS->power.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"Column Address Power components: "<<endl;
+      cout<<"uca.cc: membus_CAS->power_bus.readOp.dynamic = "<< membus_CAS->power_bus.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_CAS->power_add_predecoder.readOp.dynamic = "<< membus_CAS->power_add_predecoder.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_CAS->power_add_decoders.readOp.dynamic = "<< membus_CAS->power_add_decoders.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_CAS->power.readOp.dynamic = "<< membus_CAS->power.readOp.dynamic * 1e9  << " nJ" <<endl;
 
-		  cout<<"Data Path Power components: "<<endl;
-		  cout<<"uca.cc: bank.mat.power_subarray_out_drv.readOp.dynamic = "<< bank.mat.power_subarray_out_drv.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: membus_data->power.readOp.dynamic = "<< membus_data->power.readOp.dynamic * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: bank.mat.power_sa = "<< bank.mat.power_sa.readOp.dynamic * g_ip->burst_depth*g_ip->io_width/g_ip->page_sz_bits * 1e9  << " nJ" <<endl;
+      cout<<"Data Path Power components: "<<endl;
+      cout<<"uca.cc: bank.mat.power_subarray_out_drv.readOp.dynamic = "<< bank.mat.power_subarray_out_drv.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: membus_data->power.readOp.dynamic = "<< membus_data->power.readOp.dynamic * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: bank.mat.power_sa = "<< bank.mat.power_sa.readOp.dynamic * g_ip->burst_depth*g_ip->io_width/g_ip->page_sz_bits * 1e9  << " nJ" <<endl;
 
-		  //****************** Final results for output ****************
-		  cout<<"General Power components: "<<endl;
-		  cout<<"uca.cc: activate_energy = "<<activate_energy * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: read_energy = "<<read_energy * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: write_energy = "<<write_energy * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: precharge_energy = "<<precharge_energy * 1e9  << " nJ" <<endl;
-		  cout<<"uca.cc: activate_power = "<<activate_power * 1e3  << " mW" <<endl;
-		  cout<<"uca.cc: read_power = "<< read_power * 1e3  << " mW" <<endl;
-		  cout<<"uca.cc: write_power = "<< write_power * 1e3  << " mW" <<endl;
+      //****************** Final results for output ****************
+      cout<<"General Power components: "<<endl;
+      cout<<"uca.cc: activate_energy = "<<activate_energy * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: read_energy = "<<read_energy * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: write_energy = "<<write_energy * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: precharge_energy = "<<precharge_energy * 1e9  << " nJ" <<endl;
+      cout<<"uca.cc: activate_power = "<<activate_power * 1e3  << " mW" <<endl;
+      cout<<"uca.cc: read_power = "<< read_power * 1e3  << " mW" <<endl;
+      cout<<"uca.cc: write_power = "<< write_power * 1e3  << " mW" <<endl;
 
-	  }
+      }
   }//CACTI3DD
   else
   {
@@ -623,8 +623,8 @@ void UCA::compute_power_energy()
                                           htree_out_data->power.readOp.gate_leakage;
   if (dp.fully_assoc || dp.pure_cam)
   {
-	power_routing_to_bank.readOp.leakage += htree_in_search->power.readOp.leakage + htree_out_search->power.readOp.leakage;
-	power_routing_to_bank.readOp.gate_leakage += htree_in_search->power.readOp.gate_leakage + htree_out_search->power.readOp.gate_leakage;
+    power_routing_to_bank.readOp.leakage += htree_in_search->power.readOp.leakage + htree_out_search->power.readOp.leakage;
+    power_routing_to_bank.readOp.gate_leakage += htree_in_search->power.readOp.gate_leakage + htree_out_search->power.readOp.gate_leakage;
   }
 
   power.searchOp.dynamic += power_routing_to_bank.searchOp.dynamic;
@@ -749,8 +749,8 @@ void UCA::compute_power_energy()
 
   if (dp.fully_assoc || dp.pure_cam)
   {
-	leak_power_request_and_reply_networks += htree_in_search->power.readOp.leakage + htree_out_search->power.readOp.leakage;
-	leak_power_request_and_reply_networks += htree_in_search->power.readOp.gate_leakage + htree_out_search->power.readOp.gate_leakage;
+    leak_power_request_and_reply_networks += htree_in_search->power.readOp.leakage + htree_out_search->power.readOp.leakage;
+    leak_power_request_and_reply_networks += htree_in_search->power.readOp.gate_leakage + htree_out_search->power.readOp.gate_leakage;
   }
 
 
@@ -798,17 +798,17 @@ void UCA::compute_power_energy()
 
   if (g_ip->is_3d_mem)
   {// ---This is only to make sure the following assert() functions don't generate errors. The values are not used in 3D DRAM models
-	  // power = power + membus_RAS->power + membus_CAS->power + membus_data->power; //for leakage power add up, not used yet for optimization
-	  power.readOp.dynamic = read_energy;
-	  power.writeOp.dynamic = write_energy;
-	  // ---Before the brackets, power = power.bank, and all the specific leakage terms have and only have accounted for bank to mat levels.
-	 // power.readOp.leakage = power.readOp.leakage + membus_RAS->power.readOp.leakage + membus_CAS->power.readOp.leakage + membus_data->power.readOp.leakage;
-	  power.readOp.leakage =membus_RAS->power.readOp.leakage + membus_CAS->power.readOp.leakage + membus_data->power.readOp.leakage;
-	  //cout << "test: " << power.readOp.dynamic << endl;
-	  //cout << "test: " << membus_RAS->power.readOp.leakage << endl;
-	  //cout << "test: " << membus_CAS->power.readOp.leakage << endl;
-	  //cout << "test: " << membus_data->power.readOp.leakage << endl;
-	  //cout << "test: power.readOp.leakage" << power.readOp.leakage << endl;
+      // power = power + membus_RAS->power + membus_CAS->power + membus_data->power; //for leakage power add up, not used yet for optimization
+      power.readOp.dynamic = read_energy;
+      power.writeOp.dynamic = write_energy;
+      // ---Before the brackets, power = power.bank, and all the specific leakage terms have and only have accounted for bank to mat levels.
+     // power.readOp.leakage = power.readOp.leakage + membus_RAS->power.readOp.leakage + membus_CAS->power.readOp.leakage + membus_data->power.readOp.leakage;
+      power.readOp.leakage =membus_RAS->power.readOp.leakage + membus_CAS->power.readOp.leakage + membus_data->power.readOp.leakage;
+      //cout << "test: " << power.readOp.dynamic << endl;
+      //cout << "test: " << membus_RAS->power.readOp.leakage << endl;
+      //cout << "test: " << membus_CAS->power.readOp.leakage << endl;
+      //cout << "test: " << membus_data->power.readOp.leakage << endl;
+      //cout << "test: power.readOp.leakage" << power.readOp.leakage << endl;
   }
 
   assert(power.readOp.dynamic  > 0);

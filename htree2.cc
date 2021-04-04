@@ -212,21 +212,21 @@ void Htree2::output_buffer(double s1, double s2, double l_eff)
     deviceType->Vdd * deviceType->Vdd*init_wire_bw;
 
   if(uca_tree) {
-	power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
-	power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nand)*deviceType->Vdd*wire_bw;//nand
-	power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nor)*deviceType->Vdd*wire_bw;//nor
+    power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
+    power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nand)*deviceType->Vdd*wire_bw;//nand
+    power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nor)*deviceType->Vdd*wire_bw;//nor
 
-	power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
+    power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
     power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nand)*deviceType->Vdd*wire_bw;//nand
     power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nor)*deviceType->Vdd*wire_bw;//nor
     //power.readOp.gate_leakage *=;
   }
   else {
-	power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
-	power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nand)*deviceType->Vdd*wire_bw;//nand
-	power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nor)*deviceType->Vdd*wire_bw;//nor
+    power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
+    power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nand)*deviceType->Vdd*wire_bw;//nand
+    power.readOp.leakage += cmos_Isub_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nor)*deviceType->Vdd*wire_bw;//nor
 
-	power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
+    power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*tr_size*2, min_w_pmos*tr_size*2, 1, inv)*deviceType->Vdd*wire_bw;/*inverter + output tr*/
     power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nand)*deviceType->Vdd*wire_bw;//nand
     power.readOp.gate_leakage += cmos_Ig_leakage(min_w_nmos*size*3, min_w_pmos*size*3, 2, nor)*deviceType->Vdd*wire_bw;//nor
     //power.readOp.gate_leakage *=deviceType->Vdd*wire_bw;

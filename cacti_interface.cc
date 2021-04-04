@@ -167,8 +167,8 @@ uca_org_t :: uca_org_t()
 
 void uca_org_t :: cleanup()
 {
-	  if (data_array2!=0)
-		  delete data_array2;
-	  if (tag_array2!=0)
-		  delete tag_array2;
+      if (data_array2!=0)
+      delete data_array2;
+      if (tag_array2!=0)
+      delete tag_array2;
 }

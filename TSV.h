@@ -47,9 +47,9 @@
 class TSV : public Component
 {
   public:
-	TSV(enum TSV_type tsv_type,
+    TSV(enum TSV_type tsv_type,
         /*TechnologyParameter::*/DeviceType * dt = &(g_tp.peri_global));//Should change peri_global to TSV in technology.cc
-	//TSV():len(20),rad(2.5),pitch(50){}
+    //TSV():len(20),rad(2.5),pitch(50){}
     ~TSV();
 
     double res;//TSV resistance
@@ -60,17 +60,17 @@ class TSV : public Component
     //int num_IO;//number of I/O
     int num_gates;
     int num_gates_min;//Necessary?
-	double w_TSV_n[MAX_NUMBER_GATES_STAGE];
-	double w_TSV_p[MAX_NUMBER_GATES_STAGE];
+    double w_TSV_n[MAX_NUMBER_GATES_STAGE];
+    double w_TSV_p[MAX_NUMBER_GATES_STAGE];
 
-	//double delay_TSV_path;//Delay of TSV path including the parasitics
+    //double delay_TSV_path;//Delay of TSV path including the parasitics
 
-	double is_dram;//two external arguments, defaulted to be false in constructor
-	double is_wl_tr;
+    double is_dram;//two external arguments, defaulted to be false in constructor
+    double is_wl_tr;
 
-	void compute_buffer_stage();
-	void compute_area();
-	void compute_delay();
+    void compute_buffer_stage();
+    void compute_area();
+    void compute_delay();
     void print_TSV();
 
     Area TSV_metal_area;

@@ -287,11 +287,11 @@ bool calculate_time(
   }
   else
   {
-	  int num_act_mats_hor_dir = uca->bank.dp.num_act_mats_hor_dir;
-	  int num_mats = uca->bank.dp.num_mats;
-	  bool is_fa = uca->bank.dp.fully_assoc;
-	  bool pure_cam = uca->bank.dp.pure_cam;
-	ptr_array->Ndwl = Ndwl;
+      int num_act_mats_hor_dir = uca->bank.dp.num_act_mats_hor_dir;
+      int num_mats = uca->bank.dp.num_mats;
+      bool is_fa = uca->bank.dp.fully_assoc;
+      bool pure_cam = uca->bank.dp.pure_cam;
+    ptr_array->Ndwl = Ndwl;
     ptr_array->Ndbl = Ndbl;
     ptr_array->Nspd = Nspd;
     ptr_array->deg_bl_muxing = dyn_p.deg_bl_muxing;
@@ -304,9 +304,9 @@ bool calculate_time(
     ptr_array->area   = uca->area.get_area();
     if(g_ip->is_3d_mem)
     {	//ptr_array->area   = (uca->area_all_dataramcells)/0.5;
-		ptr_array->area   = uca->area.get_area();
-		if(g_ip->num_die_3d>1)
-			ptr_array->area += uca->area_TSV_tot;
+    ptr_array->area   = uca->area.get_area();
+    if(g_ip->num_die_3d>1)
+    ptr_array->area += uca->area_TSV_tot;
     }
 
     ptr_array->height = uca->area.h;

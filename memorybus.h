@@ -46,11 +46,11 @@ class Wire;
 class Memorybus : public Component
 {
   public:
-	Memorybus(enum Wire_type wire_model, double mat_w, double mat_h, double subarray_w, double subarray_h,
-			int _row_add_bits, int _col_add_bits, int _data_bits, int _ndbl, int _ndwl, /*enum Htree_type htree_type,*/
-			enum Memorybus_type membus_type, const DynamicParameter & dp_,
-			/*TechnologyParameter::*/DeviceType *dt = &(g_tp.peri_global)
-			);
+    Memorybus(enum Wire_type wire_model, double mat_w, double mat_h, double subarray_w, double subarray_h,
+    int _row_add_bits, int _col_add_bits, int _data_bits, int _ndbl, int _ndwl, /*enum Htree_type htree_type,*/
+    enum Memorybus_type membus_type, const DynamicParameter & dp_,
+    /*TechnologyParameter::*/DeviceType *dt = &(g_tp.peri_global)
+    );
     ~Memorybus();
 
     //void in_membus();

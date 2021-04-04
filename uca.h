@@ -103,12 +103,12 @@ class UCA : public Component
     double t_RAS, t_CAS, t_RCD, t_RC, t_RP, t_RRD;
     double activate_power, read_power, write_power;
 
-	double delay_TSV_tot, area_TSV_tot, dyn_pow_TSV_tot, dyn_pow_TSV_per_access;
-	unsigned int num_TSV_tot;
-	unsigned int comm_bits, row_add_bits, col_add_bits, data_bits;
-	double area_lwl_drv, area_row_predec_dec, area_col_predec_dec,
-	area_subarray, area_bus, area_address_bus, area_data_bus, area_data_drv, area_IOSA, area_sense_amp,
-	area_per_bank;
+    double delay_TSV_tot, area_TSV_tot, dyn_pow_TSV_tot, dyn_pow_TSV_per_access;
+    unsigned int num_TSV_tot;
+    unsigned int comm_bits, row_add_bits, col_add_bits, data_bits;
+    double area_lwl_drv, area_row_predec_dec, area_col_predec_dec,
+    area_subarray, area_bus, area_address_bus, area_data_bus, area_data_drv, area_IOSA, area_sense_amp,
+    area_per_bank;
 
 };
 

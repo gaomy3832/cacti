@@ -205,7 +205,7 @@ class TechnologyParameter
   double tsv_parasitic_resistance_coarse;
   double tsv_minimum_area_coarse;
 
-	//fs
+    //fs
   double w_comp_inv_p1;
   double w_comp_inv_p2;
   double w_comp_inv_p3;
@@ -305,183 +305,183 @@ class TechnologyParameter
 //ali
 class DeviceType
 {
-	public:
-	double C_g_ideal;
-	double C_fringe;
-	double C_overlap;
-	double C_junc;  // C_junc_area
-	double C_junc_sidewall;
-	double l_phy;
-	double l_elec;
-	double R_nch_on;
-	double R_pch_on;
-	double Vdd;
-	double Vth;
-	double Vcc_min;//allowed min vcc; for memory cell it is the lowest vcc for data retention. for logic it is the vcc to balance the leakage reduction and wakeup latency
-	double I_on_n;
-	double I_on_p;
-	double I_off_n;
-	double I_off_p;
-	double I_g_on_n;
-	double I_g_on_p;
-	double C_ox;
-	double t_ox;
-	double n_to_p_eff_curr_drv_ratio;
-	double long_channel_leakage_reduction;
-	double Mobility_n;
+    public:
+    double C_g_ideal;
+    double C_fringe;
+    double C_overlap;
+    double C_junc;  // C_junc_area
+    double C_junc_sidewall;
+    double l_phy;
+    double l_elec;
+    double R_nch_on;
+    double R_pch_on;
+    double Vdd;
+    double Vth;
+    double Vcc_min;//allowed min vcc; for memory cell it is the lowest vcc for data retention. for logic it is the vcc to balance the leakage reduction and wakeup latency
+    double I_on_n;
+    double I_on_p;
+    double I_off_n;
+    double I_off_p;
+    double I_g_on_n;
+    double I_g_on_p;
+    double C_ox;
+    double t_ox;
+    double n_to_p_eff_curr_drv_ratio;
+    double long_channel_leakage_reduction;
+    double Mobility_n;
 
-	// auxilary parameters
-	double Vdsat;
-	double gmp_to_gmn_multiplier;
+    // auxilary parameters
+    double Vdsat;
+    double gmp_to_gmn_multiplier;
 
 
-	DeviceType(): C_g_ideal(0), C_fringe(0), C_overlap(0), C_junc(0),
-				  C_junc_sidewall(0), l_phy(0), l_elec(0), R_nch_on(0), R_pch_on(0),
-				  Vdd(0), Vth(0), Vcc_min(0),
-				  I_on_n(0), I_on_p(0), I_off_n(0), I_off_p(0),I_g_on_n(0),I_g_on_p(0),
-				  C_ox(0), t_ox(0), n_to_p_eff_curr_drv_ratio(0), long_channel_leakage_reduction(0),
-				  Mobility_n(0) { reset();};
+    DeviceType(): C_g_ideal(0), C_fringe(0), C_overlap(0), C_junc(0),
+      C_junc_sidewall(0), l_phy(0), l_elec(0), R_nch_on(0), R_pch_on(0),
+      Vdd(0), Vth(0), Vcc_min(0),
+      I_on_n(0), I_on_p(0), I_off_n(0), I_off_p(0),I_g_on_n(0),I_g_on_p(0),
+      C_ox(0), t_ox(0), n_to_p_eff_curr_drv_ratio(0), long_channel_leakage_reduction(0),
+      Mobility_n(0) { reset();};
 
-	void assign(const string & in_file,  int tech_flavor, unsigned int temp);
-	void interpolate(double alpha, const DeviceType& dev1, const DeviceType& dev2);
-	void reset()
-	{
-	 C_g_ideal=0;
-	 C_fringe=0;
-	 C_overlap=0;
-	 C_junc=0;  // C_junc_area
-	 C_junc_sidewall=0;
-	 l_phy=0;
-	 l_elec=0;
-	 R_nch_on=0;
-	 R_pch_on=0;
-	 Vdd=0;
-	 Vth=0;
-	 Vcc_min=0;//allowed min vcc, for memory cell it is the lowest vcc for data retention. for logic it is the vcc to balance the leakage reduction and wakeup latency
-	 I_on_n=0;
-	 I_on_p=0;
-	 I_off_n=0;
-	 I_off_p=0;
-	 I_g_on_n=0;
-	 I_g_on_p=0;
-	 C_ox=0;
-	 t_ox=0;
-	 n_to_p_eff_curr_drv_ratio=0;
-	 long_channel_leakage_reduction=0;
-	 Mobility_n=0;
+    void assign(const string & in_file,  int tech_flavor, unsigned int temp);
+    void interpolate(double alpha, const DeviceType& dev1, const DeviceType& dev2);
+    void reset()
+    {
+     C_g_ideal=0;
+     C_fringe=0;
+     C_overlap=0;
+     C_junc=0;  // C_junc_area
+     C_junc_sidewall=0;
+     l_phy=0;
+     l_elec=0;
+     R_nch_on=0;
+     R_pch_on=0;
+     Vdd=0;
+     Vth=0;
+     Vcc_min=0;//allowed min vcc, for memory cell it is the lowest vcc for data retention. for logic it is the vcc to balance the leakage reduction and wakeup latency
+     I_on_n=0;
+     I_on_p=0;
+     I_off_n=0;
+     I_off_p=0;
+     I_g_on_n=0;
+     I_g_on_p=0;
+     C_ox=0;
+     t_ox=0;
+     n_to_p_eff_curr_drv_ratio=0;
+     long_channel_leakage_reduction=0;
+     Mobility_n=0;
 
-	// auxilary parameters
-	 Vdsat=0;
-	 gmp_to_gmn_multiplier=0;
-	}
+    // auxilary parameters
+     Vdsat=0;
+     gmp_to_gmn_multiplier=0;
+    }
 
-	void display(uint32_t indent = 0) const;
-	bool isEqual(const DeviceType & dev);
+    void display(uint32_t indent = 0) const;
+    bool isEqual(const DeviceType & dev);
 };
 
 class InterconnectType
 {
-	public:
-	double pitch;
-	double R_per_um;
-	double C_per_um;
-	double horiz_dielectric_constant;
-	double vert_dielectric_constant;
-	double aspect_ratio;
-	double miller_value;
-	double ild_thickness;
+    public:
+    double pitch;
+    double R_per_um;
+    double C_per_um;
+    double horiz_dielectric_constant;
+    double vert_dielectric_constant;
+    double aspect_ratio;
+    double miller_value;
+    double ild_thickness;
 
-	//auxilary parameters
-	double wire_width;
-	double wire_thickness;
-	double wire_spacing;
-	double barrier_thickness;
-	double dishing_thickness;
-	double alpha_scatter;
-	double fringe_cap;
+    //auxilary parameters
+    double wire_width;
+    double wire_thickness;
+    double wire_spacing;
+    double barrier_thickness;
+    double dishing_thickness;
+    double alpha_scatter;
+    double fringe_cap;
 
 
-	InterconnectType(): pitch(0), R_per_um(0), C_per_um(0) { reset(); };
+    InterconnectType(): pitch(0), R_per_um(0), C_per_um(0) { reset(); };
 
-	void reset()
-	{
-	     pitch=0;
-	     R_per_um=0;
-	     C_per_um=0;
-	     horiz_dielectric_constant=0;
-	     vert_dielectric_constant=0;
-	     aspect_ratio=0;
-	     miller_value=0;
-	     ild_thickness=0;
+    void reset()
+    {
+         pitch=0;
+         R_per_um=0;
+         C_per_um=0;
+         horiz_dielectric_constant=0;
+         vert_dielectric_constant=0;
+         aspect_ratio=0;
+         miller_value=0;
+         ild_thickness=0;
 
-	//auxilary parameters
-	     wire_width=0;
-	     wire_thickness=0;
-	     wire_spacing=0;
-	     barrier_thickness=0;
-	     dishing_thickness=0;
-	     alpha_scatter=0;
-	     fringe_cap=0;
+    //auxilary parameters
+         wire_width=0;
+         wire_thickness=0;
+         wire_spacing=0;
+         barrier_thickness=0;
+         dishing_thickness=0;
+         alpha_scatter=0;
+         fringe_cap=0;
 
-	}
-	void assign(const string & in_file, int projection_type, int tech_flavor);
-	void interpolate(double alpha, const InterconnectType & inter1, const InterconnectType & inter2);
-	void display(uint32_t indent = 0);
-	bool isEqual(const InterconnectType & inter);
+    }
+    void assign(const string & in_file, int projection_type, int tech_flavor);
+    void interpolate(double alpha, const InterconnectType & inter1, const InterconnectType & inter2);
+    void display(uint32_t indent = 0);
+    bool isEqual(const InterconnectType & inter);
 };
 
 class MemoryType
 {
-	public:
-	double b_w;
-	double b_h;
-	double cell_a_w;
-	double cell_pmos_w;
-	double cell_nmos_w;
-	double Vbitpre;
-	double Vbitfloating;//voltage when floating bitline is supported
+    public:
+    double b_w;
+    double b_h;
+    double cell_a_w;
+    double cell_pmos_w;
+    double cell_nmos_w;
+    double Vbitpre;
+    double Vbitfloating;//voltage when floating bitline is supported
 
-	// needed to calculate b_w b_h
-	double area_cell;
-	double asp_ratio_cell;
+    // needed to calculate b_w b_h
+    double area_cell;
+    double asp_ratio_cell;
 
-	MemoryType(){reset();}
-	void reset()
-	{
-	     b_w=0;
-	     b_h=0;
-	     cell_a_w=0;
-	     cell_pmos_w=0;
-	     cell_nmos_w=0;
-	     Vbitpre=0;
-	     Vbitfloating=0;
-	}
-	void assign(const string & in_file, int tech_flavor, int cell_type); // sram(0),cam(1),dram(2)
-	void interpolate(double alpha, const MemoryType& dev1, const MemoryType& dev2);
-	void display(uint32_t indent = 0) const;
-	bool isEqual(const MemoryType & mem);
+    MemoryType(){reset();}
+    void reset()
+    {
+         b_w=0;
+         b_h=0;
+         cell_a_w=0;
+         cell_pmos_w=0;
+         cell_nmos_w=0;
+         Vbitpre=0;
+         Vbitfloating=0;
+    }
+    void assign(const string & in_file, int tech_flavor, int cell_type); // sram(0),cam(1),dram(2)
+    void interpolate(double alpha, const MemoryType& dev1, const MemoryType& dev2);
+    void display(uint32_t indent = 0) const;
+    bool isEqual(const MemoryType & mem);
 };
 
 class ScalingFactor
 {
-	public:
-	double logic_scaling_co_eff;
-	double core_tx_density;
-	double long_channel_leakage_reduction;
+    public:
+    double logic_scaling_co_eff;
+    double core_tx_density;
+    double long_channel_leakage_reduction;
 
-	ScalingFactor(): logic_scaling_co_eff(0), core_tx_density(0),
-	long_channel_leakage_reduction(0) { reset(); };
+    ScalingFactor(): logic_scaling_co_eff(0), core_tx_density(0),
+    long_channel_leakage_reduction(0) { reset(); };
 
-	void reset()
-	{
-	   logic_scaling_co_eff=0;
-	   core_tx_density=0;
-	   long_channel_leakage_reduction=0;
-	}
-	void assign(const string & in_file);
-	void interpolate(double alpha, const ScalingFactor& dev1, const ScalingFactor& dev2);
-	void display(uint32_t indent = 0);
-	bool isEqual(const ScalingFactor & scal);
+    void reset()
+    {
+       logic_scaling_co_eff=0;
+       core_tx_density=0;
+       long_channel_leakage_reduction=0;
+    }
+    void assign(const string & in_file);
+    void interpolate(double alpha, const ScalingFactor& dev1, const ScalingFactor& dev2);
+    void display(uint32_t indent = 0);
+    bool isEqual(const ScalingFactor & scal);
 };
 
 // parameters which are functions of certain device technology
@@ -525,7 +525,7 @@ class TechnologyParameter
   double tsv_parasitic_resistance_coarse;
   double tsv_minimum_area_coarse;
 
-	//fs
+    //fs
   double w_comp_inv_p1;
   double w_comp_inv_p2;
   double w_comp_inv_p3;
@@ -587,7 +587,7 @@ class TechnologyParameter
   void init(double technology, bool is_tag);
   TechnologyParameter()
   {
-	  reset();
+      reset();
   }
   void reset()
   {
@@ -628,7 +628,7 @@ class TechnologyParameter
        tsv_parasitic_resistance_coarse =0;
        tsv_minimum_area_coarse =0;
 
-	//fs
+    //fs
        w_comp_inv_p1 =0;
        w_comp_inv_p2 =0;
        w_comp_inv_p3 =0;
@@ -719,8 +719,8 @@ class DynamicParameter
     int num_so_b_mat;
     int num_si_b_subbank;
     int num_so_b_subbank;
-	int num_si_b_bank_per_port;
-	int num_so_b_bank_per_port;
+    int num_si_b_bank_per_port;
+    int num_so_b_bank_per_port;
 
     int number_way_select_signals_mat;
     int num_act_mats_hor_dir;

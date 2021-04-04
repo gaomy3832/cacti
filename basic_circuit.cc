@@ -353,7 +353,7 @@ double pmos_to_nmos_sz_ratio(
   }
   else if (_is_sleep_tx)
   {
-	p_to_n_sizing_ratio = g_tp.sleep_tx.n_to_p_eff_curr_drv_ratio;  // Sleep transistor
+    p_to_n_sizing_ratio = g_tp.sleep_tx.n_to_p_eff_curr_drv_ratio;  // Sleep transistor
   }
   else
   { //DRAM or SRAM all other transistors
@@ -422,10 +422,10 @@ double cmos_Ileak(
 
 int factorial(int n, int m)
 {
-	int fa = m, i;
-	for (i=m+1; i<=n; i++)
-		fa *=i;
-	return fa;
+    int fa = m, i;
+    for (i=m+1; i<=n; i++)
+    fa *=i;
+    return fa;
 }
 
 int combination(int n, int m)
@@ -615,9 +615,9 @@ double cmos_Isub_leakage(
     bool _is_sleep_tx,
     enum Half_net_topology topo)
 {
-	assert (fanin>=1);
-	double nmos_leak = simplified_nmos_leakage(nWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
-	double pmos_leak = simplified_pmos_leakage(pWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
+    assert (fanin>=1);
+    double nmos_leak = simplified_nmos_leakage(nWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
+    double pmos_leak = simplified_pmos_leakage(pWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
     double Isub=0;
     int    num_states;
     int    num_off_tx;
@@ -704,7 +704,7 @@ double cmos_Isub_leakage(
     default:
     	assert(0);
     	break;
-	  }
+      }
 
     return Isub;
 }
@@ -721,51 +721,51 @@ double cmos_Ig_leakage(
     bool _is_sleep_tx,
     enum Half_net_topology topo)
 {
-	assert (fanin>=1);
-		double nmos_leak = cmos_Ig_n(nWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
-		double pmos_leak = cmos_Ig_p(pWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
-	    double Ig_on=0;
-	    int    num_states;
-	    int    num_on_tx;
+    assert (fanin>=1);
+    double nmos_leak = cmos_Ig_n(nWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
+    double pmos_leak = cmos_Ig_p(pWidth, _is_dram, _is_cell, _is_wl_tr, _is_sleep_tx);
+        double Ig_on=0;
+        int    num_states;
+        int    num_on_tx;
 
-	    num_states = int(pow(2.0, fanin));
+        num_states = int(pow(2.0, fanin));
 
-	    switch (g_type)
-	    {
-	    case nmos:
-	    	if (fanin==1)
-	    	{
-	    		Ig_on = nmos_leak/num_states;
-	    	}
-	    	else
-	    	{
-	    		if (topo==parallel)
-	    		{
-	    	    	for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)
-	    	        {
-	    	    		Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx;
-	    	    	}
-	    		}
-	    		else
-	    		{
-	    			Ig_on += nmos_leak * fanin;//pull down network when all TXs are on.
-	    		    //num_on_tx is the number of on tx
-	    			for (num_on_tx=1; num_on_tx<fanin; num_on_tx++)//when num_on_tx=[1,n-1]
-	    			{
-	    				Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;//TODO: this is a approximation now, a precise computation will be very complicated.
-	    			}
-	    			Ig_on /=num_states;
-	    		}
-	    	}
-	    	break;
-	    case pmos:
-	    	if (fanin==1)
-	    	{
-	    		Ig_on = pmos_leak/num_states;
-	    	}
-	    	else
-	    	{
-	    		if (topo==parallel)
+        switch (g_type)
+        {
+        case nmos:
+        	if (fanin==1)
+        	{
+        		Ig_on = nmos_leak/num_states;
+        	}
+        	else
+        	{
+        		if (topo==parallel)
+        		{
+        	    	for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)
+        	        {
+        	    		Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx;
+        	    	}
+        		}
+        		else
+        		{
+        			Ig_on += nmos_leak * fanin;//pull down network when all TXs are on.
+        		    //num_on_tx is the number of on tx
+        			for (num_on_tx=1; num_on_tx<fanin; num_on_tx++)//when num_on_tx=[1,n-1]
+        			{
+        				Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;//TODO: this is a approximation now, a precise computation will be very complicated.
+        			}
+        			Ig_on /=num_states;
+        		}
+        	}
+        	break;
+        case pmos:
+        	if (fanin==1)
+        	{
+        		Ig_on = pmos_leak/num_states;
+        	}
+        	else
+        	{
+        		if (topo==parallel)
     		    {
     	    	  for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)
     	          {
@@ -780,59 +780,59 @@ double cmos_Ig_leakage(
     			  {
     				  Ig_on += pmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;//TODO: this is a approximation now, a precise computation will be very complicated.
     			  }
-	    		  Ig_on /=num_states;
-	    	    }
-	    	}
-	    	break;
+        		  Ig_on /=num_states;
+        	    }
+        	}
+        	break;
 
-	    case inv:
-	    	Ig_on = (nmos_leak + pmos_leak)/2;
-	    	break;
-	    case nand:
-	    	//pull up network
-	    	for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)//when num_on_tx=[1,n]
-	        {
-	    		Ig_on += pmos_leak*combination(fanin, num_on_tx)*num_on_tx;
-	    	}
+        case inv:
+        	Ig_on = (nmos_leak + pmos_leak)/2;
+        	break;
+        case nand:
+        	//pull up network
+        	for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)//when num_on_tx=[1,n]
+            {
+        		Ig_on += pmos_leak*combination(fanin, num_on_tx)*num_on_tx;
+        	}
 
-	    	//pull down network
-	    	Ig_on += nmos_leak * fanin;//pull down network when all TXs are on.
-	    	//num_on_tx is the number of on tx
-	    	for (num_on_tx=1; num_on_tx<fanin; num_on_tx++)//when num_on_tx=[1,n-1]
-	    	{
-	    		Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;//TODO: this is a approximation now, a precise computation will be very complicated.
-	    	}
-	    	Ig_on /=num_states;
-	    	break;
-	    case nor:
-	    	// num_on_tx is the number of on tx in pull up network
-	    	Ig_on += pmos_leak * fanin;//pull up network when all TXs are on.
-	    	for (num_on_tx=1; num_on_tx<fanin; num_on_tx++)
-	    	{
-	    		Ig_on += pmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;
+        	//pull down network
+        	Ig_on += nmos_leak * fanin;//pull down network when all TXs are on.
+        	//num_on_tx is the number of on tx
+        	for (num_on_tx=1; num_on_tx<fanin; num_on_tx++)//when num_on_tx=[1,n-1]
+        	{
+        		Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;//TODO: this is a approximation now, a precise computation will be very complicated.
+        	}
+        	Ig_on /=num_states;
+        	break;
+        case nor:
+        	// num_on_tx is the number of on tx in pull up network
+        	Ig_on += pmos_leak * fanin;//pull up network when all TXs are on.
+        	for (num_on_tx=1; num_on_tx<fanin; num_on_tx++)
+        	{
+        		Ig_on += pmos_leak*combination(fanin, num_on_tx)*num_on_tx/2;
 
-	    	}
-	    	//pull down network
-	    	for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)//when num_on_tx=[1,n]
-	        {
-	    		Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx;
-	    	}
-	    	Ig_on /=num_states;
-	    	break;
-	    case tri:
-	    	Ig_on += (2*nmos_leak + 2*pmos_leak)/2;//enabled
-	    	Ig_on += (nmos_leak + pmos_leak)/2; //disabled upper bound of leakage power
-	    	Ig_on /=2;
-	    	break;
-	    case tg:
-	    	Ig_on = (nmos_leak + pmos_leak)/2;
-	    	break;
-	    default:
-	    	assert(0);
-	    	break;
-		  }
+        	}
+        	//pull down network
+        	for (num_on_tx=1; num_on_tx<=fanin; num_on_tx++)//when num_on_tx=[1,n]
+            {
+        		Ig_on += nmos_leak*combination(fanin, num_on_tx)*num_on_tx;
+        	}
+        	Ig_on /=num_states;
+        	break;
+        case tri:
+        	Ig_on += (2*nmos_leak + 2*pmos_leak)/2;//enabled
+        	Ig_on += (nmos_leak + pmos_leak)/2; //disabled upper bound of leakage power
+        	Ig_on /=2;
+        	break;
+        case tg:
+        	Ig_on = (nmos_leak + pmos_leak)/2;
+        	break;
+        default:
+        	assert(0);
+        	break;
+      }
 
-	    return Ig_on;
+        return Ig_on;
 }
 
 double shortcircuit_simple(
@@ -849,18 +849,18 @@ double shortcircuit_simple(
     double vdd)
 {
 
-	double p_short_circuit, p_short_circuit_discharge, p_short_circuit_charge, p_short_circuit_discharge_low, /*p_short_circuit_discharge_high,*/ p_short_circuit_charge_low /*,p_short_circuit_charge_high*/; //this is actually energy
-	double fo_n, fo_p, fanout, beta_ratio, vt_to_vdd_ratio;
+    double p_short_circuit, p_short_circuit_discharge, p_short_circuit_charge, p_short_circuit_discharge_low, /*p_short_circuit_discharge_high,*/ p_short_circuit_charge_low /*,p_short_circuit_charge_high*/; //this is actually energy
+    double fo_n, fo_p, fanout, beta_ratio, vt_to_vdd_ratio;
 
-	fo_n	= i_on_n/i_on_n_in;
-	fo_p	= i_on_p/i_on_p_in;
-	fanout	= c_out/c_in;
-	beta_ratio = i_on_p/i_on_n;
-	vt_to_vdd_ratio = vt/vdd;
+    fo_n	= i_on_n/i_on_n_in;
+    fo_p	= i_on_p/i_on_p_in;
+    fanout	= c_out/c_in;
+    beta_ratio = i_on_p/i_on_n;
+    vt_to_vdd_ratio = vt/vdd;
 
-	//p_short_circuit_discharge_low 	= 10/3*(pow(0.5-vt_to_vdd_ratio,3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
-	p_short_circuit_discharge_low 	= 10/3*(pow(((vdd-vt)-vt_to_vdd_ratio),3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
-	p_short_circuit_charge_low 		= 10/3*(pow(((vdd-vt)-vt_to_vdd_ratio),3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_n*fo_n/fanout*beta_ratio;
+    //p_short_circuit_discharge_low 	= 10/3*(pow(0.5-vt_to_vdd_ratio,3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
+    p_short_circuit_discharge_low 	= 10/3*(pow(((vdd-vt)-vt_to_vdd_ratio),3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
+    p_short_circuit_charge_low 		= 10/3*(pow(((vdd-vt)-vt_to_vdd_ratio),3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_n*fo_n/fanout*beta_ratio;
 //	double t1, t2, t3, t4, t5;
 //	t1=pow(((vdd-vt)-vt_to_vdd_ratio),3);
 //	t2=pow(velocity_index,2.0);
@@ -868,8 +868,8 @@ double shortcircuit_simple(
 //	t4=t1/t2/t3;
 //	cout <<t1<<"t1\n"<<t2<<"t2\n"<<t3<<"t3\n"<<t4<<"t4\n"<<fanout<<endl;
 
-	///p_short_circuit_discharge_high 	= pow(((vdd-vt)-vt_to_vdd_ratio),1.5)*c_in*vdd*vdd*fo_p/10/pow(2, 3*vt_to_vdd_ratio+2*velocity_index);
-	///p_short_circuit_charge_high 	= pow(((vdd-vt)-vt_to_vdd_ratio),1.5)*c_in*vdd*vdd*fo_n/10/pow(2, 3*vt_to_vdd_ratio+2*velocity_index);
+    ///p_short_circuit_discharge_high 	= pow(((vdd-vt)-vt_to_vdd_ratio),1.5)*c_in*vdd*vdd*fo_p/10/pow(2, 3*vt_to_vdd_ratio+2*velocity_index);
+    ///p_short_circuit_charge_high 	= pow(((vdd-vt)-vt_to_vdd_ratio),1.5)*c_in*vdd*vdd*fo_n/10/pow(2, 3*vt_to_vdd_ratio+2*velocity_index);
 
 //	t1=pow(((vdd-vt)-vt_to_vdd_ratio),1.5);
 //	t2=pow(2, 3*vt_to_vdd_ratio+2*velocity_index);
@@ -878,9 +878,9 @@ double shortcircuit_simple(
 //	p_short_circuit_discharge = 1.0/(1.0/p_short_circuit_discharge_low + 1.0/p_short_circuit_discharge_high);
 //	p_short_circuit_charge = 1/(1/p_short_circuit_charge_low + 1/p_short_circuit_charge_high); //harmmoic mean cannot be applied simple formulas.
 
-	p_short_circuit_discharge = p_short_circuit_discharge_low;
-	p_short_circuit_charge = p_short_circuit_charge_low;
-	p_short_circuit = (p_short_circuit_discharge + p_short_circuit_charge)/2;
+    p_short_circuit_discharge = p_short_circuit_discharge_low;
+    p_short_circuit_charge = p_short_circuit_charge_low;
+    p_short_circuit = (p_short_circuit_discharge + p_short_circuit_charge)/2;
 
   return (p_short_circuit);
 }
@@ -899,22 +899,22 @@ double shortcircuit(
     double vdd)
 {
 
-	double p_short_circuit=0, p_short_circuit_discharge=0;//, p_short_circuit_charge, p_short_circuit_discharge_low, p_short_circuit_discharge_high, p_short_circuit_charge_low, p_short_circuit_charge_high; //this is actually energy
-	double /*fo_n,*/ fo_p, fanout, beta_ratio /*,vt_to_vdd_ratio*/;
-	double f_alpha, k_v, e, g_v_alpha, h_v_alpha;
+    double p_short_circuit=0, p_short_circuit_discharge=0;//, p_short_circuit_charge, p_short_circuit_discharge_low, p_short_circuit_discharge_high, p_short_circuit_charge_low, p_short_circuit_charge_high; //this is actually energy
+    double /*fo_n,*/ fo_p, fanout, beta_ratio /*,vt_to_vdd_ratio*/;
+    double f_alpha, k_v, e, g_v_alpha, h_v_alpha;
 
-	///fo_n		= i_on_n/i_on_n_in;
-	fo_p		= i_on_p/i_on_p_in;
-	fanout		= 1;
-	beta_ratio 	= i_on_p/i_on_n;
-	///vt_to_vdd_ratio = vt/vdd;
-	e 			= 	2.71828;
-	f_alpha		=	1/(velocity_index+2) -velocity_index/(2*(velocity_index+3)) +velocity_index/(velocity_index+4)*(velocity_index/2-1);
-	k_v			=	0.9/0.8+(vdd-vt)/0.8*log(10*(vdd-vt)/e);
-	g_v_alpha	=	(velocity_index + 1)*pow((1-velocity_index),velocity_index)*pow((1-velocity_index),velocity_index/2)/f_alpha/pow((1-velocity_index-velocity_index),(velocity_index/2+velocity_index+2));
-	h_v_alpha	=   pow(2, velocity_index)*(velocity_index+1)*pow((1-velocity_index),velocity_index)/pow((1-velocity_index-velocity_index),(velocity_index+1));
+    ///fo_n		= i_on_n/i_on_n_in;
+    fo_p		= i_on_p/i_on_p_in;
+    fanout		= 1;
+    beta_ratio 	= i_on_p/i_on_n;
+    ///vt_to_vdd_ratio = vt/vdd;
+    e 			= 	2.71828;
+    f_alpha		=	1/(velocity_index+2) -velocity_index/(2*(velocity_index+3)) +velocity_index/(velocity_index+4)*(velocity_index/2-1);
+    k_v			=	0.9/0.8+(vdd-vt)/0.8*log(10*(vdd-vt)/e);
+    g_v_alpha	=	(velocity_index + 1)*pow((1-velocity_index),velocity_index)*pow((1-velocity_index),velocity_index/2)/f_alpha/pow((1-velocity_index-velocity_index),(velocity_index/2+velocity_index+2));
+    h_v_alpha	=   pow(2, velocity_index)*(velocity_index+1)*pow((1-velocity_index),velocity_index)/pow((1-velocity_index-velocity_index),(velocity_index+1));
 
-	//p_short_circuit_discharge_low 	= 10/3*(pow(0.5-vt_to_vdd_ratio,3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
+    //p_short_circuit_discharge_low 	= 10/3*(pow(0.5-vt_to_vdd_ratio,3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
 //	p_short_circuit_discharge_low 	= 10/3*(pow(((vdd-vt)-vt_to_vdd_ratio),3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_p*fo_p/fanout/beta_ratio;
 //	p_short_circuit_charge_low 		= 10/3*(pow(((vdd-vt)-vt_to_vdd_ratio),3.0)/pow(velocity_index,2.0)/pow(2.0,3*vt_to_vdd_ratio*vt_to_vdd_ratio))*c_in*vdd*vdd*fo_n*fo_n/fanout*beta_ratio;
 //	double t1, t2, t3, t4, t5;
@@ -936,7 +936,7 @@ double shortcircuit(
 //
 //	p_short_circuit = p_short_circuit_discharge;
 
-	p_short_circuit_discharge = k_v*vdd*vdd*c_in*fo_p*fo_p/((vdd-vt)*g_v_alpha*fanout*beta_ratio/2/k_v + h_v_alpha*fo_p);
+    p_short_circuit_discharge = k_v*vdd*vdd*c_in*fo_p*fo_p/((vdd-vt)*g_v_alpha*fanout*beta_ratio/2/k_v + h_v_alpha*fo_p);
   return (p_short_circuit);
 }
 
@@ -964,36 +964,36 @@ double wire_capacitance(double wire_width, double wire_thickness, double wire_sp
 //CACTI3DD TSV
 double tsv_resistance(double resistivity, double tsv_len, double tsv_diam, double tsv_contact_resistance)
 {
-	double resistance;
-	resistance = resistivity * tsv_len / (3.1416 * (tsv_diam/2) * (tsv_diam/2)) + tsv_contact_resistance;
-	return(resistance);
+    double resistance;
+    resistance = resistivity * tsv_len / (3.1416 * (tsv_diam/2) * (tsv_diam/2)) + tsv_contact_resistance;
+    return(resistance);
 }
 
 double tsv_capacitance(double tsv_len, double tsv_diam, double tsv_pitch, double dielec_thickness, double liner_dielectric_constant, double depletion_width)
 {
-	double self_cap, liner_cap, depletion_cap, lateral_coupling_cap, diagonal_coupling_cap, total_cap;
-	double diagonal_coupling_constant, lateral_coupling_constant;
-	const double e_si = PERMITTIVITY_FREE_SPACE * 11.9, PI = 3.1416;
-	lateral_coupling_constant = 4.1;
-	diagonal_coupling_constant = 5.3;
-	//depletion_width = 0.6; // um
-	liner_cap = 2 * PI * PERMITTIVITY_FREE_SPACE * liner_dielectric_constant * tsv_len / log(1 + dielec_thickness / (tsv_diam/2));
-	depletion_cap = 2 * PI * e_si *tsv_len / log(1 + depletion_width / (dielec_thickness + tsv_diam/2));
-	//self_cap = ( 1 / (1/liner_cap + 1/depletion_cap) + liner_cap ) / 2;
-	self_cap = 1 / (1/liner_cap + 1/depletion_cap);
-	if (g_ip->print_detail_debug)
-	{
-		cout<<"TSV ox cap: "<<liner_cap*1e15<<" fF"<<endl;
-		cout<<"TSV self cap: "<<self_cap*1e15<<" fF"<<endl;
-	}
-	lateral_coupling_cap = 0.4 *  (0.225 * log(0.97 * tsv_len / tsv_diam) + 0.53) * e_si / (tsv_pitch - tsv_diam) * PI * tsv_diam * tsv_len;
-	diagonal_coupling_cap = 0.4 *  (0.225 * log(0.97 * tsv_len / tsv_diam) + 0.53) * e_si / (1.414 * tsv_pitch - tsv_diam) * PI * tsv_diam * tsv_len;
-	total_cap = self_cap + lateral_coupling_constant * lateral_coupling_cap + diagonal_coupling_constant * diagonal_coupling_cap;
-	return(total_cap);
+    double self_cap, liner_cap, depletion_cap, lateral_coupling_cap, diagonal_coupling_cap, total_cap;
+    double diagonal_coupling_constant, lateral_coupling_constant;
+    const double e_si = PERMITTIVITY_FREE_SPACE * 11.9, PI = 3.1416;
+    lateral_coupling_constant = 4.1;
+    diagonal_coupling_constant = 5.3;
+    //depletion_width = 0.6; // um
+    liner_cap = 2 * PI * PERMITTIVITY_FREE_SPACE * liner_dielectric_constant * tsv_len / log(1 + dielec_thickness / (tsv_diam/2));
+    depletion_cap = 2 * PI * e_si *tsv_len / log(1 + depletion_width / (dielec_thickness + tsv_diam/2));
+    //self_cap = ( 1 / (1/liner_cap + 1/depletion_cap) + liner_cap ) / 2;
+    self_cap = 1 / (1/liner_cap + 1/depletion_cap);
+    if (g_ip->print_detail_debug)
+    {
+    cout<<"TSV ox cap: "<<liner_cap*1e15<<" fF"<<endl;
+    cout<<"TSV self cap: "<<self_cap*1e15<<" fF"<<endl;
+    }
+    lateral_coupling_cap = 0.4 *  (0.225 * log(0.97 * tsv_len / tsv_diam) + 0.53) * e_si / (tsv_pitch - tsv_diam) * PI * tsv_diam * tsv_len;
+    diagonal_coupling_cap = 0.4 *  (0.225 * log(0.97 * tsv_len / tsv_diam) + 0.53) * e_si / (1.414 * tsv_pitch - tsv_diam) * PI * tsv_diam * tsv_len;
+    total_cap = self_cap + lateral_coupling_constant * lateral_coupling_cap + diagonal_coupling_constant * diagonal_coupling_cap;
+    return(total_cap);
 }
 
 double tsv_area(double tsv_pitch)
 {
-	return(pow(tsv_pitch,2));
+    return(pow(tsv_pitch,2));
 }
 // end ali

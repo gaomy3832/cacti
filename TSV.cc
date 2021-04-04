@@ -80,24 +80,24 @@ TSV::~TSV()
 
 void TSV::compute_buffer_stage()
 {
-	double p_to_n_sz_ratio = deviceType->n_to_p_eff_curr_drv_ratio;
+    double p_to_n_sz_ratio = deviceType->n_to_p_eff_curr_drv_ratio;
 
-	//BEOL parasitics in Katti's E modeling and charac. of TSV.  Needs further detailed values.
-	//double res_beol	= 0.1;//inaccurate
-	//double cap_beol	= 1e-15;
+    //BEOL parasitics in Katti's E modeling and charac. of TSV.  Needs further detailed values.
+    //double res_beol	= 0.1;//inaccurate
+    //double cap_beol	= 1e-15;
 
-	//C_load_TSV	= cap_beol + cap + cap_beol + gate_C(g_tp.min_w_nmos_ + min_w_pmos, 0);
-	C_load_TSV	= cap + gate_C(g_tp.min_w_nmos_ + min_w_pmos, 0); //+ 57.5e-15;
-	if(g_ip->print_detail_debug)
-	{
-		cout << " The input cap of 1st buffer: " << gate_C(w_TSV_n[0] + w_TSV_p[0], 0) * 1e15 << " fF";
-	}
-	double F = C_load_TSV / gate_C(w_TSV_n[0] + w_TSV_p[0], 0);
-	if(g_ip->print_detail_debug)
-	{
-		cout<<"\nF  is "<<F<<" \n";
-	}
-	//Obtain buffer chain stages using logic effort function. Does stage number have to be even?
+    //C_load_TSV	= cap_beol + cap + cap_beol + gate_C(g_tp.min_w_nmos_ + min_w_pmos, 0);
+    C_load_TSV	= cap + gate_C(g_tp.min_w_nmos_ + min_w_pmos, 0); //+ 57.5e-15;
+    if(g_ip->print_detail_debug)
+    {
+    cout << " The input cap of 1st buffer: " << gate_C(w_TSV_n[0] + w_TSV_p[0], 0) * 1e15 << " fF";
+    }
+    double F = C_load_TSV / gate_C(w_TSV_n[0] + w_TSV_p[0], 0);
+    if(g_ip->print_detail_debug)
+    {
+    cout<<"\nF  is "<<F<<" \n";
+    }
+    //Obtain buffer chain stages using logic effort function. Does stage number have to be even?
     num_gates = logical_effort(
         num_gates_min,
         1,
@@ -113,74 +113,74 @@ void TSV::compute_buffer_stage()
 
 void TSV::compute_area()
 {
-	//Obtain the driver chain area and leakage power for TSV
-	double Vdd = deviceType->Vdd;
-	double cumulative_area = 0;
-	double cumulative_curr = 0;  // cumulative leakage current
-	double cumulative_curr_Ig = 0;  // cumulative leakage current
-	Buffer_area.h = g_tp.cell_h_def;//cell_h_def is the assigned height for memory cell (5um), is it correct to use it here?
+    //Obtain the driver chain area and leakage power for TSV
+    double Vdd = deviceType->Vdd;
+    double cumulative_area = 0;
+    double cumulative_curr = 0;  // cumulative leakage current
+    double cumulative_curr_Ig = 0;  // cumulative leakage current
+    Buffer_area.h = g_tp.cell_h_def;//cell_h_def is the assigned height for memory cell (5um), is it correct to use it here?
 
-	//logic_effort() didn't give the size of w_n[0] and w_p[0], which is min size inverter
-	//w_TSV_n[0] = g_tp.min_w_nmos_;
-	//w_TSV_p[0] = min_w_pmos;
+    //logic_effort() didn't give the size of w_n[0] and w_p[0], which is min size inverter
+    //w_TSV_n[0] = g_tp.min_w_nmos_;
+    //w_TSV_p[0] = min_w_pmos;
 
-	int i;
-	for (i = 0; i < num_gates; i++)
-	{
-	  cumulative_area += compute_gate_area(INV, 1, w_TSV_p[i], w_TSV_n[i], Buffer_area.h);
-	  if(g_ip->print_detail_debug)
-	  {
-		  cout << "\n\tArea up to the " << i+1 << " stages is: " << cumulative_area << " um2";
-	  }
-	  cumulative_curr += cmos_Isub_leakage(w_TSV_n[i], w_TSV_p[i], 1, inv, is_dram);
-	  cumulative_curr_Ig += cmos_Ig_leakage(w_TSV_n[i], w_TSV_p[i], 1, inv, is_dram);// The operator += is mistakenly put as = in decoder.cc
-	}
-	power.readOp.leakage = cumulative_curr * Vdd;
-	power.readOp.gate_leakage = cumulative_curr_Ig * Vdd;
+    int i;
+    for (i = 0; i < num_gates; i++)
+    {
+      cumulative_area += compute_gate_area(INV, 1, w_TSV_p[i], w_TSV_n[i], Buffer_area.h);
+      if(g_ip->print_detail_debug)
+      {
+      cout << "\n\tArea up to the " << i+1 << " stages is: " << cumulative_area << " um2";
+      }
+      cumulative_curr += cmos_Isub_leakage(w_TSV_n[i], w_TSV_p[i], 1, inv, is_dram);
+      cumulative_curr_Ig += cmos_Ig_leakage(w_TSV_n[i], w_TSV_p[i], 1, inv, is_dram);// The operator += is mistakenly put as = in decoder.cc
+    }
+    power.readOp.leakage = cumulative_curr * Vdd;
+    power.readOp.gate_leakage = cumulative_curr_Ig * Vdd;
 
-	Buffer_area.set_area(cumulative_area);
-	Buffer_area.w = (cumulative_area / Buffer_area.h);
+    Buffer_area.set_area(cumulative_area);
+    Buffer_area.w = (cumulative_area / Buffer_area.h);
 
-	TSV_metal_area.set_area(min_area * 3.1416/16);
+    TSV_metal_area.set_area(min_area * 3.1416/16);
 
-	if( Buffer_area.get_area() < min_area - TSV_metal_area.get_area() )
-		area.set_area(min_area);
-	else
-		area.set_area(Buffer_area.get_area() + TSV_metal_area.get_area());
+    if( Buffer_area.get_area() < min_area - TSV_metal_area.get_area() )
+    area.set_area(min_area);
+    else
+    area.set_area(Buffer_area.get_area() + TSV_metal_area.get_area());
 
 }
 
 void TSV::compute_delay()
 {
-	//Buffer chain delay and Dynamic Power
-	double rd, tf, this_delay, c_load, c_intrinsic, inrisetime = 0/*The initial time*/;
-	//is_dram, is_wl_tr are declared to be false in the constructor
-	rd = tr_R_on(w_TSV_n[0], NCH, 1, is_dram, false, is_wl_tr);
-	c_load = gate_C(w_TSV_n[1] + w_TSV_p[1], 0.0, is_dram, false, is_wl_tr);
-	c_intrinsic = drain_C_(w_TSV_p[0], PCH, 1, 1, area.h, is_dram, false, is_wl_tr) +
-				  drain_C_(w_TSV_n[0], NCH, 1, 1, area.h, is_dram, false, is_wl_tr);
-	tf = rd * (c_intrinsic + c_load);
-	//Refer to horowitz function definition
-	this_delay = horowitz(inrisetime, tf, 0.5, 0.5, RISE);
-	delay += this_delay;
-	inrisetime = this_delay / (1.0 - 0.5);
+    //Buffer chain delay and Dynamic Power
+    double rd, tf, this_delay, c_load, c_intrinsic, inrisetime = 0/*The initial time*/;
+    //is_dram, is_wl_tr are declared to be false in the constructor
+    rd = tr_R_on(w_TSV_n[0], NCH, 1, is_dram, false, is_wl_tr);
+    c_load = gate_C(w_TSV_n[1] + w_TSV_p[1], 0.0, is_dram, false, is_wl_tr);
+    c_intrinsic = drain_C_(w_TSV_p[0], PCH, 1, 1, area.h, is_dram, false, is_wl_tr) +
+      drain_C_(w_TSV_n[0], NCH, 1, 1, area.h, is_dram, false, is_wl_tr);
+    tf = rd * (c_intrinsic + c_load);
+    //Refer to horowitz function definition
+    this_delay = horowitz(inrisetime, tf, 0.5, 0.5, RISE);
+    delay += this_delay;
+    inrisetime = this_delay / (1.0 - 0.5);
 
-	double Vdd = deviceType -> Vdd;
-	power.readOp.dynamic += (c_load + c_intrinsic) * Vdd * Vdd;
+    double Vdd = deviceType -> Vdd;
+    power.readOp.dynamic += (c_load + c_intrinsic) * Vdd * Vdd;
 
-	int i;
-	for (i = 1; i < num_gates - 1; ++i)
-	{
-	  rd = tr_R_on(w_TSV_n[i], NCH, 1, is_dram, false, is_wl_tr);
-	  c_load = gate_C(w_TSV_p[i+1] + w_TSV_n[i+1], 0.0, is_dram, false, is_wl_tr);
-	  c_intrinsic = drain_C_(w_TSV_p[i], PCH, 1, 1, area.h, is_dram, false, is_wl_tr) +
-					drain_C_(w_TSV_n[i], NCH, 1, 1, area.h, is_dram, false, is_wl_tr);
-	  tf = rd * (c_intrinsic + c_load);
-	  this_delay = horowitz(inrisetime, tf, 0.5, 0.5, RISE);
-	  delay += this_delay;
-	  inrisetime = this_delay / (1.0 - 0.5);
-	  power.readOp.dynamic += (c_load + c_intrinsic) * Vdd * Vdd;
-	}
+    int i;
+    for (i = 1; i < num_gates - 1; ++i)
+    {
+      rd = tr_R_on(w_TSV_n[i], NCH, 1, is_dram, false, is_wl_tr);
+      c_load = gate_C(w_TSV_p[i+1] + w_TSV_n[i+1], 0.0, is_dram, false, is_wl_tr);
+      c_intrinsic = drain_C_(w_TSV_p[i], PCH, 1, 1, area.h, is_dram, false, is_wl_tr) +
+    drain_C_(w_TSV_n[i], NCH, 1, 1, area.h, is_dram, false, is_wl_tr);
+      tf = rd * (c_intrinsic + c_load);
+      this_delay = horowitz(inrisetime, tf, 0.5, 0.5, RISE);
+      delay += this_delay;
+      inrisetime = this_delay / (1.0 - 0.5);
+      power.readOp.dynamic += (c_load + c_intrinsic) * Vdd * Vdd;
+    }
 
     // add delay of final inverter that drives the TSV
     i = num_gates - 1;
@@ -209,10 +209,10 @@ void TSV::compute_delay()
     double C_ext = c_intrinsic;
     R_dr = rd;
     double C_int = gate_C(g_tp.min_w_nmos_ + min_w_pmos, 0.0, is_dram, false, is_wl_tr);
-	delay_TSV_path	= 0.693 * (R_dr * C_ext + (R_dr + res_beol) * cap_beol + (R_dr + res_beol + 0.5 * res) * cap
-			+ (R_dr + res_beol + res + res_beol) * (cap_beol + C_int);
-	delay += delay_TSV_path;
-	*/
+    delay_TSV_path	= 0.693 * (R_dr * C_ext + (R_dr + res_beol) * cap_beol + (R_dr + res_beol + 0.5 * res) * cap
+    + (R_dr + res_beol + res + res_beol) * (cap_beol + C_int);
+    delay += delay_TSV_path;
+    */
 }
 
 void TSV::print_TSV()

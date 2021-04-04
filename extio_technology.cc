@@ -16,108 +16,108 @@
 
  const double rtt1_wr_lrdimm_ddr3[8][4] =
 {
-	{INF,INF,120,120},
-	{INF,INF,120,120},
-	{INF,120,120,80},
-	{120,120,120,60},
-	{120,120,120,60},
-	{120,80,80,60},
-	{120,80,80,60},
-	{120,80,60,40}
+    {INF,INF,120,120},
+    {INF,INF,120,120},
+    {INF,120,120,80},
+    {120,120,120,60},
+    {120,120,120,60},
+    {120,80,80,60},
+    {120,80,80,60},
+    {120,80,60,40}
 };
 
  const double rtt2_wr_lrdimm_ddr3[8][4] =
 {
-	{INF,INF,INF,INF},//1
-	{INF,INF,120,120},//2
-	{120,120,120,80}, //3
-	{120,120,80,60}, //4
-	{120,120,80,60},
-	{120,80,60,40}, //6
-	{120,80,60,40},
-	{80,80,40,30}//8
+    {INF,INF,INF,INF},//1
+    {INF,INF,120,120},//2
+    {120,120,120,80}, //3
+    {120,120,80,60}, //4
+    {120,120,80,60},
+    {120,80,60,40}, //6
+    {120,80,60,40},
+    {80,80,40,30}//8
 };
 
  const double rtt1_rd_lrdimm_ddr3[8][4] =
 {
-	{INF,INF,120,120},//1
-	{INF,INF,120,120},//2
-	{INF,120,120,80}, //3
-	{120,120,120,60}, //4
-	{120,120,120,60},
-	{120,80,80,60}, //6
-	{120,80,80,60},
-	{120,80,60,40}//8
+    {INF,INF,120,120},//1
+    {INF,INF,120,120},//2
+    {INF,120,120,80}, //3
+    {120,120,120,60}, //4
+    {120,120,120,60},
+    {120,80,80,60}, //6
+    {120,80,80,60},
+    {120,80,60,40}//8
 };
 
  const double rtt2_rd_lrdimm_ddr3[8][4] =
 {
-	{INF,INF,INF,INF},//1
-	{INF,120,80,60},//2
-	{120,80,80,40}, //3
-	{120,80,60,40}, //4
-	{120,80,60,40},
-	{80,60,60,30}, //6
-	{80,60,60,30},
-	{80,60,40,20}//8
+    {INF,INF,INF,INF},//1
+    {INF,120,80,60},//2
+    {120,80,80,40}, //3
+    {120,80,60,40}, //4
+    {120,80,60,40},
+    {80,60,60,30}, //6
+    {80,60,60,30},
+    {80,60,40,20}//8
 };
 
 
  const double rtt1_wr_host_dimm_ddr3[3][4]=
 {
-	{120,120,120,60},
-	{120,80,80,60},
-	{120,80,60,40}
+    {120,120,120,60},
+    {120,80,80,60},
+    {120,80,60,40}
 };
 
 const double rtt2_wr_host_dimm_ddr3[3][4]=
 {
-	{120,120,80,60},
-	{120,80,60,40},
-	{80,80,40,30}
+    {120,120,80,60},
+    {120,80,60,40},
+    {80,80,40,30}
 };
 
  const double rtt1_rd_host_dimm_ddr3[3][4]=
 {
-	{120,120,120,60},
-	{120,80,80,60},
-	{120,80,60,40}
+    {120,120,120,60},
+    {120,80,80,60},
+    {120,80,60,40}
 };
 
  const double rtt2_rd_host_dimm_ddr3[3][4]=
 {
-	{120,80,60,40},
-	{80,60,60,30},
-	{80,60,40,20}
+    {120,80,60,40},
+    {80,60,60,30},
+    {80,60,40,20}
 };
 
 
  const double rtt1_wr_bob_dimm_ddr3[3][4]=
 {
-	{INF,120,120,80},
-	{120,120,120,60},
-	{120,80,80,60}
+    {INF,120,120,80},
+    {120,120,120,60},
+    {120,80,80,60}
 };
 
  const double rtt2_wr_bob_dimm_ddr3[3][4]=
 {
-	{120,120,120,80},
-	{120,120,80,60},
-	{120,80,60,40}
+    {120,120,120,80},
+    {120,120,80,60},
+    {120,80,60,40}
 };
 
  const double rtt1_rd_bob_dimm_ddr3[3][4]=
 {
-	{INF,120,120,80},
-	{120,120,120,60},
-	{120,80,80,60}
+    {INF,120,120,80},
+    {120,120,120,60},
+    {120,80,80,60}
 };
 
  const double rtt2_rd_bob_dimm_ddr3[3][4]=
 {
-	{120,80,80,40},
-	{120,80,60,40},
-	{80,60,60,30}
+    {120,80,80,40},
+    {120,80,60,40},
+    {80,60,60,30}
 };
 
 
@@ -125,109 +125,109 @@ const double rtt2_wr_host_dimm_ddr3[3][4]=
 
  const double rtt1_wr_lrdimm_ddr4[8][4] =
 {
-	{120,120,80,80},//1
-	{120,120,80,80},//2
-	{120,80,80,60}, //3
-	{80,60,60,60}, //4
-	{80,60,60,60},
-	{60,60,60,40}, //6
-	{60,60,60,40},
-	{40,40,40,40}//8
+    {120,120,80,80},//1
+    {120,120,80,80},//2
+    {120,80,80,60}, //3
+    {80,60,60,60}, //4
+    {80,60,60,60},
+    {60,60,60,40}, //6
+    {60,60,60,40},
+    {40,40,40,40}//8
 };
 
  const double rtt2_wr_lrdimm_ddr4[8][4] =
 {
-	{INF,INF,INF,INF},//1
-	{120,120,120,80},//2
-	{120,80,80,80},//3
-	{80,80,80,60},//4
-	{80,80,80,60},
-	{60,60,60,40},//6
-	{60,60,60,40},
-	{60,40,40,30}//8
+    {INF,INF,INF,INF},//1
+    {120,120,120,80},//2
+    {120,80,80,80},//3
+    {80,80,80,60},//4
+    {80,80,80,60},
+    {60,60,60,40},//6
+    {60,60,60,40},
+    {60,40,40,30}//8
 };
 
  const double rtt1_rd_lrdimm_ddr4[8][4] =
 {
-	{120,120,80,80},//1
-	{120,120,80,60},//2
-	{120,80,80,60}, //3
-	{120,60,60,60}, //4
-	{120,60,60,60},
-	{80,60,60,40}, //6
-	{80,60,60,40},
-	{60,40,40,30}//8
+    {120,120,80,80},//1
+    {120,120,80,60},//2
+    {120,80,80,60}, //3
+    {120,60,60,60}, //4
+    {120,60,60,60},
+    {80,60,60,40}, //6
+    {80,60,60,40},
+    {60,40,40,30}//8
 };
 
  const double rtt2_rd_lrdimm_ddr4[8][4] =
 {
-	{INF,INF,INF,INF},//1
-	{80,60,60,60},//2
-	{60,60,40,40}, //3
-	{60,40,40,40}, //4
-	{60,40,40,40},
-	{40,40,40,30}, //6
-	{40,40,40,30},
-	{40,30,30,20}//8
+    {INF,INF,INF,INF},//1
+    {80,60,60,60},//2
+    {60,60,40,40}, //3
+    {60,40,40,40}, //4
+    {60,40,40,40},
+    {40,40,40,30}, //6
+    {40,40,40,30},
+    {40,30,30,20}//8
 };
 
 
 
  const double rtt1_wr_host_dimm_ddr4[3][4]=
 {
-	{80,60,60,60},
-	{60,60,60,60},
-	{40,40,40,40}
+    {80,60,60,60},
+    {60,60,60,60},
+    {40,40,40,40}
 };
 
  const double rtt2_wr_host_dimm_ddr4[3][4]=
 {
-	{80,80,80,60},
-	{60,60,60,40},
-	{60,40,40,30}
+    {80,80,80,60},
+    {60,60,60,40},
+    {60,40,40,30}
 };
 
  const double rtt1_rd_host_dimm_ddr4[3][4]=
 {
-	{120,60,60,60},
-	{80,60,60,40},
-	{60,40,40,30}
+    {120,60,60,60},
+    {80,60,60,40},
+    {60,40,40,30}
 };
 
  const double rtt2_rd_host_dimm_ddr4[3][4]=
 {
-	{60,40,40,40},
-	{40,40,40,30},
-	{40,30,30,20}
+    {60,40,40,40},
+    {40,40,40,30},
+    {40,30,30,20}
 };
 
 
  const double rtt1_wr_bob_dimm_ddr4[3][4]=
 {
-	{120,80,80,60},
-	{80,60,60,60},
-	{60,60,60,40}
+    {120,80,80,60},
+    {80,60,60,60},
+    {60,60,60,40}
 };
 
  const double rtt2_wr_bob_dimm_ddr4[3][4]=
 {
-	{120,80,80,80},
-	{80,80,80,60},
-	{60,60,60,40}
+    {120,80,80,80},
+    {80,80,80,60},
+    {60,60,60,40}
 };
 
  const double rtt1_rd_bob_dimm_ddr4[3][4]=
 {
-	{120,80,80,60},
-	{120,60,60,60},
-	{80,60,60,40}
+    {120,80,80,60},
+    {120,60,60,60},
+    {80,60,60,40}
 };
 
  const double rtt2_rd_bob_dimm_ddr4[3][4]=
 {
-	{60,60,40,40},
-	{60,40,40,40},
-	{40,40,40,30}
+    {60,60,40,40},
+    {60,40,40,40},
+    {40,40,40,30}
 };
 
 
@@ -235,33 +235,33 @@ const double rtt2_wr_host_dimm_ddr3[3][4]=
 
 int IOTechParam::frequnecy_index(Mem_IO_type type)
 {
-	if(type==DDR3)
-	{
-		if(frequency<=400)
-			return 0;
-		else if(frequency<=533)
-			return 1;
-		else if(frequency<=667)
-			return 2;
-		else
-			return 3;
-	}
-	else if(type==DDR4)
-	{
-		if(frequency<=800)
-			return 0;
-		else if(frequency<=933)
-			return 1;
-		else if(frequency<=1066)
-			return 2;
-		else
-			return 3;
-	}
-	else
-	{
-		assert(false);
-	}
-	return 0;
+    if(type==DDR3)
+    {
+    if(frequency<=400)
+    return 0;
+    else if(frequency<=533)
+    return 1;
+    else if(frequency<=667)
+    return 2;
+    else
+    return 3;
+    }
+    else if(type==DDR4)
+    {
+    if(frequency<=800)
+    return 0;
+    else if(frequency<=933)
+    return 1;
+    else if(frequency<=1066)
+    return 2;
+    else
+    return 3;
+    }
+    else
+    {
+    assert(false);
+    }
+    return 0;
 }
 
 
@@ -393,14 +393,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
     phy_pll_d = 0.05;
 
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0;
-	phy_vrefgen_wtime = 0;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0;
+    phy_vrefgen_wtime = 0;
 
 
   }
@@ -441,7 +441,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      t_jitter_hold = 200;
      t_jitter_addr_setup = 200;
      t_jitter_addr_hold = 200;
-	t_cor_margin = 50;
+    t_cor_margin = 50;
 
      //External IO Configuration Parameters
 
@@ -520,14 +520,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      phy_leveling_d = 0;
      phy_pll_d = 0;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 0;
-	phy_rx_wtime = 0;
-	phy_bandgap_wtime = 0;
-	phy_deskew_wtime = 0;
-	phy_vrefgen_wtime = 0;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 0;
+    phy_rx_wtime = 0;
+    phy_bandgap_wtime = 0;
+    phy_deskew_wtime = 0;
+    phy_vrefgen_wtime = 0;
 
 
    }
@@ -569,7 +569,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      t_jitter_hold = 100;
      t_jitter_addr_setup = 100;
      t_jitter_addr_hold = 100;
-	t_cor_margin = 30;
+    t_cor_margin = 30;
 
 
      //External IO Configuration Parameters
@@ -658,14 +658,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      phy_leveling_d = 0.05;
      phy_pll_d = 0.05;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0.003;
-	phy_vrefgen_wtime = 0.5;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0.003;
+    phy_vrefgen_wtime = 0.5;
 
 
    }
@@ -707,7 +707,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      t_jitter_hold = 30;
      t_jitter_addr_setup = 60;
      t_jitter_addr_hold = 60;
-	t_cor_margin = 10;
+    t_cor_margin = 10;
 
 
      //External IO Configuration Parameters
@@ -796,14 +796,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      phy_leveling_d = 0.05;
      phy_pll_d = 0.05;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0.003;
-	phy_vrefgen_wtime = 0.5;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0.003;
+    phy_vrefgen_wtime = 0.5;
 
 
    }
@@ -863,22 +863,22 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      phy_leveling_d = 0.05;
      phy_pll_d = 0.05;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0.003;
-	phy_vrefgen_wtime = 0.5;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0.003;
+    phy_vrefgen_wtime = 0.5;
 
 
    }
-	else
-	{
-		cout << "Not Yet supported" << endl;
-		exit(1);
-	}
+    else
+    {
+    cout << "Not Yet supported" << endl;
+    exit(1);
+    }
 
 
    //SWING AND TERMINATION CALCULATIONS
@@ -911,7 +911,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
 
 
 IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_mem_dq, int mem_data_width
-						, int num_dq, int connection, int num_loads, double freq)
+    , int num_dq, int connection, int num_loads, double freq)
 {
   num_mem_ca  = num_mem_dq * (mem_data_width);
   num_mem_clk =  num_mem_dq *
@@ -1043,14 +1043,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
     phy_pll_d = 0.05;
 
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0;
-	phy_vrefgen_wtime = 0;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0;
+    phy_vrefgen_wtime = 0;
 
 
   }
@@ -1091,7 +1091,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      t_jitter_hold = 200;
      t_jitter_addr_setup = 200;
      t_jitter_addr_hold = 200;
-	t_cor_margin = 50;
+    t_cor_margin = 50;
 
      //External IO Configuration Parameters
 
@@ -1170,14 +1170,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      phy_leveling_d = 0;
      phy_pll_d = 0;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 0;
-	phy_rx_wtime = 0;
-	phy_bandgap_wtime = 0;
-	phy_deskew_wtime = 0;
-	phy_vrefgen_wtime = 0;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 0;
+    phy_rx_wtime = 0;
+    phy_bandgap_wtime = 0;
+    phy_deskew_wtime = 0;
+    phy_vrefgen_wtime = 0;
 
 
    }
@@ -1219,7 +1219,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      t_jitter_hold = 100;
      t_jitter_addr_setup = 100;
      t_jitter_addr_hold = 100;
-	t_cor_margin = 30;
+    t_cor_margin = 30;
 
 
      //External IO Configuration Parameters
@@ -1234,27 +1234,27 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      */
      switch(connection)
      {
-		 case(0):
-			rtt1_dq_write = rtt1_wr_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_write = rtt2_wr_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt1_dq_read = rtt1_rd_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_read = rtt2_rd_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			break;
-		 case(1):
-			rtt1_dq_write = rtt1_wr_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_write = rtt2_wr_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt1_dq_read = rtt1_rd_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_read = rtt2_rd_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			break;
-		 case(2):
-			rtt1_dq_write = rtt1_wr_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_write = rtt2_wr_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt1_dq_read = rtt1_rd_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_read = rtt2_rd_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
-			break;
-		default:
-			break;
-	 }
+     case(0):
+    rtt1_dq_write = rtt1_wr_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_write = rtt2_wr_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt1_dq_read = rtt1_rd_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_read = rtt2_rd_bob_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    break;
+     case(1):
+    rtt1_dq_write = rtt1_wr_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_write = rtt2_wr_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt1_dq_read = rtt1_rd_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_read = rtt2_rd_host_dimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    break;
+     case(2):
+    rtt1_dq_write = rtt1_wr_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_write = rtt2_wr_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt1_dq_read = rtt1_rd_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_read = rtt2_rd_lrdimm_ddr3[num_loads-1][frequnecy_index(io_type)];
+    break;
+    default:
+    break;
+     }
 
 
      rtt_ca = 50;
@@ -1336,14 +1336,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      phy_leveling_d = 0.05;
      phy_pll_d = 0.05;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0.003;
-	phy_vrefgen_wtime = 0.5;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0.003;
+    phy_vrefgen_wtime = 0.5;
 
 
    }
@@ -1385,7 +1385,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      t_jitter_hold = 30;
      t_jitter_addr_setup = 60;
      t_jitter_addr_hold = 60;
-	t_cor_margin = 10;
+    t_cor_margin = 10;
 
 
      //External IO Configuration Parameters
@@ -1400,27 +1400,27 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
 
      switch(connection)
      {
-		 case(0):
-			rtt1_dq_write = rtt1_wr_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_write = rtt2_wr_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt1_dq_read = rtt1_rd_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_read = rtt2_rd_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			break;
-		 case(1):
-			rtt1_dq_write = rtt1_wr_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_write = rtt2_wr_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt1_dq_read = rtt1_rd_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_read = rtt2_rd_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			break;
-		 case(2):
-			rtt1_dq_write = rtt1_wr_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_write = rtt2_wr_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt1_dq_read = rtt1_rd_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			rtt2_dq_read = rtt2_rd_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
-			break;
-		default:
-			break;
-	 }
+     case(0):
+    rtt1_dq_write = rtt1_wr_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_write = rtt2_wr_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt1_dq_read = rtt1_rd_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_read = rtt2_rd_bob_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    break;
+     case(1):
+    rtt1_dq_write = rtt1_wr_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_write = rtt2_wr_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt1_dq_read = rtt1_rd_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_read = rtt2_rd_host_dimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    break;
+     case(2):
+    rtt1_dq_write = rtt1_wr_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_write = rtt2_wr_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt1_dq_read = rtt1_rd_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    rtt2_dq_read = rtt2_rd_lrdimm_ddr4[num_loads-1][frequnecy_index(io_type)];
+    break;
+    default:
+    break;
+     }
 
      rtt_ca = 50;
      rs1_dq = 15;
@@ -1501,14 +1501,14 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      phy_leveling_d = 0.05;
      phy_pll_d = 0.05;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0.003;
-	phy_vrefgen_wtime = 0.5;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0.003;
+    phy_vrefgen_wtime = 0.5;
 
 
    }
@@ -1568,22 +1568,22 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      phy_leveling_d = 0.05;
      phy_pll_d = 0.05;
 
-	//PHY Wakeup Times (Sleep to Active) (microseconds)
+    //PHY Wakeup Times (Sleep to Active) (microseconds)
 
-	phy_pll_wtime = 10;
-	phy_phase_rotator_wtime = 5;
-	phy_rx_wtime = 2;
-	phy_bandgap_wtime = 10;
-	phy_deskew_wtime = 0.003;
-	phy_vrefgen_wtime = 0.5;
+    phy_pll_wtime = 10;
+    phy_phase_rotator_wtime = 5;
+    phy_rx_wtime = 2;
+    phy_bandgap_wtime = 10;
+    phy_deskew_wtime = 0.003;
+    phy_vrefgen_wtime = 0.5;
 
 
    }
-	else
-	{
-		cout << "Not Yet supported" << endl;
-		exit(1);
-	}
+    else
+    {
+    cout << "Not Yet supported" << endl;
+    exit(1);
+    }
 
 
    //SWING AND TERMINATION CALCULATIONS

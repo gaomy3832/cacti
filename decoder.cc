@@ -193,7 +193,7 @@ void Decoder::compute_area()
 
 void Decoder::compute_power_gating()
 {
-	//For all driver change there is only one sleep transistors to save area
+    //For all driver change there is only one sleep transistors to save area
     //Total transistor width for sleep tx calculation
     for (int i = 1;  i <=num_gates; i++)
       {
@@ -1590,7 +1590,7 @@ void Driver::compute_area()
 
 void Driver::compute_power_gating()
 {
-	//For all driver change there is only one sleep transistors to save area
+    //For all driver change there is only one sleep transistors to save area
     //Total transistor width for sleep tx calculation
     for (int i = 0;  i <=number_gates; i++)
       {
