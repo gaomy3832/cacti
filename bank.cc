@@ -84,7 +84,7 @@ Bank::Bank(const DynamicParameter & dyn_p):
     {
         dataoutbits *= g_ip->data_assoc;
     }
-			 
+
   htree_in_add   = new Htree2 (dp.wtype/*g_ip->wt*/,(double) mat.area.w, (double)mat.area.h,
       total_addrbits, datainbits, 0,dataoutbits,0, num_mats_ver_dir*2, num_mats_hor_dir*2, Add_htree);
   htree_in_data  = new Htree2 (dp.wtype/*g_ip->wt*/,(double) mat.area.w, (double)mat.area.h,

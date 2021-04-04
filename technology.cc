@@ -42,12 +42,12 @@ void init_tech_params(double technology, bool is_tag)
 
 void printing(const char * name, double value)
 {
-	cout << "tech " << name << " " << value << endl; 
+	cout << "tech " << name << " " << value << endl;
 }
 
 void printing_int(const char * name, uint64_t value)
 {
-	cout << "tech " << name << " " << value << endl; 
+	cout << "tech " << name << " " << value << endl;
 }
 void print_g_tp()
 {
@@ -165,17 +165,17 @@ void print_g_tp()
 	printing("g_tp.dram.cell_a_w",g_tp.dram.cell_a_w);
 	printing("g_tp.dram.cell_pmos_w",g_tp.dram.cell_pmos_w);
 	printing("g_tp.dram.cell_nmos_w",g_tp.dram.cell_nmos_w);
-	
+
 
 	printing("g_tp.sram.cell_a_w",g_tp.sram.cell_a_w);
 	printing("g_tp.sram.cell_pmos_w",g_tp.sram.cell_pmos_w);
 	printing("g_tp.sram.cell_nmos_w",g_tp.sram.cell_nmos_w);
-	
+
 
 	printing("g_tp.cam.cell_a_w",g_tp.cam.cell_a_w);
 	printing("g_tp.cam.cell_pmos_w",g_tp.cam.cell_pmos_w);
 	printing("g_tp.cam.cell_nmos_w",g_tp.cam.cell_nmos_w);
-	
+
 	printing("g_tp.scaling_factor.logic_scaling_co_eff",g_tp.scaling_factor.logic_scaling_co_eff);
 	printing("g_tp.scaling_factor.core_tx_density",g_tp.scaling_factor.core_tx_density);
 	printing("g_tp.chip_layout_overhead",g_tp.chip_layout_overhead);
@@ -220,7 +220,7 @@ void print_g_tp()
 
 	printing("g_tp.dram_acc.C_overlap",g_tp.dram_acc.C_overlap);
 	printing("g_tp.dram_acc.R_nch_on",g_tp.dram_acc.R_nch_on);
-	
+
 	printing("g_tp.dram_wl.C_overlap",g_tp.dram_wl.C_overlap);
 
 	printing("g_tp.gm_sense_amp_latch",g_tp.gm_sense_amp_latch);
@@ -236,7 +236,7 @@ void print_g_tp()
 	printing("g_tp.sram.Vbitpre",g_tp.sram.Vbitpre);
 	printing("g_tp.sram.Vbitfloating",g_tp.sram.Vbitfloating);
 	printing("g_tp.cam.Vbitpre",g_tp.cam.Vbitpre);
-	
+
 	printing("g_tp.w_pmos_bl_precharge",g_tp.w_pmos_bl_precharge);
 	printing("g_tp.w_pmos_bl_eq",g_tp.w_pmos_bl_eq);
 
@@ -248,7 +248,7 @@ void print_g_tp()
 	printing("g_tp.wire_local.miller_value",g_tp.wire_local.miller_value);
 	printing("g_tp.wire_local.horiz_dielectric_constant",g_tp.wire_local.horiz_dielectric_constant);
 	printing("g_tp.wire_local.vert_dielectric_constant",g_tp.wire_local.vert_dielectric_constant);
-	
+
 	printing("g_tp.wire_inside_mat.pitch",g_tp.wire_inside_mat.pitch);
 	printing("g_tp.wire_inside_mat.R_per_um",g_tp.wire_inside_mat.R_per_um);
 	printing("g_tp.wire_inside_mat.C_per_um",g_tp.wire_inside_mat.C_per_um);
@@ -257,7 +257,7 @@ void print_g_tp()
 	printing("g_tp.wire_inside_mat.miller_value",g_tp.wire_inside_mat.miller_value);
 	printing("g_tp.wire_inside_mat.horiz_dielectric_constant",g_tp.wire_inside_mat.horiz_dielectric_constant);
 	printing("g_tp.wire_inside_mat.vert_dielectric_constant",g_tp.wire_inside_mat.vert_dielectric_constant);
-	
+
 	printing("g_tp.wire_outside_mat.pitch",g_tp.wire_outside_mat.pitch);
 	printing("g_tp.wire_outside_mat.R_per_um",g_tp.wire_outside_mat.R_per_um);
 	printing("g_tp.wire_outside_mat.C_per_um",g_tp.wire_outside_mat.C_per_um);
@@ -271,15 +271,15 @@ void print_g_tp()
 
 	printing("g_tp.sense_delay",g_tp.sense_delay);
 	printing("g_tp.sense_dy_power",g_tp.sense_dy_power);
-	
+
 	printing("g_tp.tsv_parasitic_resistance_fine",g_tp.tsv_parasitic_resistance_fine);
 	printing("g_tp.tsv_parasitic_capacitance_fine",g_tp.tsv_parasitic_capacitance_fine);
 	printing("g_tp.tsv_minimum_area_fine",g_tp.tsv_minimum_area_fine);
-	
+
 	printing("g_tp.tsv_parasitic_resistance_coarse",g_tp.tsv_parasitic_resistance_coarse);
 	printing("g_tp.tsv_parasitic_capacitance_coarse",g_tp.tsv_parasitic_capacitance_coarse);
 	printing("g_tp.tsv_minimum_area_coarse",g_tp.tsv_minimum_area_coarse);
-	
+
 	printing("g_tp.tsv_minimum_area_coarse",g_tp.tsv_minimum_area_coarse);
 	printing("g_tp.fringe_cap",g_tp.fringe_cap);
 	printing("g_tp.kinv",g_tp.kinv);

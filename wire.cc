@@ -142,7 +142,7 @@ Wire::calculate_wire_stats()
   if (wt != Low_swing) {
 
 	  //    delay_optimal_wire();
-	  
+
 	  if (wt == Global) {
 		  delay = global.delay * wire_length;
 		  power.readOp.dynamic = global.power.readOp.dynamic * wire_length;

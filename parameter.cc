@@ -50,15 +50,15 @@ TechnologyParameter g_tp;
 // ali
 bool is_equal(double first, double second)
 {
-	
+
 	if((first == 0) && (second ==0))
 	{
 			return true;
 	}
-	
+
 	if((second==0) || (second!=second))
 		return true;
-	
+
 	if((first!=first) || (second!=second)) // both are NaNs
 	{
 		return true;
@@ -73,8 +73,8 @@ bool is_equal(double first, double second)
 		if(fabs(first-second)<(first*0.000001))
 			return true;
 	}
-	
-	return false;		
+
+	return false;
 }
 
 /**
@@ -106,7 +106,7 @@ bool DeviceType::isEqual(const DeviceType & dev)
 {
 	if( !is_equal(C_g_ideal,dev.C_g_ideal)) {display(0); cout << "\n\n\n"; dev.display(0); assert(false);}
 	if( !is_equal(C_fringe,dev.C_fringe)) {display(0); cout << "\n\n\n"; dev.display(0);assert(false);}
-	
+
 	if( !is_equal(C_overlap , dev.C_overlap)) {display(0); cout << "\n\n\n"; dev.display(0);assert(false);}
 	if( !is_equal(C_junc , dev.C_junc)) {display(0); cout << "\n\n\n"; dev.display(0);assert(false);}
 	if( !is_equal(C_junc_sidewall , dev.C_junc_sidewall)) {display(0); cout << "\n\n\n"; dev.display(0);assert(false);}
@@ -128,11 +128,11 @@ bool DeviceType::isEqual(const DeviceType & dev)
 	if( !is_equal(n_to_p_eff_curr_drv_ratio , dev.n_to_p_eff_curr_drv_ratio)) {display(0); cout << "\n\n\n"; dev.display(0);assert(false);}
 	if( !is_equal(long_channel_leakage_reduction , dev.long_channel_leakage_reduction)) {display(0);cout << "\n\n\n"; dev.display(0); assert(false);}
 	if( !is_equal(Mobility_n , dev.Mobility_n)) {display(0); cout << "\n\n\n"; dev.display(0);assert(false);}
-	
+
 	// auxilary parameters
 	///if( !is_equal(Vdsat , dev.Vdsat)) {display(0); cout << "\n\n\n"; dev.display(0); assert(false);}
 	///if( !is_equal(gmp_to_gmn_multiplier , dev.gmp_to_gmn_multiplier)) {display(0); cout << "\n\n\n"; dev.display(0); assert(false);}
-	
+
 	return true;
 }
 
@@ -149,36 +149,36 @@ double scan_single_input_double(char* line, const char* name, const char* unit_n
 
 double scan_five_input_double(char* line, const char* name, const char* unit_name, int flavor, bool print)
 {
-  double temp[5];	
+  double temp[5];
   char unit[300];
   memset(unit,0,300);
   sscanf(&line[strlen(name)], "%*[ \t]%s%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf"
 		,unit,&(temp[0]),&(temp[1]),&(temp[2]),&(temp[3]), &(temp[4]) );
-		
+
   if (print)
 		cout << name << "[" << flavor <<"]: " << temp[flavor] << " " << unit<< endl;
   return temp[flavor];
-		
+
 }
 
 void scan_five_input_double_temperature(char* line, const char* name, const char* unit_name, int flavor, unsigned int temperature, bool print, double & result)
 {
-  double temp[5];	
+  double temp[5];
   unsigned int thermal_temp;
   char unit[300];
   memset(unit,0,300);
   sscanf(&line[strlen(name)], "%*[ \t]%s%*[ \t]%u%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf"
 		,unit,&thermal_temp,&(temp[0]),&(temp[1]),&(temp[2]),&(temp[3]), &(temp[4]) );
-		
- 
+
+
   if(thermal_temp==(temperature-300))
   {
 	   if (print)
 					cout << name << ": " << temp[flavor] << " "<< unit << endl;
-			
+
 	result = temp[flavor];
   }
-		
+
 }
 
 void DeviceType::assign(const string & in_file, int tech_flavor,  unsigned int temperature)
@@ -197,116 +197,116 @@ void DeviceType::assign(const string & in_file, int tech_flavor,  unsigned int t
 	exit(-1);
 	}
 
-	while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+	while(fscanf(fp, "%[^\n]\n", line) != EOF)
 	{
-		if (!strncmp("-C_g_ideal", line, strlen("-C_g_ideal"))) 
+		if (!strncmp("-C_g_ideal", line, strlen("-C_g_ideal")))
 		{
 		  C_g_ideal=scan_five_input_double(line,"-C_g_ideal","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-C_fringe", line, strlen("-C_fringe"))) 
+		if (!strncmp("-C_fringe", line, strlen("-C_fringe")))
 		{
 		  C_fringe=scan_five_input_double(line,"-C_fringe","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-C_junc_sw", line, strlen("-C_junc_sw"))) 
+		if (!strncmp("-C_junc_sw", line, strlen("-C_junc_sw")))
 		{
 		  C_junc_sidewall =scan_five_input_double(line,"-C_junc_sw","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-C_junc", line, strlen("-C_junc"))) 
+		if (!strncmp("-C_junc", line, strlen("-C_junc")))
 		{
 		  C_junc=scan_five_input_double(line,"-C_junc","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		
-		if (!strncmp("-l_phy", line, strlen("-l_phy"))) 
+
+		if (!strncmp("-l_phy", line, strlen("-l_phy")))
 		{
 		  l_phy=scan_five_input_double(line,"-l_phy","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-l_elec", line, strlen("-l_elec"))) 
+		if (!strncmp("-l_elec", line, strlen("-l_elec")))
 		{
 		  l_elec=scan_five_input_double(line,"-l_elec","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-nmos_effective_resistance_multiplier", line, strlen("-nmos_effective_resistance_multiplier"))) 
+		if (!strncmp("-nmos_effective_resistance_multiplier", line, strlen("-nmos_effective_resistance_multiplier")))
 		{
 			nmos_effective_resistance_multiplier=scan_five_input_double(line,"-nmos_effective_resistance_multiplier","F/um",tech_flavor,g_ip->print_detail_debug);
 			continue;
 		}
-		if (!strncmp("-Vdd", line, strlen("-Vdd"))) 
+		if (!strncmp("-Vdd", line, strlen("-Vdd")))
 		{
 		  Vdd=scan_five_input_double(line,"-Vdd","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-Vth", line, strlen("-Vth"))) 
+		if (!strncmp("-Vth", line, strlen("-Vth")))
 		{
 		  Vth=scan_five_input_double(line,"-Vth","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-Vdsat", line, strlen("-Vdsat"))) 
+		if (!strncmp("-Vdsat", line, strlen("-Vdsat")))
 		{
 		  Vdsat=scan_five_input_double(line,"-Vdsat","V",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-I_on_n", line, strlen("-I_on_n"))) 
+		if (!strncmp("-I_on_n", line, strlen("-I_on_n")))
 		{
 		  I_on_n=scan_five_input_double(line,"-I_on_n","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-I_on_p", line, strlen("-I_on_p"))) 
+		if (!strncmp("-I_on_p", line, strlen("-I_on_p")))
 		{
 		  I_on_p = scan_five_input_double(line,"-I_on_p","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-I_off_n", line, strlen("-I_off_n"))) 
+		if (!strncmp("-I_off_n", line, strlen("-I_off_n")))
 		{
 		  scan_five_input_double_temperature(line,"-I_off_n","F/um",tech_flavor,temperature,g_ip->print_detail_debug,I_off_n);
 		  continue;
 		}
-		if (!strncmp("-I_g_on_n", line, strlen("-I_g_on_n"))) 
+		if (!strncmp("-I_g_on_n", line, strlen("-I_g_on_n")))
 		{
 		 scan_five_input_double_temperature(line,"-I_g_on_n","F/um",tech_flavor,temperature,g_ip->print_detail_debug,I_g_on_n);
 		  continue;
 		}
-		if (!strncmp("-C_ox", line, strlen("-C_ox"))) 
+		if (!strncmp("-C_ox", line, strlen("-C_ox")))
 		{
 		  C_ox=scan_five_input_double(line,"-C_ox","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-t_ox", line, strlen("-t_ox"))) 
+		if (!strncmp("-t_ox", line, strlen("-t_ox")))
 		{
 		  t_ox=scan_five_input_double(line,"-t_ox","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-n2p_drv_rt", line, strlen("-n2p_drv_rt"))) 
+		if (!strncmp("-n2p_drv_rt", line, strlen("-n2p_drv_rt")))
 		{
 		  n_to_p_eff_curr_drv_ratio=scan_five_input_double(line,"-n2p_drv_rt","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-lch_lk_rdc", line, strlen("-lch_lk_rdc"))) 
+		if (!strncmp("-lch_lk_rdc", line, strlen("-lch_lk_rdc")))
 		{
 		  long_channel_leakage_reduction=scan_five_input_double(line,"-lch_lk_rdc","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-Mobility_n", line, strlen("-Mobility_n"))) 
+		if (!strncmp("-Mobility_n", line, strlen("-Mobility_n")))
 		{
 		  Mobility_n=scan_five_input_double(line,"-Mobility_n","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-gmp_to_gmn_multiplier", line, strlen("-gmp_to_gmn_multiplier"))) 
+		if (!strncmp("-gmp_to_gmn_multiplier", line, strlen("-gmp_to_gmn_multiplier")))
 		{
 		  gmp_to_gmn_multiplier=scan_five_input_double(line,"-gmp_to_gmn_multiplier","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-n_to_p_eff_curr_drv_ratio", line, strlen("-n_to_p_eff_curr_drv_ratio"))) 
+		if (!strncmp("-n_to_p_eff_curr_drv_ratio", line, strlen("-n_to_p_eff_curr_drv_ratio")))
 		{
 		  n_to_p_eff_curr_drv_ratio=scan_five_input_double(line,"-n_to_p_eff_curr_drv_ratio","F/um",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		
-	} 
+
+	}
 
 	C_overlap = 0.2*C_g_ideal;
 	if(tech_flavor>=3)
@@ -323,9 +323,9 @@ void DeviceType::assign(const string & in_file, int tech_flavor,  unsigned int t
 		cout << "R_nch_on: " << R_nch_on << " ohm-micron" << endl;
 		cout << "R_pch_on: " << R_pch_on << " ohm-micron" << endl;
 	}
- 
+
     fclose(fp);
-    
+
 }
 
 
@@ -356,7 +356,7 @@ void DeviceType::interpolate(double alpha, const DeviceType& dev1, const DeviceT
 	Vdsat = alpha*dev1.Vdsat + (1-alpha)*dev2.Vdsat;
 	gmp_to_gmn_multiplier = alpha*dev1.gmp_to_gmn_multiplier + (1-alpha)*dev2.gmp_to_gmn_multiplier;
 	n_to_p_eff_curr_drv_ratio = alpha*dev1.n_to_p_eff_curr_drv_ratio + (1-alpha)*dev2.n_to_p_eff_curr_drv_ratio;
-	
+
 	C_junc_sidewall = dev1.C_junc_sidewall;
 }
 
@@ -371,16 +371,16 @@ double scan_input_double_inter_type(char* line, const char * name, const char * 
 	memset(unit,0,300);
 	sscanf(&line[strlen(name)], "%*[ \t]%s%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf"
 		,unit,&(temp[0]),&(temp[1]),&(temp[2]),&(temp[3]), &(temp[4]),&(temp[5]),&(temp[6]),&(temp[7]));
-		
+
 	if (print)
 		cout << name << " " << temp[index] << " " << unit << endl;
-  
+
   return temp[index];
 }
 
 void InterconnectType::assign(const string & in_file, int projection_type, int tech_flavor)
 {
-	
+
 	FILE *fp = fopen(in_file.c_str(), "r");
 	char line[5000];
 	//char temp_var[5000];
@@ -391,7 +391,7 @@ void InterconnectType::assign(const string & in_file, int projection_type, int t
 	//double nmos_effective_resistance_multiplier;
 
 	double resistivity;
- 
+
 	if(!fp) {
 	cout << in_file << " is missing!\n";
 	exit(-1);
@@ -399,75 +399,75 @@ void InterconnectType::assign(const string & in_file, int projection_type, int t
 
 	bool print = g_ip->print_detail_debug;
 
-	while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+	while(fscanf(fp, "%[^\n]\n", line) != EOF)
 	{
-		if (!strncmp("-wire_pitch", line, strlen("-wire_pitch"))) 
+		if (!strncmp("-wire_pitch", line, strlen("-wire_pitch")))
 		{
 		  pitch =scan_input_double_inter_type(line,"-wire_pitch","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-barrier_thickness", line, strlen("-barrier_thickness"))) 
+		if (!strncmp("-barrier_thickness", line, strlen("-barrier_thickness")))
 		{
 		  barrier_thickness =scan_input_double_inter_type(line,"-barrier_thickness","ohm",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-dishing_thickness", line, strlen("-dishing_thickness"))) 
+		if (!strncmp("-dishing_thickness", line, strlen("-dishing_thickness")))
 		{
 		  dishing_thickness =scan_input_double_inter_type(line,"-dishing_thickness","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-alpha_scatter", line, strlen("-alpha_scatter"))) 
+		if (!strncmp("-alpha_scatter", line, strlen("-alpha_scatter")))
 		{
 		  alpha_scatter =scan_input_double_inter_type(line,"-alpha_scatter","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-aspect_ratio", line, strlen("-aspect_ratio"))) 
+		if (!strncmp("-aspect_ratio", line, strlen("-aspect_ratio")))
 		{
 		  aspect_ratio =scan_input_double_inter_type(line,"-aspect_ratio","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-miller_value", line, strlen("-miller_value"))) 
+		if (!strncmp("-miller_value", line, strlen("-miller_value")))
 		{
 		  miller_value =scan_input_double_inter_type(line,"-miller_value","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-horiz_dielectric_constant", line, strlen("-horiz_dielectric_constant"))) 
+		if (!strncmp("-horiz_dielectric_constant", line, strlen("-horiz_dielectric_constant")))
 		{
 		  horiz_dielectric_constant =scan_input_double_inter_type(line,"-horiz_dielectric_constant","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-vert_dielectric_constant", line, strlen("-vert_dielectric_constant"))) 
+		if (!strncmp("-vert_dielectric_constant", line, strlen("-vert_dielectric_constant")))
 		{
 		  vert_dielectric_constant =scan_input_double_inter_type(line,"-vert_dielectric_constant","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-ild_thickness", line, strlen("-ild_thickness"))) 
+		if (!strncmp("-ild_thickness", line, strlen("-ild_thickness")))
 		{
 		  ild_thickness =scan_input_double_inter_type(line,"-ild_thickness","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-fringe_cap", line, strlen("-fringe_cap"))) 
+		if (!strncmp("-fringe_cap", line, strlen("-fringe_cap")))
 		{
 		  fringe_cap =scan_input_double_inter_type(line,"-fringe_cap","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-wire_r_per_micron", line, strlen("-wire_r_per_micron"))) 
+		if (!strncmp("-wire_r_per_micron", line, strlen("-wire_r_per_micron")))
 		{
 		  R_per_um =scan_input_double_inter_type(line,"-wire_r_per_micron","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-wire_c_per_micron", line, strlen("-wire_c_per_micron"))) 
+		if (!strncmp("-wire_c_per_micron", line, strlen("-wire_c_per_micron")))
 		{
 		  C_per_um =scan_input_double_inter_type(line,"-wire_c_per_micron","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
-		if (!strncmp("-resistivity", line, strlen("-resistivity"))) 
+		if (!strncmp("-resistivity", line, strlen("-resistivity")))
 		{
 		  resistivity =scan_input_double_inter_type(line,"-resistivity","um",g_ip->ic_proj_type,tech_flavor,print);
 		  continue;
 		}
 	}
-	
+
 	pitch *= g_ip->F_sz_um;
 	wire_width = pitch/ 2; //micron
     wire_thickness = aspect_ratio * wire_width;//micron
@@ -477,19 +477,19 @@ void InterconnectType::assign(const string & in_file, int projection_type, int t
 		R_per_um = wire_resistance(resistivity, wire_width,
 					wire_thickness, barrier_thickness, dishing_thickness, alpha_scatter);//ohm/micron
 		if(print)
-			cout << R_per_um << " = wire_resistance(" << resistivity << "," << wire_width << "," << 
+			cout << R_per_um << " = wire_resistance(" << resistivity << "," << wire_width << "," <<
 				wire_thickness << "," << barrier_thickness << "," << dishing_thickness << "," << alpha_scatter << ")\n";
-		
-		
+
+
 		C_per_um = wire_capacitance(wire_width, wire_thickness, wire_spacing,
 					ild_thickness, miller_value, horiz_dielectric_constant,
-					vert_dielectric_constant, fringe_cap);//F/micron.		
+					vert_dielectric_constant, fringe_cap);//F/micron.
 		if(print)
 			cout << C_per_um << " = wire_capacitance(" << wire_width << "," << wire_thickness << "," << wire_spacing
 				<< "," <<  ild_thickness << "," << miller_value << "," << horiz_dielectric_constant
 				<< "," << vert_dielectric_constant << "," << fringe_cap << ")\n";
-			
-	}			
+
+	}
 	fclose(fp);
 }
 
@@ -512,7 +512,7 @@ bool InterconnectType::isEqual(const InterconnectType & inter)
 	///if(  !is_equal(dishing_thickness , inter.dishing_thickness)) {display(0); assert(false);}
 	///if(  !is_equal(alpha_scatter , inter.alpha_scatter)) {display(0); assert(false);}
 	///if(  !is_equal(fringe_cap , inter.fringe_cap)) {display(0); assert(false);}
-	
+
 	return true;
 }
 
@@ -526,31 +526,31 @@ void InterconnectType::interpolate(double alpha, const InterconnectType & inter1
 	aspect_ratio = alpha*inter1.aspect_ratio + (1-alpha)*inter2.aspect_ratio;
 	miller_value = alpha*inter1.miller_value + (1-alpha)*inter2.miller_value;
 	ild_thickness = alpha*inter1.ild_thickness + (1-alpha)*inter2.ild_thickness;
-	
+
 }
 
 void scan_five_input_double_mem_type(char* line, const char* name, const char* unit_name, int flavor, int cell_type, bool print, double & result)
 {
-  double temp[5];	
+  double temp[5];
   int cell_type_temp;
   char unit[300];
   memset(unit,0,300);
-  
+
   sscanf(&line[strlen(name)], "%*[ \t]%s%*[ \t]%d%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf"
 		,unit,&cell_type_temp,&(temp[0]),&(temp[1]),&(temp[2]),&(temp[3]), &(temp[4]) );
-		
- 
+
+
   if(cell_type_temp==cell_type)
   {
 	   if (print)
 		cout << name << ": " << temp[flavor] << " "<< unit << endl;
-			
+
 	result = temp[flavor];
   }
 }
 
 // cell_type --> sram(0),cam(1),dram(2)
-void MemoryType::assign(const string & in_file, int tech_flavor, int cell_type) 
+void MemoryType::assign(const string & in_file, int tech_flavor, int cell_type)
 {
 	FILE *fp = fopen(in_file.c_str(), "r");
 	char line[5000];
@@ -560,44 +560,44 @@ void MemoryType::assign(const string & in_file, int tech_flavor, int cell_type)
 	//unsigned int thermal_temp;
 
 	double vdd_cell,vdd;
-	
+
 	if(!fp) {
 	cout << in_file << " is missing!\n";
 	exit(-1);
 	}
-	while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+	while(fscanf(fp, "%[^\n]\n", line) != EOF)
 	{
-		if (!strncmp("-Vdd", line, strlen("-Vdd"))) 
+		if (!strncmp("-Vdd", line, strlen("-Vdd")))
 		{
 		  vdd=scan_five_input_double(line,"-Vdd","V",tech_flavor,g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-vdd_cell", line, strlen("-vdd_cell"))) 
+		if (!strncmp("-vdd_cell", line, strlen("-vdd_cell")))
 		{
 		  scan_five_input_double_mem_type(line,"-vdd_cell","V",tech_flavor,cell_type, g_ip->print_detail_debug,vdd_cell);
 		  continue;
 		}
-		if (!strncmp("-Wmemcella", line, strlen("-Wmemcella"))) 
+		if (!strncmp("-Wmemcella", line, strlen("-Wmemcella")))
 		{
 		  scan_five_input_double_mem_type(line,"-Wmemcella","V",tech_flavor,cell_type, g_ip->print_detail_debug,cell_a_w);
 		  continue;
 		}
-		if (!strncmp("-Wmemcellpmos", line, strlen("-Wmemcellpmos"))) 
+		if (!strncmp("-Wmemcellpmos", line, strlen("-Wmemcellpmos")))
 		{
 		  scan_five_input_double_mem_type(line,"-Wmemcellpmos","V",tech_flavor,cell_type, g_ip->print_detail_debug,cell_pmos_w);
 		  continue;
 		}
-		if (!strncmp("-Wmemcellnmos", line, strlen("-Wmemcellnmos"))) 
+		if (!strncmp("-Wmemcellnmos", line, strlen("-Wmemcellnmos")))
 		{
 		  scan_five_input_double_mem_type(line,"-Wmemcellnmos","V",tech_flavor,cell_type, g_ip->print_detail_debug,cell_nmos_w);
 		  continue;
 		}
-		if (!strncmp("-area_cell", line, strlen("-area_cell"))) 
+		if (!strncmp("-area_cell", line, strlen("-area_cell")))
 		{
 		  scan_five_input_double_mem_type(line,"-area_cell","V",tech_flavor,cell_type, g_ip->print_detail_debug,area_cell);
 		  continue;
 		}
-		if (!strncmp("-asp_ratio_cell", line, strlen("-asp_ratio_cell"))) 
+		if (!strncmp("-asp_ratio_cell", line, strlen("-asp_ratio_cell")))
 		{
 		  scan_five_input_double_mem_type(line,"-asp_ratio_cell","V",tech_flavor,cell_type, g_ip->print_detail_debug,asp_ratio_cell);
 		  continue;
@@ -616,12 +616,12 @@ void MemoryType::assign(const string & in_file, int tech_flavor, int cell_type)
 		Vbitpre = vdd_cell;
 	else // sram or cam
 		Vbitpre = vdd;
-		
-	
+
+
     Vbitfloating = Vbitpre*0.7;
 
 	//display(5);
-	
+
 }
 
 void MemoryType::interpolate(double alpha, const MemoryType& mem1, const MemoryType& mem2)
@@ -632,7 +632,7 @@ void MemoryType::interpolate(double alpha, const MemoryType& mem1, const MemoryT
 
     area_cell = alpha * mem1.area_cell + (1-alpha) * mem2.area_cell;
     asp_ratio_cell = alpha * mem1.asp_ratio_cell + (1-alpha) * mem2.asp_ratio_cell;
-    
+
     Vbitpre = mem2.Vbitpre;
     Vbitfloating = Vbitpre*0.7;
     // updating dependant variables after scaling/interpolating
@@ -651,11 +651,11 @@ bool MemoryType::isEqual(const MemoryType & mem)
 	if( !is_equal(cell_nmos_w , mem.cell_nmos_w)) {display(0); cout << "\n\n\n"; mem.display(0); assert(false);}
 	if( !is_equal(Vbitpre , mem.Vbitpre)) {display(0); cout << "\n\n\n"; mem.display(0); assert(false);}
 	///if( !is_equal(Vbitfloating , mem.Vbitfloating)) {display(0); cout << "\n\n\n"; mem.display(0); assert(false);}
-	
+
 	// needed to calculate b_w b_h
 	///if( !is_equal(area_cell , mem.area_cell)) {display(0); assert(false);}
 	///if( !is_equal(asp_ratio_cell , mem.asp_ratio_cell)) {display(0); assert(false);}
-	
+
 	return true;
 }
 
@@ -664,25 +664,25 @@ void ScalingFactor::assign(const string & in_file)
 	FILE *fp = fopen(in_file.c_str(), "r");
 	char line[5000];
 	//char temp_var[5000];
-	if(!fp) 
+	if(!fp)
 	{
 		cout << in_file << " is missing!\n";
 		exit(-1);
 	}
 
-	while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+	while(fscanf(fp, "%[^\n]\n", line) != EOF)
 	{
-		if (!strncmp("-logic_scaling_co_eff", line, strlen("-logic_scaling_co_eff"))) 
+		if (!strncmp("-logic_scaling_co_eff", line, strlen("-logic_scaling_co_eff")))
 		{
 		  logic_scaling_co_eff = scan_single_input_double(line,"-logic_scaling_co_eff","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-core_tx_density", line, strlen("-core_tx_density"))) 
+		if (!strncmp("-core_tx_density", line, strlen("-core_tx_density")))
 		{
 		  core_tx_density = scan_single_input_double(line,"-core_tx_density","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		
+
 	}
 
 	fclose(fp);
@@ -709,7 +709,7 @@ void TechnologyParameter::find_upper_and_lower_tech(double technology, int &tech
 		tech_lo = 180;
 		in_file_lo = "tech_params/180nm.dat";
 		tech_hi = 180;
-		in_file_hi = "tech_params/180nm.dat"; 
+		in_file_hi = "tech_params/180nm.dat";
 	}
 	else if (technology < 91 && technology > 89)
 	{
@@ -807,7 +807,7 @@ double scan_input_double_tsv_type(char* line, const char * name, const char * un
 	memset(unit,0,300);
 	sscanf(&line[strlen(name)], "%*[ \t]%s%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf%*[ \t]%lf"
 		,unit,&(temp[0]),&(temp[1]),&(temp[2]),&(temp[3]), &(temp[4]),&(temp[5]));
-		
+
     if (print)
 		cout << name << ": " << temp[index] << " " << unit << endl;
   return temp[index];
@@ -829,44 +829,44 @@ void TechnologyParameter::assign_tsv(const string & in_file)
 			tsv_type = g_ip->tsv_os_bank_type;
 		}
 		fp = fopen(in_file.c_str(), "r");
-		while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+		while(fscanf(fp, "%[^\n]\n", line) != EOF)
 		{
-			if (!strncmp("-tsv_pitch", line, strlen("-tsv_pitch"))) 
+			if (!strncmp("-tsv_pitch", line, strlen("-tsv_pitch")))
 			{
 			  tsv_pitch = scan_input_double_tsv_type(line,"-tsv_pitch","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			if (!strncmp("-tsv_diameter", line, strlen("-tsv_diameter"))) 
+			if (!strncmp("-tsv_diameter", line, strlen("-tsv_diameter")))
 			{
 			  tsv_diameter = scan_input_double_tsv_type(line,"-tsv_diameter","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			if (!strncmp("-tsv_length", line, strlen("-tsv_length"))) 
+			if (!strncmp("-tsv_length", line, strlen("-tsv_length")))
 			{
 			  tsv_length = scan_input_double_tsv_type(line,"-tsv_length","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			if (!strncmp("-tsv_dielec_thickness", line, strlen("-tsv_dielec_thickness"))) 
+			if (!strncmp("-tsv_dielec_thickness", line, strlen("-tsv_dielec_thickness")))
 			{
 			  tsv_dielec_thickness = scan_input_double_tsv_type(line,"-tsv_dielec_thickness","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			if (!strncmp("-tsv_contact_resistance", line, strlen("-tsv_contact_resistance"))) 
+			if (!strncmp("-tsv_contact_resistance", line, strlen("-tsv_contact_resistance")))
 			{
 			  tsv_contact_resistance = scan_input_double_tsv_type(line,"-tsv_contact_resistance","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			if (!strncmp("-tsv_depletion_width", line, strlen("-tsv_depletion_width"))) 
+			if (!strncmp("-tsv_depletion_width", line, strlen("-tsv_depletion_width")))
 			{
 			  tsv_depletion_width = scan_input_double_tsv_type(line,"-tsv_depletion_width","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			if (!strncmp("-tsv_liner_dielectric_cons", line, strlen("-tsv_liner_dielectric_cons"))) 
+			if (!strncmp("-tsv_liner_dielectric_cons", line, strlen("-tsv_liner_dielectric_cons")))
 			{
 			  tsv_liner_dielectric_constant = scan_input_double_tsv_type(line,"-tsv_liner_dielectric_cons","F/um", g_ip->ic_proj_type, tsv_type, g_ip->print_detail_debug);
 			  continue;
 			}
-			
+
 			tsv_length *= g_ip->num_die_3d;
 			if(iter==0)
 			{
@@ -881,7 +881,7 @@ void TechnologyParameter::assign_tsv(const string & in_file)
 				tsv_minimum_area_coarse = tsv_area(tsv_pitch);
 			}
 		}
-		
+
 		fclose(fp);
 	}
 }
@@ -892,20 +892,20 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	reset();
 	char line[5000];
 	//char temp_var[5000];
-	
+
 	uint32_t ram_cell_tech_type    = (is_tag) ? g_ip->tag_arr_ram_cell_tech_type : g_ip->data_arr_ram_cell_tech_type;
     uint32_t peri_global_tech_type = (is_tag) ? g_ip->tag_arr_peri_global_tech_type : g_ip->data_arr_peri_global_tech_type;
-	
-	int tech_lo, tech_hi; 
+
+	int tech_lo, tech_hi;
 	string in_file_lo, in_file_hi;
-	
+
 	double alpha; // used for technology interpolation
-	
-	
+
+
 
 
 	technology  = technology * 1000.0;  // in the unit of nm
-	
+
 	find_upper_and_lower_tech(technology, tech_lo,in_file_lo,tech_hi,in_file_hi);
 	// excluding some cases.
 	if((tech_lo==22) && (tech_hi==22))
@@ -916,7 +916,7 @@ void TechnologyParameter::init(double technology, bool is_tag)
 		   exit(0);
 		}
 	}
-	
+
 	if(tech_lo==tech_hi)
 	{
 		alpha = 1;
@@ -925,7 +925,7 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	{
 		alpha = (technology - tech_hi)/(tech_lo - tech_hi);
 	}
-	
+
 	fp = fopen(in_file_lo.c_str(), "r");
 	dram_cell_I_on = 0;
 	dram_cell_Vdd = 0;
@@ -935,52 +935,52 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	macro_layout_overhead = 0;
 	chip_layout_overhead =0;
 	sckt_co_eff = 0;
-	while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+	while(fscanf(fp, "%[^\n]\n", line) != EOF)
 	{
-		if (!strncmp("-dram_cell_I_on", line, strlen("-dram_cell_I_on"))) 
+		if (!strncmp("-dram_cell_I_on", line, strlen("-dram_cell_I_on")))
 		{
 		  dram_cell_I_on += alpha*scan_five_input_double(line,"-dram_cell_I_on","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_Vdd", line, strlen("-dram_cell_Vdd"))) 
+		if (!strncmp("-dram_cell_Vdd", line, strlen("-dram_cell_Vdd")))
 		{
 		  dram_cell_Vdd += alpha* scan_five_input_double(line,"-dram_cell_Vdd","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_C", line, strlen("-dram_cell_C"))) 
+		if (!strncmp("-dram_cell_C", line, strlen("-dram_cell_C")))
 		{
 		  dram_cell_C += alpha* scan_five_input_double(line,"-dram_cell_C","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_I_off_worst_case_len_temp", line, strlen("-dram_cell_I_off_worst_case_len_temp"))) 
+		if (!strncmp("-dram_cell_I_off_worst_case_len_temp", line, strlen("-dram_cell_I_off_worst_case_len_temp")))
 		{
 		  dram_cell_I_off_worst_case_len_temp += alpha* scan_five_input_double(line,"-dram_cell_I_off_worst_case_len_temp","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-vpp", line, strlen("-vpp"))) 
+		if (!strncmp("-vpp", line, strlen("-vpp")))
 		{
 		  vpp += alpha* scan_five_input_double(line,"-vpp","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-sckt_co_eff", line, strlen("-sckt_co_eff"))) 
+		if (!strncmp("-sckt_co_eff", line, strlen("-sckt_co_eff")))
 		{
 		  sckt_co_eff += alpha * scan_single_input_double(line,"-sckt_co_eff","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-chip_layout_overhead", line, strlen("-chip_layout_overhead"))) 
+		if (!strncmp("-chip_layout_overhead", line, strlen("-chip_layout_overhead")))
 		{
 		  chip_layout_overhead += alpha * scan_single_input_double(line,"-chip_layout_overhead","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-macro_layout_overhead", line, strlen("-macro_layout_overhead"))) 
+		if (!strncmp("-macro_layout_overhead", line, strlen("-macro_layout_overhead")))
 		{
 		  macro_layout_overhead += alpha * scan_single_input_double(line,"-macro_layout_overhead","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
 	}
 	fclose(fp);
-	
-	
+
+
 	DeviceType peri_global_lo, peri_global_hi;
 	peri_global_lo.assign(in_file_lo, peri_global_tech_type, g_ip->temp);
 	peri_global_hi.assign(in_file_hi, peri_global_tech_type, g_ip->temp);
@@ -988,13 +988,13 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	// in the original code some field of this devide has not been initialized/
 	// I make them 0 for compatibility.
 	///peri_global.I_on_p = 0.0;
-	
+
 	DeviceType sleep_tx_lo, sleep_tx_hi;
 	sleep_tx_lo.assign(in_file_lo, 1, g_ip->temp);
 	sleep_tx_hi.assign(in_file_hi, 1, g_ip->temp);
 	sleep_tx.interpolate(alpha, sleep_tx_lo, sleep_tx_hi);
-	
-	
+
+
 	DeviceType sram_cell_lo, sram_cell_hi;
 	sram_cell_lo.assign(in_file_lo, ram_cell_tech_type, g_ip->temp);
 	sram_cell_hi.assign(in_file_hi, ram_cell_tech_type, g_ip->temp);
@@ -1004,8 +1004,8 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	//sram_cell.Vdd=0.0;
 	///sram_cell.I_on_p=0.0;
 	///sram_cell.C_ox=0.0;
-	
-	
+
+
 	DeviceType dram_acc_lo, dram_acc_hi;
 	dram_acc_lo.assign(in_file_lo, (ram_cell_tech_type==comm_dram? ram_cell_tech_type:dram_cell_tech_flavor), g_ip->temp);
 	dram_acc_hi.assign(in_file_hi, (ram_cell_tech_type==comm_dram? ram_cell_tech_type:dram_cell_tech_flavor), g_ip->temp);
@@ -1053,7 +1053,7 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	dram_acc.C_ox = 0.0;
 	dram_acc.t_ox = 0.0;
 	dram_acc.n_to_p_eff_curr_drv_ratio = 0.0;
-	
+
 	DeviceType dram_wl_lo, dram_wl_hi;
 	dram_wl_lo.assign(in_file_lo, (ram_cell_tech_type==comm_dram? ram_cell_tech_type:dram_cell_tech_flavor), g_ip->temp);
 	dram_wl_hi.assign(in_file_hi, (ram_cell_tech_type==comm_dram? ram_cell_tech_type:dram_cell_tech_flavor), g_ip->temp);
@@ -1065,27 +1065,27 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	dram_wl.I_on_p = 0.0;
 	dram_wl.C_ox = 0.0;
 	dram_wl.t_ox = 0.0;
-	
+
 	// if ram_cell_tech_type is not 3 or 4 ( which means edram and comm-dram)
 	// then reset dram_wl dram_acc
-	
+
 	if(ram_cell_tech_type <3)
 	{
 		dram_acc.reset();
 		dram_wl.reset();
 	}
-	
+
 
 	DeviceType cam_cell_lo, cam_cell_hi;
 	cam_cell_lo.assign(in_file_lo, ram_cell_tech_type, g_ip->temp);
 	cam_cell_hi.assign(in_file_hi, ram_cell_tech_type, g_ip->temp);
 	cam_cell.interpolate(alpha, cam_cell_lo, cam_cell_hi);
-	
+
 	MemoryType dram_lo, dram_hi;
 	dram_lo.assign(in_file_lo, ram_cell_tech_type, 2); // cell_type = dram(2)
 	dram_hi.assign(in_file_hi, ram_cell_tech_type, 2);
 	dram.interpolate(alpha,dram_lo,dram_hi);
-	
+
 	MemoryType sram_lo, sram_hi;
 	sram_lo.assign(in_file_lo, ram_cell_tech_type, 0); // cell_type = sram(0)
 	sram_hi.assign(in_file_hi, ram_cell_tech_type, 0);
@@ -1100,77 +1100,77 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	cam_lo.assign(in_file_lo, ram_cell_tech_type, 1); // cell_type = sram(0)
 	cam_hi.assign(in_file_hi, ram_cell_tech_type, 1);
 	cam.interpolate(alpha,cam_lo,cam_hi);
-	
-	
+
+
 	ScalingFactor scaling_factor_lo, scaling_factor_hi;
 	scaling_factor_lo.assign(in_file_lo);
 	scaling_factor_hi.assign(in_file_hi);
 	scaling_factor.interpolate(alpha, scaling_factor_lo,scaling_factor_hi);
-	
+
 	//vcc_min
 	peri_global.Vcc_min   += (alpha * peri_global_lo.Vdd + (1-alpha)*peri_global_hi.Vdd) * 0.35;
 	sleep_tx.Vcc_min   += (alpha*sleep_tx_lo.Vdd+(1-alpha)*sleep_tx_hi.Vdd);
 	sram_cell.Vcc_min  += (alpha*sram_cell_lo.Vdd +(1-alpha)*sram_cell_hi.Vdd)* 0.65;
-	
-	
-	
+
+
+
 	fp = fopen(in_file_hi.c_str(), "r");
-	
-	while(fscanf(fp, "%[^\n]\n", line) != EOF) 
+
+	while(fscanf(fp, "%[^\n]\n", line) != EOF)
 	{
-		if (!strncmp("-sense_delay", line, strlen("-sense_delay"))) 
+		if (!strncmp("-sense_delay", line, strlen("-sense_delay")))
 		{
 		  sense_delay = scan_single_input_double(line,"-sense_delay","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-sense_dy_power", line, strlen("-sense_dy_power"))) 
+		if (!strncmp("-sense_dy_power", line, strlen("-sense_dy_power")))
 		{
 		  sense_dy_power = scan_single_input_double(line,"-sense_dy_power","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-sckt_co_eff", line, strlen("-sckt_co_eff"))) 
+		if (!strncmp("-sckt_co_eff", line, strlen("-sckt_co_eff")))
 		{
 		  sckt_co_eff += (1-alpha)* scan_single_input_double(line,"-sckt_co_eff","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-chip_layout_overhead", line, strlen("-chip_layout_overhead"))) 
+		if (!strncmp("-chip_layout_overhead", line, strlen("-chip_layout_overhead")))
 		{
 		  chip_layout_overhead += (1-alpha)* scan_single_input_double(line,"-chip_layout_overhead","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-macro_layout_overhead", line, strlen("-macro_layout_overhead"))) 
+		if (!strncmp("-macro_layout_overhead", line, strlen("-macro_layout_overhead")))
 		{
 		  macro_layout_overhead += (1-alpha)* scan_single_input_double(line,"-macro_layout_overhead","F/um", g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_I_on", line, strlen("-dram_cell_I_on"))) 
+		if (!strncmp("-dram_cell_I_on", line, strlen("-dram_cell_I_on")))
 		{
 		  dram_cell_I_on += (1-alpha) * scan_five_input_double(line,"-dram_cell_I_on","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_Vdd", line, strlen("-dram_cell_Vdd"))) 
+		if (!strncmp("-dram_cell_Vdd", line, strlen("-dram_cell_Vdd")))
 		{
 		  dram_cell_Vdd += (1-alpha) * scan_five_input_double(line,"-dram_cell_Vdd","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_C", line, strlen("-dram_cell_C"))) 
+		if (!strncmp("-dram_cell_C", line, strlen("-dram_cell_C")))
 		{
 		  dram_cell_C += (1-alpha) * scan_five_input_double(line,"-dram_cell_C","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-dram_cell_I_off_worst_case_len_temp", line, strlen("-dram_cell_I_off_worst_case_len_temp"))) 
+		if (!strncmp("-dram_cell_I_off_worst_case_len_temp", line, strlen("-dram_cell_I_off_worst_case_len_temp")))
 		{
 		  dram_cell_I_off_worst_case_len_temp += (1-alpha) * scan_five_input_double(line,"-dram_cell_I_off_worst_case_len_temp","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
-		if (!strncmp("-vpp", line, strlen("-vpp"))) 
+		if (!strncmp("-vpp", line, strlen("-vpp")))
 		{
 		  vpp += (1-alpha)* scan_five_input_double(line,"-vpp","F/um", ram_cell_tech_type, g_ip->print_detail_debug);
 		  continue;
 		}
 	}
 	fclose(fp);
-	
+
 	//Currently we are not modeling the resistance/capacitance of poly anywhere.
 	//Continuous function (or date have been processed) does not need linear interpolation
 	w_comp_inv_p1 = 12.5 * g_ip->F_sz_um;//this was 10 micron for the 0.8 micron process
@@ -1202,10 +1202,10 @@ void TechnologyParameter::init(double technology, bool is_tag)
 	w_nmos_b_mux  = 6 * min_w_nmos_;
 	w_nmos_sa_mux = 6 * min_w_nmos_;
 
-	
+
 	w_pmos_bl_precharge = 6 * pmos_to_nmos_sz_ratio() * min_w_nmos_;
 	w_pmos_bl_eq = pmos_to_nmos_sz_ratio() * min_w_nmos_;
-	
+
 
 	if (ram_cell_tech_type == comm_dram)
 	{
@@ -1217,41 +1217,41 @@ void TechnologyParameter::init(double technology, bool is_tag)
 		max_w_nmos_dec = g_tp.max_w_nmos_;
 		h_dec          = 4;  // in the unit of memory cell height
 	}
-  
-	
-    
-	double gmn_sense_amp_latch 
-	= (peri_global.Mobility_n / 2) * peri_global.C_ox 
+
+
+
+	double gmn_sense_amp_latch
+	= (peri_global.Mobility_n / 2) * peri_global.C_ox
 	* (w_sense_n / peri_global.l_elec) * peri_global.Vdsat;
 	double gmp_sense_amp_latch = peri_global.gmp_to_gmn_multiplier * gmn_sense_amp_latch;
 	gm_sense_amp_latch = gmn_sense_amp_latch + gmp_sense_amp_latch;
-	
-	
+
+
 	///cout << "wire_local " << g_ip->ic_proj_type << " " << ((ram_cell_tech_type == comm_dram)?3:0) << endl;
 	InterconnectType wire_local_lo, wire_local_hi;
 	wire_local_lo.assign(in_file_lo,g_ip->ic_proj_type,(ram_cell_tech_type == comm_dram)?3:0);
 	wire_local_hi.assign(in_file_hi,g_ip->ic_proj_type,(ram_cell_tech_type == comm_dram)?3:0);
 	wire_local.interpolate(alpha,wire_local_lo,wire_local_hi);
-	
-	
+
+
 	///cout << "wire_inside_mat " << g_ip->ic_proj_type << " " << g_ip->wire_is_mat_type << endl;
 	InterconnectType wire_inside_mat_lo, wire_inside_mat_hi;
 	wire_inside_mat_lo.assign(in_file_lo, g_ip->ic_proj_type, g_ip->wire_is_mat_type);
 	wire_inside_mat_hi.assign(in_file_hi, g_ip->ic_proj_type, g_ip->wire_is_mat_type);
 	wire_inside_mat.interpolate(alpha, wire_inside_mat_lo, wire_inside_mat_hi);
-	
+
 	///cout << "wire_outside_mat " << g_ip->ic_proj_type << " " << g_ip->wire_os_mat_type << endl;
 	InterconnectType wire_outside_mat_lo, wire_outside_mat_hi;
 	wire_outside_mat_lo.assign(in_file_lo, g_ip->ic_proj_type, g_ip->wire_os_mat_type);
 	wire_outside_mat_hi.assign(in_file_hi, g_ip->ic_proj_type, g_ip->wire_os_mat_type);
 	wire_outside_mat.interpolate(alpha, wire_outside_mat_lo, wire_outside_mat_hi);
-	
+
 	unit_len_wire_del = wire_inside_mat.R_per_um * wire_inside_mat.C_per_um / 2;
-	
+
 	// assign value for TSV parameters
-	
+
 	assign_tsv(in_file_hi);
-		
+
 	fringe_cap = wire_local_hi.fringe_cap; // fringe_cap is similar for all wire types.
 
 	double rd = tr_R_on(min_w_nmos_, NCH, 1);
@@ -1265,7 +1265,7 @@ void TechnologyParameter::init(double technology, bool is_tag)
 					gate_C(min_w_nmos_ * 4 * (1 + p_to_n_sizing_r), 0.0));
 	tf = rd * c_load;
 	FO4 = horowitz(0, tf, 0.5, 0.5, RISE);
-	
+
 }
 
 #define PRINT(A,X) cout << A << ": " << X << " , " << tech.X << endl
@@ -1279,7 +1279,7 @@ bool TechnologyParameter::isEqual(const TechnologyParameter& tech)
   if(!is_equal(unit_len_wire_del,tech.unit_len_wire_del)) {assert(false);} //wire_inside_mat
   if(!is_equal(FO4,tech.FO4)) {assert(false);} //fs
   if(!is_equal(kinv,tech.kinv)) {assert(false);} //fs
-  if(!is_equal(vpp,tech.vpp )) {assert(false);}//input 
+  if(!is_equal(vpp,tech.vpp )) {assert(false);}//input
   if(!is_equal(w_sense_en,tech.w_sense_en)) {assert(false);}//fs
   if(!is_equal(w_sense_n,tech.w_sense_n)) {assert(false);} //fs
   if(!is_equal(w_sense_p,tech.w_sense_p)) {assert(false);} //fs
@@ -1300,7 +1300,7 @@ bool TechnologyParameter::isEqual(const TechnologyParameter& tech)
   ///if(!is_equal(tsv_liner_dielectric_constant,tech.tsv_liner_dielectric_constant)) {assert(false);}
 
   //CACTI3DD TSV params
-  
+
   if(!is_equal(tsv_parasitic_capacitance_fine,tech.tsv_parasitic_capacitance_fine )) {PRINT("tsv_parasitic_capacitance_fine",tsv_parasitic_capacitance_fine); assert(false);}
   if(!is_equal(tsv_parasitic_resistance_fine,tech.tsv_parasitic_resistance_fine)) {assert(false);}
   if(!is_equal(tsv_minimum_area_fine,tech.tsv_minimum_area_fine)) {assert(false);}
@@ -1373,7 +1373,7 @@ bool TechnologyParameter::isEqual(const TechnologyParameter& tech)
   dram.isEqual(tech.dram);
   cout << "cam: \n";
   cam.isEqual(tech.cam);
-  
+
   return true;
 }
 //end ali
@@ -1416,13 +1416,13 @@ void /*TechnologyParameter::*/InterconnectType::display(uint32_t indent)
   cout << indent_str << "pitch    = " << setw(12) << pitch    << " um" << endl;
   cout << indent_str << "R_per_um = " << setw(12) << R_per_um << " ohm/um" << endl;
   cout << indent_str << "C_per_um = " << setw(12) << C_per_um << " F/um" << endl;
-  
+
   cout << indent_str << "horiz_dielectric_constant = " << setw(12) << horiz_dielectric_constant << " F/um" << endl;
   cout << indent_str << "vert_dielectric_constant = " << setw(12) << vert_dielectric_constant << " F/um" << endl;
   cout << indent_str << "aspect_ratio = " << setw(12) << aspect_ratio << " F/um" << endl;
   cout << indent_str << "miller_value = " << setw(12) << miller_value << " F/um" << endl;
   cout << indent_str << "ild_thickness = " << setw(12) << ild_thickness << " F/um" << endl;
-  
+
   cout << indent_str << "wire_width       = " << setw(12) << wire_width    << " um" << endl;
   cout << indent_str << "wire_thickness   = " << setw(12) << wire_thickness    << " um" << endl;
   cout << indent_str << "wire_spacing     = " << setw(12) << wire_spacing    << " um" << endl;
@@ -1459,7 +1459,7 @@ void /*TechnologyParameter::*/MemoryType::display(uint32_t indent) const
 void TechnologyParameter::display(uint32_t indent)
 {
   string indent_str(indent, ' ');
-  
+
   cout << indent_str << "ram_wl_stitching_overhead_ = " << setw(12) << ram_wl_stitching_overhead_ << " um" << endl;
   cout << indent_str << "min_w_nmos_                = " << setw(12) << min_w_nmos_                << " um" << endl;
   cout << indent_str << "max_w_nmos_                = " << setw(12) << max_w_nmos_                << " um" << endl;
@@ -1605,7 +1605,7 @@ DynamicParameter::init_CAM()
   if (tag_num_c_subarray > MAXSUBARRAYCOLS) return;
   num_r_subarray = tag_num_r_subarray; //FIXME: what about num_c_subarray?
 
-  num_subarrays = Ndwl * Ndbl; 
+  num_subarrays = Ndwl * Ndbl;
 
   // calculate cell dimensions
   cam_cell.h = g_tp.cam.b_h + 2 * wire_local.pitch * (g_ip->num_rw_ports-1 + g_ip->num_rd_ports + g_ip->num_wr_ports)
@@ -1725,7 +1725,7 @@ void
 DynamicParameter::init_FA()
 {
   const InterconnectType &wire_local = g_tp.wire_local;
-  //Disabling 3D model since a 3D stacked FA is never tested 
+  //Disabling 3D model since a 3D stacked FA is never tested
   assert(NUMBER_STACKED_DIE_LAYERS == 1);
   unsigned int capacity_per_die = g_ip->cache_sz;
 
@@ -1921,7 +1921,7 @@ DynamicParameter::calc_subarr_rc(unsigned int capacity_per_die) {
     else
     {
       tagbits = ADDRESS_BITS + EXTRA_TAG_BITS - _log2(capacity_per_die) +
-        _log2(g_ip->tag_assoc*2 - 1); 
+        _log2(g_ip->tag_assoc*2 - 1);
 
     }
 //    tagbits = (((tagbits + 3) >> 2) << 2); //FIXME: NAV: Why are we doing this?
@@ -1996,7 +1996,7 @@ DynamicParameter::DynamicParameter(
   const InterconnectType & wire_local = g_tp.wire_local;
   fully_assoc = (g_ip->fully_assoc) ? true : false;
 
-  if (pure_cam) 
+  if (pure_cam)
   {
     init_CAM();
     return;

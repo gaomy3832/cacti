@@ -47,14 +47,14 @@ class IOTechParam
 		IOTechParam(InputParameter *, Mem_IO_type io_type, int num_mem_dq, int mem_data_width, int num_dq, int connection, int num_loads, double freq) ;
 		~IOTechParam();
 		double num_mem_ca; /* Number of loads on the address bus
-			based on total number of memories in the channel.For 
+			based on total number of memories in the channel.For
 			registered or buffered configurations, the num_mem_dq and num_mem_ca is per buffer. */
 
 		double num_mem_clk; /* Number of loads on the clock as total
 			memories in the channel / number of clock lines available */
 
 		//Technology Parameters
-		// IO Supply voltage (V) 
+		// IO Supply voltage (V)
 		double vdd_io; /* Voltage swing on CLK/CLKB (V) (swing on the CLK pin if it
 			is differentially terminated) */
 		double v_sw_clk;
@@ -71,7 +71,7 @@ class IOTechParam
 			device load for CA per die) */
 		double i_bias; /* Bias current (mA) (includes bias current for the whole memory
 			bus due to RX Vref based receivers */
-		double i_leak; // Active leakage current per pin (nA) 
+		double i_leak; // Active leakage current per pin (nA)
 
 
 
@@ -158,8 +158,8 @@ class IOTechParam
        * can define any relationship between the termination, loading and
        * configuration parameters AND the t_jitter/k_noise parameters. */
 
-	    double k_noise_write_sen; 
-	    double k_noise_read_sen; 
+	    double k_noise_write_sen;
+	    double k_noise_read_sen;
 	    double k_noise_addr_sen;
 	    double t_jitter_setup_sen;
 	    double t_jitter_hold_sen;

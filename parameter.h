@@ -185,7 +185,7 @@ class TechnologyParameter
   double unit_len_wire_del; //wire_inside_mat
   double FO4; //fs
   double kinv; //fs
-  double vpp; //input 
+  double vpp; //input
   double w_sense_en;//fs
   double w_sense_n; //fs
   double w_sense_p; //fs
@@ -197,7 +197,7 @@ class TechnologyParameter
   double spacing_poly_to_contact;//fs
 
   //CACTI3DD TSV params
-  double tsv_parasitic_capacitance_fine; 
+  double tsv_parasitic_capacitance_fine;
   double tsv_parasitic_resistance_fine;
   double tsv_minimum_area_fine;
 
@@ -329,21 +329,21 @@ class DeviceType
 	double n_to_p_eff_curr_drv_ratio;
 	double long_channel_leakage_reduction;
 	double Mobility_n;
-	
+
 	// auxilary parameters
 	double Vdsat;
 	double gmp_to_gmn_multiplier;
-	
-	
+
+
 	DeviceType(): C_g_ideal(0), C_fringe(0), C_overlap(0), C_junc(0),
 				  C_junc_sidewall(0), l_phy(0), l_elec(0), R_nch_on(0), R_pch_on(0),
 				  Vdd(0), Vth(0), Vcc_min(0),
 				  I_on_n(0), I_on_p(0), I_off_n(0), I_off_p(0),I_g_on_n(0),I_g_on_p(0),
 				  C_ox(0), t_ox(0), n_to_p_eff_curr_drv_ratio(0), long_channel_leakage_reduction(0),
 				  Mobility_n(0) { reset();};
-				  
-	void assign(const string & in_file,  int tech_flavor, unsigned int temp);			
-	void interpolate(double alpha, const DeviceType& dev1, const DeviceType& dev2);  
+
+	void assign(const string & in_file,  int tech_flavor, unsigned int temp);
+	void interpolate(double alpha, const DeviceType& dev1, const DeviceType& dev2);
 	void reset()
 	{
 	 C_g_ideal=0;
@@ -369,7 +369,7 @@ class DeviceType
 	 n_to_p_eff_curr_drv_ratio=0;
 	 long_channel_leakage_reduction=0;
 	 Mobility_n=0;
-	
+
 	// auxilary parameters
 	 Vdsat=0;
 	 gmp_to_gmn_multiplier=0;
@@ -399,7 +399,7 @@ class InterconnectType
 	double dishing_thickness;
 	double alpha_scatter;
 	double fringe_cap;
-	
+
 
 	InterconnectType(): pitch(0), R_per_um(0), C_per_um(0) { reset(); };
 
@@ -422,10 +422,10 @@ class InterconnectType
 	     dishing_thickness=0;
 	     alpha_scatter=0;
 	     fringe_cap=0;
-	
+
 	}
 	void assign(const string & in_file, int projection_type, int tech_flavor);
-	void interpolate(double alpha, const InterconnectType & inter1, const InterconnectType & inter2); 
+	void interpolate(double alpha, const InterconnectType & inter1, const InterconnectType & inter2);
 	void display(uint32_t indent = 0);
 	bool isEqual(const InterconnectType & inter);
 };
@@ -440,11 +440,11 @@ class MemoryType
 	double cell_nmos_w;
 	double Vbitpre;
 	double Vbitfloating;//voltage when floating bitline is supported
-	
+
 	// needed to calculate b_w b_h
 	double area_cell;
 	double asp_ratio_cell;
-	
+
 	MemoryType(){reset();}
 	void reset()
 	{
@@ -456,8 +456,8 @@ class MemoryType
 	     Vbitpre=0;
 	     Vbitfloating=0;
 	}
-	void assign(const string & in_file, int tech_flavor, int cell_type); // sram(0),cam(1),dram(2)			
-	void interpolate(double alpha, const MemoryType& dev1, const MemoryType& dev2); 
+	void assign(const string & in_file, int tech_flavor, int cell_type); // sram(0),cam(1),dram(2)
+	void interpolate(double alpha, const MemoryType& dev1, const MemoryType& dev2);
 	void display(uint32_t indent = 0) const;
 	bool isEqual(const MemoryType & mem);
 };
@@ -478,8 +478,8 @@ class ScalingFactor
 	   core_tx_density=0;
 	   long_channel_leakage_reduction=0;
 	}
-	void assign(const string & in_file);			
-	void interpolate(double alpha, const ScalingFactor& dev1, const ScalingFactor& dev2); 
+	void assign(const string & in_file);
+	void interpolate(double alpha, const ScalingFactor& dev1, const ScalingFactor& dev2);
 	void display(uint32_t indent = 0);
 	bool isEqual(const ScalingFactor & scal);
 };
@@ -495,7 +495,7 @@ class TechnologyParameter
   double unit_len_wire_del; //wire_inside_mat
   double FO4; //fs
   double kinv; //fs
-  double vpp; //input 
+  double vpp; //input
   double w_sense_en;//fs
   double w_sense_n; //fs
   double w_sense_p; //fs
@@ -516,8 +516,8 @@ class TechnologyParameter
   double tsv_liner_dielectric_constant;
 
   //CACTI3DD TSV params
-  
-  double tsv_parasitic_capacitance_fine; 
+
+  double tsv_parasitic_capacitance_fine;
   double tsv_parasitic_resistance_fine;
   double tsv_minimum_area_fine;
 
@@ -580,8 +580,8 @@ class TechnologyParameter
 
   void display(uint32_t indent = 0);
   bool isEqual(const TechnologyParameter & tech);
-  
-  
+
+
   void find_upper_and_lower_tech(double technology, int &tech_lo, string& in_file_lo, int &tech_hi, string& in_file_hi);
   void assign_tsv(const string & in_file);
   void init(double technology, bool is_tag);
@@ -598,7 +598,7 @@ class TechnologyParameter
        unit_len_wire_del =0; //wire_inside_mat
        FO4 =0; //fs
        kinv =0; //fs
-       vpp =0; //input 
+       vpp =0; //input
        w_sense_en =0;//fs
        w_sense_n =0; //fs
        w_sense_p =0; //fs
@@ -619,8 +619,8 @@ class TechnologyParameter
        tsv_liner_dielectric_constant =0;
 
   //CACTI3DD TSV params
-  
-       tsv_parasitic_capacitance_fine =0; 
+
+       tsv_parasitic_capacitance_fine =0;
        tsv_parasitic_resistance_fine =0;
        tsv_minimum_area_fine =0;
 
@@ -680,7 +680,7 @@ class TechnologyParameter
     dram.reset();
     cam.reset();
 
-    
+
   }
 };
 
@@ -705,7 +705,7 @@ class DynamicParameter
     int Ndsam_lev_1;
     int Ndsam_lev_2;
     Wire_type wtype; // merge from cacti-7 code to cacti3d code.
-    
+
     int number_addr_bits_mat;             // per port
     int number_subbanks_decode;           // per_port
     int num_di_b_bank_per_port;

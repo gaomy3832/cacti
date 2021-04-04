@@ -287,13 +287,13 @@ inline void set_sppm(
 		sppv[2]= c;
 }
 
-//ali 
+//ali
 double wire_resistance(double resistivity, double wire_width, double wire_thickness,
     double barrier_thickness, double dishing_thickness, double alpha_scatter);
-   
+
 double wire_capacitance(double wire_width, double wire_thickness, double wire_spacing,
     double ild_thickness, double miller_value, double horiz_dielectric_constant,
-    double vert_dielectric_constant, double fringe_cap);    
+    double vert_dielectric_constant, double fringe_cap);
 
 double tsv_resistance(double resistivity, double tsv_len, double tsv_diam, double tsv_contact_resistance);
 

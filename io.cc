@@ -536,11 +536,11 @@ InputParameter::parse_cfg(const string & in_file)
       }
       else if (!(strncmp("fullswing", temp_var, strlen("fullswing")))) {
         force_wiretype = 1;
-        wt = Full_swing;        
+        wt = Full_swing;
       }
       else if (!(strncmp("lowswing", temp_var, strlen("lowswing")))) {
         force_wiretype = 1;
-        wt = Low_swing;        
+        wt = Low_swing;
       }
       else {
         cout << "Unknown wire type!\n";
@@ -700,30 +700,30 @@ InputParameter::parse_cfg(const string & in_file)
     }
 
 	// Parameters related to off-chip interconnect
-    
+
     if(!strncmp("-dram type", line, strlen("-dram type"))) {
       sscanf(line, "-dram type%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("DDR3", temp_var, strlen("DDR3"))) 
+      if (!strncmp("DDR3", temp_var, strlen("DDR3")))
       {
 		  io_type = DDR3;
 	  }
-	  else if(!strncmp("DDR4", temp_var, strlen("DDR4"))) 
+	  else if(!strncmp("DDR4", temp_var, strlen("DDR4")))
 	  {
 		  io_type = DDR4;
 	  }
-	  else if(!strncmp("LPDDR2", temp_var, strlen("LPDDR2"))) 
+	  else if(!strncmp("LPDDR2", temp_var, strlen("LPDDR2")))
 	  {
 		  io_type = LPDDR2;
 	  }
-	  else if(!strncmp("WideIO", temp_var, strlen("WideIO"))) 
+	  else if(!strncmp("WideIO", temp_var, strlen("WideIO")))
 	  {
 		  io_type = WideIO;
 	  }
-	  else if(!strncmp("Low_Swing_Diff", temp_var, strlen("Low_Swing_Diff"))) 
+	  else if(!strncmp("Low_Swing_Diff", temp_var, strlen("Low_Swing_Diff")))
 	  {
 		  io_type = Low_Swing_Diff;
 	  }
-	   else if(!strncmp("Serial", temp_var, strlen("Serial"))) 
+	   else if(!strncmp("Serial", temp_var, strlen("Serial")))
 	  {
 		  io_type = Serial;
 	  }
@@ -736,19 +736,19 @@ InputParameter::parse_cfg(const string & in_file)
     }
     if(!strncmp("-io state", line, strlen("-io state"))) {
       sscanf(line, "-io state%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("READ", temp_var, strlen("READ"))) 
+      if (!strncmp("READ", temp_var, strlen("READ")))
       {
 		  iostate = READ;
 	  }
-	  else if(!strncmp("WRITE", temp_var, strlen("WRITE"))) 
+	  else if(!strncmp("WRITE", temp_var, strlen("WRITE")))
 	  {
 		  iostate = WRITE;
 	  }
-	  else if(!strncmp("IDLE", temp_var, strlen("IDLE"))) 
+	  else if(!strncmp("IDLE", temp_var, strlen("IDLE")))
 	  {
 		  iostate = IDLE;
 	  }
-	  else if(!strncmp("SLEEP", temp_var, strlen("SLEEP"))) 
+	  else if(!strncmp("SLEEP", temp_var, strlen("SLEEP")))
 	  {
 		  iostate = SLEEP;
 	  }
@@ -764,15 +764,15 @@ InputParameter::parse_cfg(const string & in_file)
     }
     if(!strncmp("-dram ecc", line, strlen("-dram ecc"))) {
 	  sscanf(line, "-dram ecc%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("NO_ECC", temp_var, strlen("NO_ECC"))) 
+      if (!strncmp("NO_ECC", temp_var, strlen("NO_ECC")))
       {
 		  dram_ecc = NO_ECC;
 	  }
-	  else if(!strncmp("SECDED", temp_var, strlen("SECDED"))) 
+	  else if(!strncmp("SECDED", temp_var, strlen("SECDED")))
 	  {
 		  dram_ecc = SECDED;
 	  }
-	  else if(!strncmp("CHIP_KILL", temp_var, strlen("CHIP_KILL"))) 
+	  else if(!strncmp("CHIP_KILL", temp_var, strlen("CHIP_KILL")))
 	  {
 		  dram_ecc = CHIP_KILL;
 	  }
@@ -785,15 +785,15 @@ InputParameter::parse_cfg(const string & in_file)
     }
     if(!strncmp("-dram dimm", line, strlen("-dram dimm"))) {
 	  sscanf(line, "-dram dimm%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("UDIMM", temp_var, strlen("UDIMM"))) 
+      if (!strncmp("UDIMM", temp_var, strlen("UDIMM")))
       {
 		  dram_dimm = UDIMM;
 	  }
-	  else if(!strncmp("RDIMM", temp_var, strlen("RDIMM"))) 
+	  else if(!strncmp("RDIMM", temp_var, strlen("RDIMM")))
 	  {
 		  dram_dimm = RDIMM;
 	  }
-	  else if(!strncmp("LRDIMM", temp_var, strlen("LRDIMM"))) 
+	  else if(!strncmp("LRDIMM", temp_var, strlen("LRDIMM")))
 	  {
 		  dram_dimm = LRDIMM;
 	  }
@@ -804,8 +804,8 @@ InputParameter::parse_cfg(const string & in_file)
 	  }
       //sscanf(line, "-dram_ecc \"%c\"\n", &(dram_ecc));
     }
-    
-   
+
+
     if(!strncmp("-bus_bw", line, strlen("-bus_bw"))) {
       sscanf(line, "-bus_bw %lf", &(bus_bw));
     }
@@ -847,9 +847,9 @@ InputParameter::parse_cfg(const string & in_file)
     if(!strncmp("-mem_data_width", line, strlen("-mem_data_width"))) {
       sscanf(line, "-mem_data_width %d", &mem_data_width);
     }
-	
+
 	// added just for memcad
-	
+
 	if(!strncmp("-num_bobs", line, strlen("-num_bobs"))) {
       sscanf(line, "-num_bobs %d", &num_bobs);
     }
@@ -861,15 +861,15 @@ InputParameter::parse_cfg(const string & in_file)
     }
 	if(!strncmp("-first metric", line, strlen("-first metric"))) {
 	  sscanf(line, "-first metric%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("Cost", temp_var, strlen("Cost"))) 
+      if (!strncmp("Cost", temp_var, strlen("Cost")))
       {
 		  first_metric = Cost;
 	  }
-	  else if(!strncmp("Energy", temp_var, strlen("Energy"))) 
+	  else if(!strncmp("Energy", temp_var, strlen("Energy")))
 	  {
 		  first_metric = Energy;
 	  }
-	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth"))) 
+	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
 	  {
 		  first_metric = Bandwidth;
 	  }
@@ -878,19 +878,19 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for first metric!" << endl;
 		  exit(1);
 	  }
-     
+
     }
     if(!strncmp("-second metric", line, strlen("-second metric"))) {
 	  sscanf(line, "-second metric%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("Cost", temp_var, strlen("Cost"))) 
+      if (!strncmp("Cost", temp_var, strlen("Cost")))
       {
 		  second_metric = Cost;
 	  }
-	  else if(!strncmp("Energy", temp_var, strlen("Energy"))) 
+	  else if(!strncmp("Energy", temp_var, strlen("Energy")))
 	  {
 		  second_metric = Energy;
 	  }
-	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth"))) 
+	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
 	  {
 		  second_metric = Bandwidth;
 	  }
@@ -899,19 +899,19 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for second metric!" << endl;
 		  exit(1);
 	  }
-     
+
     }
     if(!strncmp("-third metric", line, strlen("-third metric"))) {
 	  sscanf(line, "-third metric%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("Cost", temp_var, strlen("Cost"))) 
+      if (!strncmp("Cost", temp_var, strlen("Cost")))
       {
 		  third_metric = Cost;
 	  }
-	  else if(!strncmp("Energy", temp_var, strlen("Energy"))) 
+	  else if(!strncmp("Energy", temp_var, strlen("Energy")))
 	  {
 		  third_metric = Energy;
 	  }
-	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth"))) 
+	  else if(!strncmp("Bandwidth", temp_var, strlen("Bandwidth")))
 	  {
 		  third_metric = Bandwidth;
 	  }
@@ -920,23 +920,23 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for third metric!" << endl;
 		  exit(1);
 	  }
-     
+
     }
 	if(!strncmp("-DIMM model", line, strlen("-DIMM model"))) {
 	  sscanf(line, "-DIMM model%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("JUST_UDIMM", temp_var, strlen("JUST_UDIMM"))) 
+      if (!strncmp("JUST_UDIMM", temp_var, strlen("JUST_UDIMM")))
       {
 		  dimm_model = JUST_UDIMM;
 	  }
-	  else if(!strncmp("JUST_RDIMM", temp_var, strlen("JUST_RDIMM"))) 
+	  else if(!strncmp("JUST_RDIMM", temp_var, strlen("JUST_RDIMM")))
 	  {
 		  dimm_model = JUST_RDIMM;
 	  }
-	  else if(!strncmp("JUST_LRDIMM", temp_var, strlen("JUST_LRDIMM"))) 
+	  else if(!strncmp("JUST_LRDIMM", temp_var, strlen("JUST_LRDIMM")))
 	  {
 		  dimm_model = JUST_LRDIMM;
 	  }
-	  else if(!strncmp("ALL", temp_var, strlen("ALL"))) 
+	  else if(!strncmp("ALL", temp_var, strlen("ALL")))
 	  {
 		  dimm_model = ALL;
 	  }
@@ -945,15 +945,15 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for DIMM model!" << endl;
 		  exit(1);
 	  }
-     
+
     }
 	if(!strncmp("-Low Power Permitted", line, strlen("-Low Power Permitted"))) {
 	  sscanf(line, "-Low Power Permitted%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("T", temp_var, strlen("T"))) 
+      if (!strncmp("T", temp_var, strlen("T")))
       {
 		  low_power_permitted = true;
 	  }
-	  else if(!strncmp("F", temp_var, strlen("F"))) 
+	  else if(!strncmp("F", temp_var, strlen("F")))
 	  {
 		  low_power_permitted = false;
 	  }
@@ -962,7 +962,7 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for Low Power Permitted!" << endl;
 		  exit(1);
 	  }
-     
+
     }
 	if(!strncmp("-load", line, strlen("-load"))) {
       sscanf(line, "-load %lf", &(load));
@@ -975,11 +975,11 @@ InputParameter::parse_cfg(const string & in_file)
     }
 	if(!strncmp("-same_bw_in_bob", line, strlen("-same_bw_in_bob"))) {
 	  sscanf(line, "-same_bw_in_bob%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("T", temp_var, strlen("T"))) 
+      if (!strncmp("T", temp_var, strlen("T")))
       {
 		  same_bw_in_bob = true;
 	  }
-	  else if(!strncmp("F", temp_var, strlen("F"))) 
+	  else if(!strncmp("F", temp_var, strlen("F")))
 	  {
 		  same_bw_in_bob = false;
 	  }
@@ -988,15 +988,15 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for same_bw_in_bob!" << endl;
 		  exit(1);
 	  }
-     
+
     }
 	if(!strncmp("-mirror_in_bob", line, strlen("-mirror_in_bob"))) {
 	  sscanf(line, "-mirror_in_bob%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("T", temp_var, strlen("T"))) 
+      if (!strncmp("T", temp_var, strlen("T")))
       {
 		  mirror_in_bob = true;
 	  }
-	  else if(!strncmp("F", temp_var, strlen("F"))) 
+	  else if(!strncmp("F", temp_var, strlen("F")))
 	  {
 		  mirror_in_bob = false;
 	  }
@@ -1005,15 +1005,15 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for mirror_in_bob!" << endl;
 		  exit(1);
 	  }
-     
+
     }
     if(!strncmp("-total_power", line, strlen("-total_power"))) {
 	  sscanf(line, "-total_power%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("T", temp_var, strlen("T"))) 
+      if (!strncmp("T", temp_var, strlen("T")))
       {
 		  total_power = true;
 	  }
-	  else if(!strncmp("F", temp_var, strlen("F"))) 
+	  else if(!strncmp("F", temp_var, strlen("F")))
 	  {
 		  total_power = false;
 	  }
@@ -1022,15 +1022,15 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for total_power!" << endl;
 		  exit(1);
 	  }
-     
+
     }
     if(!strncmp("-verbose", line, strlen("-verbose"))) {
 	  sscanf(line, "-verbose%[^\"]\"%[^\"]\"", jk, temp_var);
-      if (!strncmp("T", temp_var, strlen("T"))) 
+      if (!strncmp("T", temp_var, strlen("T")))
       {
 		  verbose = true;
 	  }
-	  else if(!strncmp("F", temp_var, strlen("F"))) 
+	  else if(!strncmp("F", temp_var, strlen("F")))
 	  {
 		  verbose = false;
 	  }
@@ -1039,12 +1039,12 @@ InputParameter::parse_cfg(const string & in_file)
 		  cout << "Invalid Input for same_bw_in_bob!" << endl;
 		  exit(1);
 	  }
-     
+
     }
-	
-	
-	
-	
+
+
+
+
   }
   rpters_in_htree = true;
   fclose(fp);
@@ -1068,11 +1068,11 @@ InputParameter::display_ip()
   cout << "Technology                    : " << F_sz_um << endl;
   cout << "Temperature                   : " << temp << endl;
   cout << "Tag size                      : " << tag_w << endl;
-  if (is_cache) 
+  if (is_cache)
   {
     cout << "array type                    : " << "Cache" << endl;
   }
-  if (pure_ram) 
+  if (pure_ram)
   {
     cout << "array type                    : " << "Scratch RAM" << endl;
   }
@@ -1137,7 +1137,7 @@ InputParameter::display_ip()
 	  case(IDLE): cout << "IDLE" << endl; break;
 	  case(SLEEP): cout << "SLEEP" << endl; break;
 	  default: assert(false);
-  } 
+  }
   cout << "dram_ecc                      : " ;
   switch(dram_ecc)
   {
@@ -1145,7 +1145,7 @@ InputParameter::display_ip()
 	  case(SECDED): cout << "SECDED" << endl; break;
 	  case(CHIP_KILL): cout << "CHIP_KILL" << endl; break;
 	  default: assert(false);
-  } 
+  }
   cout << "io_type                     : " ;
   switch(io_type)
   {
@@ -1155,7 +1155,7 @@ InputParameter::display_ip()
 	  case(WideIO): cout << "WideIO" << endl; break;
 	  case(Low_Swing_Diff): cout << "Low_Swing_Diff" << endl; break;
 	  default: assert(false);
-  } 	
+  }
   cout << "dram_dimm                      : " ;
   switch(dram_dimm)
   {
@@ -1163,9 +1163,9 @@ InputParameter::display_ip()
 	  case(RDIMM): cout << "RDIMM" << endl; break;
 	  case(LRDIMM): cout << "LRDIMM" << endl; break;
 	  default: assert(false);
-  } 
- 
-	
+  }
+
+
 
 }
 
@@ -1232,7 +1232,7 @@ uca_org_t cacti_interface(const string & infile_name)
 	  exit(0);
  // if (g_ip->print_input_args)
     g_ip->display_ip();
-	
+
 
   init_tech_params(g_ip->F_sz_um, false);
   Wire winit; // Do not delete this line. It initializes wires.
@@ -1284,28 +1284,28 @@ uca_org_t cacti_interface(const string & infile_name)
     Nuca n(&g_tp.peri_global);
     n.sim_nuca();
   }
-  
+
   //g_ip->display_ip();
-	
-	
-   
-  IOTechParam iot(g_ip, g_ip->io_type, g_ip->num_mem_dq, g_ip->mem_data_width, g_ip->num_dq,g_ip->dram_dimm, 1,g_ip->bus_freq ); 
-  Extio testextio(&iot);  
+
+
+
+  IOTechParam iot(g_ip, g_ip->io_type, g_ip->num_mem_dq, g_ip->mem_data_width, g_ip->num_dq,g_ip->dram_dimm, 1,g_ip->bus_freq );
+  Extio testextio(&iot);
   testextio.extio_area();
   testextio.extio_eye();
   testextio.extio_power_dynamic();
   testextio.extio_power_phy();
-  testextio.extio_power_term();	   
-  
- 
+  testextio.extio_power_term();
+
+
   /*
   int freq[][4]={{400,533,667,800},{800,933,1066,1200}};
-	
+
   Mem_IO_type types[2]={DDR3,DDR4};
-    
+
   int max_load[3]={3,3,8};
-    
-  for(int j=0;j<1;j++)  
+
+  for(int j=0;j<1;j++)
   {
 	  for(int connection=0;connection<3;connection++)
 	  {
@@ -1313,26 +1313,26 @@ uca_org_t cacti_interface(const string & infile_name)
 		  {
 			  for(int load=1;load<=max_load[connection];load++)
 			  {
-				  IOTechParam iot(g_ip, types[j], load, 8, 72, connection, load, freq[j][frq]); 
-				  Extio testextio(&iot);  
+				  IOTechParam iot(g_ip, types[j], load, 8, 72, connection, load, freq[j][frq]);
+				  Extio testextio(&iot);
 				 // testextio.extio_area();
 				 // testextio.extio_eye();
 				  testextio.extio_power_dynamic();
 				  testextio.extio_power_phy();
-				  testextio.extio_power_term();	 
-				 
+				  testextio.extio_power_term();
+
 			  }
 			  cout << endl;
 		  }
 		  cout << endl;
 	  }
 	   cout << endl;
-  } 
-  */ 
+  }
+  */
 
   ///double total_io_p, total_phy_p, total_io_area, total_vmargin, total_tmargin;
   //testextio.extio_power_area_timing(total_io_p, total_phy_p, total_io_area, total_vmargin, total_tmargin);
-  
+
   solve(&fin_res);
 
   output_UCA(&fin_res);

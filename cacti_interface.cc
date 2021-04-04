@@ -66,7 +66,7 @@ bool mem_array::lt(const mem_array * m1, const mem_array * m2)
 
 
 
-void uca_org_t::find_delay() 
+void uca_org_t::find_delay()
 {
   mem_array * data_arr = data_array2;
   mem_array * tag_arr  = tag_array2;

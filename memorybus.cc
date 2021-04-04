@@ -210,7 +210,7 @@ void Memorybus::Network()
     }
 
 	// ************************************* Wire Interconnections *****************************************
-    double center_stripe_length = 0.5 * double(num_banks_hor_dir) * height_bank; 
+    double center_stripe_length = 0.5 * double(num_banks_hor_dir) * height_bank;
 	if(g_ip->print_detail_debug)
 	{
 		cout << "memorybus.cc: center_stripe wire length = " << center_stripe_length << " um"<< endl;

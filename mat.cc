@@ -258,8 +258,8 @@ Mat::Mat(const DynamicParameter & dyn_p)
   sa_mux_lev_1_predec = new Predec(sa_mux_lev_1_predec_blk_drv1, sa_mux_lev_1_predec_blk_drv2);
   sa_mux_lev_2_predec = new Predec(sa_mux_lev_2_predec_blk_drv1, sa_mux_lev_2_predec_blk_drv2);
 
-  subarray_out_wire   = new Wire(dp.wtype, g_ip->cl_vertical?subarray.area.w:subarray.area.h);//Bug should be subarray.area.w Owen and 
-  //subarray_out_wire   = new Wire(g_ip->wt, g_ip->cl_vertical?subarray.area.w:subarray.area.h);//Bug should be subarray.area.w Owen and 
+  subarray_out_wire   = new Wire(dp.wtype, g_ip->cl_vertical?subarray.area.w:subarray.area.h);//Bug should be subarray.area.w Owen and
+  //subarray_out_wire   = new Wire(g_ip->wt, g_ip->cl_vertical?subarray.area.w:subarray.area.h);//Bug should be subarray.area.w Owen and
 
   double driver_c_gate_load;
   double driver_c_wire_load;
@@ -311,7 +311,7 @@ Mat::Mat(const DynamicParameter & dyn_p)
   /* This means the subarray drivers are along the vertical direction since / subarray.area.get_w() is used;
    * so the subarray_out_wire (actually the drivers) under the subarray and along the x direction
    * So as mentioned above @ line 271
-   * subarray_out_wire   = new Wire(g_ip->wt, subarray.area.h);//Bug should be subarray.area.w Owen and 
+   * subarray_out_wire   = new Wire(g_ip->wt, subarray.area.h);//Bug should be subarray.area.w Owen and
    * change the out_wire (driver to along y direction need carefully rethinking
    * rather than just simply switch w with h )
    * */
@@ -745,7 +745,7 @@ double Mat::compute_cam_delay(double inrisetime)
     Wfadecdrive2n, Wfadecdrive2p, Wfadecdriven, Wfadecdrivep, Wfaprechn, Wfaprechp,
     Wdummyn, Wdummyinvn, Wdummyinvp, Wfainvn, Wfainvp, Waddrnandn, Waddrnandp,
     Wfanandn, Wfanandp, Wfanorn, Wfanorp, Wdecnandn, Wdecnandp, W_hit_miss_n, W_hit_miss_p;
-  **/  
+  **/
 
   double c_matchline_metal, r_matchline_metal, c_searchline_metal, r_searchline_metal,  dynSearchEng;
   int Htagbits;

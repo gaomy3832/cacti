@@ -104,7 +104,7 @@ double Component::compute_gate_area(
 
   w_folded_pmos  = (h_tr_region - g_tp.MIN_GAP_BET_P_AND_N_DIFFS) * ratio_p_to_n;
   w_folded_nmos  = (h_tr_region - g_tp.MIN_GAP_BET_P_AND_N_DIFFS) * (1 - ratio_p_to_n);
-  
+
   assert(w_folded_pmos > 0);
 
   num_folded_pmos = (int) (ceil(w_pmos / w_folded_pmos));

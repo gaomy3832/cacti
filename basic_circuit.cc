@@ -54,7 +54,7 @@ uint32_t _log2(uint64_t num)
     log2++;
   }
 
-  return log2; 
+  return log2;
 }
 
 

@@ -171,7 +171,7 @@ const double rtt2_wr_host_dimm_ddr3[3][4]=
 	{40,30,30,20}//8
 };
 
- 
+
 
  const double rtt1_wr_host_dimm_ddr4[3][4]=
 {
@@ -242,7 +242,7 @@ int IOTechParam::frequnecy_index(Mem_IO_type type)
 		else if(frequency<=533)
 			return 1;
 		else if(frequency<=667)
-			return 2;	
+			return 2;
 		else
 			return 3;
 	}
@@ -253,7 +253,7 @@ int IOTechParam::frequnecy_index(Mem_IO_type type)
 		else if(frequency<=933)
 			return 1;
 		else if(frequency<=1066)
-			return 2;	
+			return 2;
 		else
 			return 3;
 	}
@@ -266,11 +266,11 @@ int IOTechParam::frequnecy_index(Mem_IO_type type)
 
 
 
-IOTechParam::IOTechParam(InputParameter * g_ip) 
+IOTechParam::IOTechParam(InputParameter * g_ip)
 {
-  num_mem_ca  = g_ip->num_mem_dq * (g_ip->num_dq/g_ip->mem_data_width); 
+  num_mem_ca  = g_ip->num_mem_dq * (g_ip->num_dq/g_ip->mem_data_width);
   num_mem_clk =  g_ip->num_mem_dq *
-                (g_ip->num_dq/g_ip->mem_data_width)/(g_ip->num_clk/2); 
+                (g_ip->num_dq/g_ip->mem_data_width)/(g_ip->num_clk/2);
 
 
   if (g_ip->io_type == LPDDR2) { //LPDDR
@@ -280,64 +280,64 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
     v_sw_clk =  1;
 
     // Loading paramters
-    c_int = 1.5; 
-    c_tx = 2;  
+    c_int = 1.5;
+    c_tx = 2;
     c_data = 1.5;
     c_addr = 0.75;
-    i_bias =  5; 
-    i_leak = 1000; 
+    i_bias =  5;
+    i_leak = 1000;
 
     // IO Area coefficients
 
-    ioarea_c = 0.01; 
-    ioarea_k0 = 0.5; 
-    ioarea_k1 = 0.00008; 
-    ioarea_k2 = 0.000000030; 
-    ioarea_k3 = 0.000000000008; 
+    ioarea_c = 0.01;
+    ioarea_k0 = 0.5;
+    ioarea_k1 = 0.00008;
+    ioarea_k2 = 0.000000030;
+    ioarea_k3 = 0.000000000008;
 
     // Timing parameters (ps)
-    t_ds = 250; 
+    t_ds = 250;
     t_is = 250;
     t_dh = 250;
-    t_ih = 250; 
+    t_ih = 250;
     t_dcd_soc = 50;
-    t_dcd_dram = 50; 
+    t_dcd_dram = 50;
     t_error_soc = 50;
     t_skew_setup = 50;
     t_skew_hold = 50;
-    t_dqsq = 250; 
+    t_dqsq = 250;
     t_soc_setup = 50;
     t_soc_hold = 50;
-    t_jitter_setup = 200; 
-    t_jitter_hold = 200; 
+    t_jitter_setup = 200;
+    t_jitter_hold = 200;
     t_jitter_addr_setup = 200;
     t_jitter_addr_hold = 200;
-    t_cor_margin = 40; 
+    t_cor_margin = 40;
 
-    //External IO Configuration Parameters 
+    //External IO Configuration Parameters
 
     r_diff_term = 480;
-    rtt1_dq_read = 100000; 
-    rtt2_dq_read = 100000; 
-    rtt1_dq_write = 100000; 
-    rtt2_dq_write = 100000; 
-    rtt_ca = 240; 
-    rs1_dq = 0; 
-    rs2_dq = 0; 
-    r_stub_ca = 0; 
-    r_on = 50; 
+    rtt1_dq_read = 100000;
+    rtt2_dq_read = 100000;
+    rtt1_dq_write = 100000;
+    rtt2_dq_write = 100000;
+    rtt_ca = 240;
+    rs1_dq = 0;
+    rs2_dq = 0;
+    r_stub_ca = 0;
+    r_on = 50;
     r_on_ca = 50;
     z0 = 50;
     t_flight = 0.5;
     t_flight_ca = 0.5;
 
     // Voltage noise coeffecients
-    k_noise_write = 0.2; 
-    k_noise_read = 0.2; 
-    k_noise_addr = 0.2; 
-    v_noise_independent_write = 0.1; 
-    v_noise_independent_read = 0.1; 
-    v_noise_independent_addr = 0.1; 
+    k_noise_write = 0.2;
+    k_noise_read = 0.2;
+    k_noise_addr = 0.2;
+    v_noise_independent_write = 0.1;
+    v_noise_independent_read = 0.1;
+    v_noise_independent_addr = 0.1;
 
     //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -350,7 +350,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
     k_noise_write_sen = k_noise_write * (1 + 0.2*(r_on/34 - 1) +
@@ -371,12 +371,12 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
 
     // PHY Static Power Coefficients (mW)
 
-    phy_datapath_s = 0; 
-    phy_phase_rotator_s = 5; 
-    phy_clock_tree_s = 0; 
-    phy_rx_s = 3; 
-    phy_dcc_s = 0; 
-    phy_deskew_s = 0; 
+    phy_datapath_s = 0;
+    phy_phase_rotator_s = 5;
+    phy_clock_tree_s = 0;
+    phy_rx_s = 3;
+    phy_dcc_s = 0;
+    phy_deskew_s = 0;
     phy_leveling_s = 0;
     phy_pll_s = 2;
 
@@ -404,69 +404,69 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
 
 
   }
-   else if (g_ip->io_type == WideIO) { //WIDEIO 
+   else if (g_ip->io_type == WideIO) { //WIDEIO
      //Technology Parameters
      vdd_io = 1.2;
      v_sw_clk =  1.2;
 
      // Loading parameters
-     c_int = 0.5; 
-     c_tx = 0.5;  
-     c_data = 0.5;  
-     c_addr = 0.35; 
-     i_bias =  0; 
-     i_leak = 500; 
+     c_int = 0.5;
+     c_tx = 0.5;
+     c_data = 0.5;
+     c_addr = 0.35;
+     i_bias =  0;
+     i_leak = 500;
 
      // IO Area coefficients
-     ioarea_c = 0.003; 
-     ioarea_k0 = 0.2; 
-     ioarea_k1 = 0.00004; 
-     ioarea_k2 = 0.000000020; 
-     ioarea_k3 = 0.000000000004; 
+     ioarea_c = 0.003;
+     ioarea_k0 = 0.2;
+     ioarea_k1 = 0.00004;
+     ioarea_k2 = 0.000000020;
+     ioarea_k3 = 0.000000000004;
 
      // Timing parameters (ps)
-     t_ds = 250; 
-     t_is = 250;  
-     t_dh = 250; 
-     t_ih = 250; 
-     t_dcd_soc = 50;  
-     t_dcd_dram = 50; 
-     t_error_soc = 50; 
-     t_skew_setup = 50;  
-     t_skew_hold = 50;  
-     t_dqsq = 250;  
-     t_soc_setup = 50; 
-     t_soc_hold = 50; 
-     t_jitter_setup = 200; 
-     t_jitter_hold = 200; 
-     t_jitter_addr_setup = 200; 
+     t_ds = 250;
+     t_is = 250;
+     t_dh = 250;
+     t_ih = 250;
+     t_dcd_soc = 50;
+     t_dcd_dram = 50;
+     t_error_soc = 50;
+     t_skew_setup = 50;
+     t_skew_hold = 50;
+     t_dqsq = 250;
+     t_soc_setup = 50;
+     t_soc_hold = 50;
+     t_jitter_setup = 200;
+     t_jitter_hold = 200;
+     t_jitter_addr_setup = 200;
      t_jitter_addr_hold = 200;
-	t_cor_margin = 50; 
+	t_cor_margin = 50;
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100000;
-     rtt1_dq_read = 100000; 
-     rtt2_dq_read = 100000; 
-     rtt1_dq_write = 100000; 
-     rtt2_dq_write = 100000; 
-     rtt_ca = 100000; 
-     rs1_dq = 0; 
-     rs2_dq = 0; 
-     r_stub_ca = 0; 
-     r_on = 75; 
-     r_on_ca = 75; 
+     rtt1_dq_read = 100000;
+     rtt2_dq_read = 100000;
+     rtt1_dq_write = 100000;
+     rtt2_dq_write = 100000;
+     rtt_ca = 100000;
+     rs1_dq = 0;
+     rs2_dq = 0;
+     r_stub_ca = 0;
+     r_on = 75;
+     r_on_ca = 75;
      z0 = 50;
      t_flight = 0.05;
      t_flight_ca = 0.05;
 
      // Voltage noise coeffecients
-     k_noise_write = 0.2; 
-     k_noise_read = 0.2; 
-     k_noise_addr = 0.2; 
-     v_noise_independent_write = 0.1; 
-     v_noise_independent_read = 0.1; 
-     v_noise_independent_addr = 0.1; 
+     k_noise_write = 0.2;
+     k_noise_read = 0.2;
+     k_noise_addr = 0.2;
+     v_noise_independent_write = 0.1;
+     v_noise_independent_read = 0.1;
+     v_noise_independent_addr = 0.1;
 
      //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -479,24 +479,24 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
-     k_noise_write_sen = k_noise_write * (1 + 0.2*(r_on/50 - 1) + 
+     k_noise_write_sen = k_noise_write * (1 + 0.2*(r_on/50 - 1) +
          0.2*(g_ip->num_mem_dq/2 - 1));
-     k_noise_read_sen = k_noise_read * (1 + 0.2*(r_on/50 - 1) + 
+     k_noise_read_sen = k_noise_read * (1 + 0.2*(r_on/50 - 1) +
          0.2*(g_ip->num_mem_dq/2 - 1));
-     k_noise_addr_sen = k_noise_addr * (1 + 0.2*(r_on/50 - 1) + 
+     k_noise_addr_sen = k_noise_addr * (1 + 0.2*(r_on/50 - 1) +
          0.2*(num_mem_ca/16 - 1));
 
 
-     t_jitter_setup_sen = t_jitter_setup * (1  + 0.1*(r_on/50 - 1) + 
+     t_jitter_setup_sen = t_jitter_setup * (1  + 0.1*(r_on/50 - 1) +
          0.3*(g_ip->num_mem_dq/2 - 1));
-     t_jitter_hold_sen = t_jitter_hold * (1 + 0.1*(r_on/50 - 1) + 
+     t_jitter_hold_sen = t_jitter_hold * (1 + 0.1*(r_on/50 - 1) +
          0.3*(g_ip->num_mem_dq/2 - 1));
-     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.1*(r_on/50 - 1) + 
+     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.1*(r_on/50 - 1) +
          0.4*(num_mem_ca/16 - 1));
-     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.1*(r_on/50 - 1) + 
+     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.1*(r_on/50 - 1) +
          0.4*(num_mem_ca/16 - 1));
 
      // PHY Static Power Coefficients (mW)
@@ -533,70 +533,70 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
    }
    else if (g_ip->io_type == DDR3)
    { //Default parameters for DDR3
-     // IO Supply voltage (V) 
+     // IO Supply voltage (V)
      vdd_io = 1.5;
      v_sw_clk =  0.75;
 
      // Loading parameters
-     c_int = 1.5; 
-     c_tx = 2;  
-     c_data = 1.5; 
-     c_addr = 0.75; 
-     i_bias =  15; 
-     i_leak = 1000; 
+     c_int = 1.5;
+     c_tx = 2;
+     c_data = 1.5;
+     c_addr = 0.75;
+     i_bias =  15;
+     i_leak = 1000;
 
      // IO Area coefficients
-     ioarea_c = 0.01; 
-     ioarea_k0 = 0.5; 
-     ioarea_k1 = 0.00015; 
-     ioarea_k2 = 0.000000045; 
-     ioarea_k3 = 0.000000000015; 
+     ioarea_c = 0.01;
+     ioarea_k0 = 0.5;
+     ioarea_k1 = 0.00015;
+     ioarea_k2 = 0.000000045;
+     ioarea_k3 = 0.000000000015;
 
      // Timing parameters (ps)
-     t_ds = 150;  
-     t_is = 150; 
+     t_ds = 150;
+     t_is = 150;
      t_dh = 150;
      t_ih = 150;
-     t_dcd_soc = 50; 
+     t_dcd_soc = 50;
      t_dcd_dram = 50;
-     t_error_soc = 25; 
-     t_skew_setup = 25; 
-     t_skew_hold = 25; 
-     t_dqsq = 100; 
-     t_soc_setup = 50; 
-     t_soc_hold = 50; 
-     t_jitter_setup = 100; 
-     t_jitter_hold = 100; 
+     t_error_soc = 25;
+     t_skew_setup = 25;
+     t_skew_hold = 25;
+     t_dqsq = 100;
+     t_soc_setup = 50;
+     t_soc_hold = 50;
+     t_jitter_setup = 100;
+     t_jitter_hold = 100;
      t_jitter_addr_setup = 100;
      t_jitter_addr_hold = 100;
 	t_cor_margin = 30;
 
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100;
-     rtt1_dq_read = g_ip->rtt_value; 
-     rtt2_dq_read = g_ip->rtt_value; 
+     rtt1_dq_read = g_ip->rtt_value;
+     rtt2_dq_read = g_ip->rtt_value;
      rtt1_dq_write = g_ip->rtt_value;
-     rtt2_dq_write = g_ip->rtt_value; 
-     rtt_ca = 50; 
-     rs1_dq = 15; 
-     rs2_dq = 15; 
-     r_stub_ca = 0; 
-     r_on = g_ip->ron_value; 
-     r_on_ca = 50; 
+     rtt2_dq_write = g_ip->rtt_value;
+     rtt_ca = 50;
+     rs1_dq = 15;
+     rs2_dq = 15;
+     r_stub_ca = 0;
+     r_on = g_ip->ron_value;
+     r_on_ca = 50;
      z0 = 50;
      t_flight = g_ip->tflight_value;
      t_flight_ca = 2;
 
      // Voltage noise coeffecients
 
-     k_noise_write = 0.2; 
-     k_noise_read = 0.2; 
-     k_noise_addr = 0.2; 
-     v_noise_independent_write = 0.1; 
-     v_noise_independent_read = 0.1; 
-     v_noise_independent_addr = 0.1; 
+     k_noise_write = 0.2;
+     k_noise_read = 0.2;
+     k_noise_addr = 0.2;
+     v_noise_independent_write = 0.1;
+     v_noise_independent_read = 0.1;
+     v_noise_independent_addr = 0.1;
 
      //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -609,7 +609,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
      k_noise_write_sen = k_noise_write * (1 + 0.1*(rtt1_dq_write/60 - 1) +
@@ -624,39 +624,39 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
          0.2*(r_on/34 - 1) + 0.2*(num_mem_ca/16 - 1));
 
 
-     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) + 
+     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) +
          0.3*(g_ip->num_mem_dq/2 - 1));
 
-     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 
+     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) +
          0.1*(r_on/34 - 1) + 0.3*(g_ip->num_mem_dq/2 - 1));
 
-     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
-     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
      // PHY Static Power Coefficients (mW)
-     phy_datapath_s = 0; 
-     phy_phase_rotator_s = 10; 
-     phy_clock_tree_s = 0; 
-     phy_rx_s = 10; 
-     phy_dcc_s = 0; 
-     phy_deskew_s = 0; 
-     phy_leveling_s = 0; 
-     phy_pll_s = 10; 
+     phy_datapath_s = 0;
+     phy_phase_rotator_s = 10;
+     phy_clock_tree_s = 0;
+     phy_rx_s = 10;
+     phy_dcc_s = 0;
+     phy_deskew_s = 0;
+     phy_leveling_s = 0;
+     phy_pll_s = 10;
 
      // PHY Dynamic Power Coefficients (mW/Gbps)
-     phy_datapath_d = 0.5; 
-     phy_phase_rotator_d = 0.01; 
-     phy_clock_tree_d = 0.5; 
-     phy_rx_d = 0.5; 
-     phy_dcc_d = 0.05; 
-     phy_deskew_d = 0.1; 
-     phy_leveling_d = 0.05; 
-     phy_pll_d = 0.05; 
+     phy_datapath_d = 0.5;
+     phy_phase_rotator_d = 0.01;
+     phy_clock_tree_d = 0.5;
+     phy_rx_d = 0.5;
+     phy_dcc_d = 0.05;
+     phy_deskew_d = 0.1;
+     phy_leveling_d = 0.05;
+     phy_pll_d = 0.05;
 
 	//PHY Wakeup Times (Sleep to Active) (microseconds)
 
@@ -671,70 +671,70 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
    }
    else if (g_ip->io_type == DDR4)
    { //Default parameters for DDR4
-     // IO Supply voltage (V) 
+     // IO Supply voltage (V)
      vdd_io = 1.2;
      v_sw_clk =  0.6;
 
      // Loading parameters
-     c_int = 1.5; 
-     c_tx = 2;  
-     c_data = 1; 
-     c_addr = 0.75; 
-     i_bias =  15; 
-     i_leak = 1000; 
+     c_int = 1.5;
+     c_tx = 2;
+     c_data = 1;
+     c_addr = 0.75;
+     i_bias =  15;
+     i_leak = 1000;
 
      // IO Area coefficients
-     ioarea_c = 0.01; 
-     ioarea_k0 = 0.35; 
-     ioarea_k1 = 0.00008; 
-     ioarea_k2 = 0.000000035; 
-     ioarea_k3 = 0.000000000010; 
+     ioarea_c = 0.01;
+     ioarea_k0 = 0.35;
+     ioarea_k1 = 0.00008;
+     ioarea_k2 = 0.000000035;
+     ioarea_k3 = 0.000000000010;
 
      // Timing parameters (ps)
-     t_ds = 30;  
-     t_is = 60; 
+     t_ds = 30;
+     t_is = 60;
      t_dh = 30;
      t_ih = 60;
-     t_dcd_soc = 20; 
+     t_dcd_soc = 20;
      t_dcd_dram = 20;
-     t_error_soc = 15; 
-     t_skew_setup = 15; 
-     t_skew_hold = 15; 
-     t_dqsq = 50; 
-     t_soc_setup = 20; 
-     t_soc_hold = 10; 
-     t_jitter_setup = 30; 
-     t_jitter_hold = 30; 
+     t_error_soc = 15;
+     t_skew_setup = 15;
+     t_skew_hold = 15;
+     t_dqsq = 50;
+     t_soc_setup = 20;
+     t_soc_hold = 10;
+     t_jitter_setup = 30;
+     t_jitter_hold = 30;
      t_jitter_addr_setup = 60;
      t_jitter_addr_hold = 60;
 	t_cor_margin = 10;
 
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100;
-     rtt1_dq_read = g_ip->rtt_value; 
-     rtt2_dq_read = g_ip->rtt_value; 
+     rtt1_dq_read = g_ip->rtt_value;
+     rtt2_dq_read = g_ip->rtt_value;
      rtt1_dq_write = g_ip->rtt_value;
-     rtt2_dq_write = g_ip->rtt_value; 
-     rtt_ca = 50; 
-     rs1_dq = 15; 
-     rs2_dq = 15; 
-     r_stub_ca = 0; 
-     r_on = g_ip->ron_value; 
-     r_on_ca = 50; 
+     rtt2_dq_write = g_ip->rtt_value;
+     rtt_ca = 50;
+     rs1_dq = 15;
+     rs2_dq = 15;
+     r_stub_ca = 0;
+     r_on = g_ip->ron_value;
+     r_on_ca = 50;
      z0 = 50;
      t_flight = g_ip->tflight_value;
      t_flight_ca = 2;
 
      // Voltage noise coeffecients
 
-     k_noise_write = 0.2; 
-     k_noise_read = 0.2; 
-     k_noise_addr = 0.2; 
-     v_noise_independent_write = 0.1; 
-     v_noise_independent_read = 0.1; 
-     v_noise_independent_addr = 0.1; 
+     k_noise_write = 0.2;
+     k_noise_read = 0.2;
+     k_noise_addr = 0.2;
+     v_noise_independent_write = 0.1;
+     v_noise_independent_read = 0.1;
+     v_noise_independent_addr = 0.1;
 
      //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -747,7 +747,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
      k_noise_write_sen = k_noise_write * (1 + 0.1*(rtt1_dq_write/60 - 1) +
@@ -762,39 +762,39 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
          0.2*(r_on/34 - 1) + 0.2*(num_mem_ca/16 - 1));
 
 
-     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) + 
+     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) +
          0.3*(g_ip->num_mem_dq/2 - 1));
 
-     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 
+     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) +
          0.1*(r_on/34 - 1) + 0.3*(g_ip->num_mem_dq/2 - 1));
 
-     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
-     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
      // PHY Static Power Coefficients (mW)
-     phy_datapath_s = 0; 
-     phy_phase_rotator_s = 10; 
-     phy_clock_tree_s = 0; 
-     phy_rx_s = 10; 
-     phy_dcc_s = 0; 
-     phy_deskew_s = 0; 
-     phy_leveling_s = 0; 
-     phy_pll_s = 10; 
+     phy_datapath_s = 0;
+     phy_phase_rotator_s = 10;
+     phy_clock_tree_s = 0;
+     phy_rx_s = 10;
+     phy_dcc_s = 0;
+     phy_deskew_s = 0;
+     phy_leveling_s = 0;
+     phy_pll_s = 10;
 
      // PHY Dynamic Power Coefficients (mW/Gbps)
-     phy_datapath_d = 0.5; 
-     phy_phase_rotator_d = 0.01; 
-     phy_clock_tree_d = 0.5; 
-     phy_rx_d = 0.5; 
-     phy_dcc_d = 0.05; 
-     phy_deskew_d = 0.1; 
-     phy_leveling_d = 0.05; 
-     phy_pll_d = 0.05; 
+     phy_datapath_d = 0.5;
+     phy_phase_rotator_d = 0.01;
+     phy_clock_tree_d = 0.5;
+     phy_rx_d = 0.5;
+     phy_dcc_d = 0.05;
+     phy_deskew_d = 0.1;
+     phy_leveling_d = 0.05;
+     phy_pll_d = 0.05;
 
 	//PHY Wakeup Times (Sleep to Active) (microseconds)
 
@@ -809,28 +809,28 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
    }
    else if (g_ip->io_type == Serial)
    { //Default parameters for Serial
-     // IO Supply voltage (V) 
+     // IO Supply voltage (V)
      vdd_io = 1.2;
      v_sw_clk =  0.75;
 
      // IO Area coefficients
-     ioarea_c = 0.01; 
-     ioarea_k0 = 0.15; 
-     ioarea_k1 = 0.00005; 
-     ioarea_k2 = 0.000000025; 
-     ioarea_k3 = 0.000000000005; 
+     ioarea_c = 0.01;
+     ioarea_k0 = 0.15;
+     ioarea_k1 = 0.00005;
+     ioarea_k2 = 0.000000025;
+     ioarea_k3 = 0.000000000005;
 
      // Timing parameters (ps)
-     t_ds = 15;  
+     t_ds = 15;
      t_dh = 15;
-     t_dcd_soc = 10; 
-     t_dcd_dram = 10; 
-     t_soc_setup = 10; 
-     t_soc_hold = 10; 
-     t_jitter_setup = 20; 
+     t_dcd_soc = 10;
+     t_dcd_dram = 10;
+     t_soc_setup = 10;
+     t_soc_hold = 10;
+     t_jitter_setup = 20;
      t_jitter_hold = 20;
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100;
 
@@ -844,24 +844,24 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
      t_jitter_addr_hold_sen = t_jitter_addr_hold;
 
      // PHY Static Power Coefficients (mW)
-     phy_datapath_s = 0; 
-     phy_phase_rotator_s = 10; 
-     phy_clock_tree_s = 0; 
-     phy_rx_s = 10; 
-     phy_dcc_s = 0; 
-     phy_deskew_s = 0; 
-     phy_leveling_s = 0; 
-     phy_pll_s = 10; 
+     phy_datapath_s = 0;
+     phy_phase_rotator_s = 10;
+     phy_clock_tree_s = 0;
+     phy_rx_s = 10;
+     phy_dcc_s = 0;
+     phy_deskew_s = 0;
+     phy_leveling_s = 0;
+     phy_pll_s = 10;
 
      // PHY Dynamic Power Coefficients (mW/Gbps)
-     phy_datapath_d = 0.5; 
-     phy_phase_rotator_d = 0.01; 
-     phy_clock_tree_d = 0.5; 
-     phy_rx_d = 0.5; 
-     phy_dcc_d = 0.05; 
-     phy_deskew_d = 0.1; 
-     phy_leveling_d = 0.05; 
-     phy_pll_d = 0.05; 
+     phy_datapath_d = 0.5;
+     phy_phase_rotator_d = 0.01;
+     phy_clock_tree_d = 0.5;
+     phy_rx_d = 0.5;
+     phy_dcc_d = 0.05;
+     phy_deskew_d = 0.1;
+     phy_leveling_d = 0.05;
+     phy_pll_d = 0.05;
 
 	//PHY Wakeup Times (Sleep to Active) (microseconds)
 
@@ -890,17 +890,17 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
         (rtt1_dq_read + rtt2_dq_read + rs2_dq);
 
    //Swing calculation
-   v_sw_data_read_load1 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read + rs2_dq) / 
-      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read)); 
-   v_sw_data_read_load2 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read) / 
-      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read)); 
-   v_sw_data_read_line =vdd_io * rpar_read / (r_on + rs1_dq + rpar_read); 
-   v_sw_addr =vdd_io * rtt_ca / (50 + rtt_ca); 
-   v_sw_data_write_load1 =vdd_io * (rtt1_dq_write)*(rtt2_dq_write + rs2_dq) / 
-      ((rtt1_dq_write + rs1_dq + rtt2_dq_write + rs2_dq)*(r_on + rpar_write)); 
-   v_sw_data_write_load2 =vdd_io * (rtt2_dq_write)*(rtt1_dq_write + rs1_dq) / 
+   v_sw_data_read_load1 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read + rs2_dq) /
+      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read));
+   v_sw_data_read_load2 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read) /
+      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read));
+   v_sw_data_read_line =vdd_io * rpar_read / (r_on + rs1_dq + rpar_read);
+   v_sw_addr =vdd_io * rtt_ca / (50 + rtt_ca);
+   v_sw_data_write_load1 =vdd_io * (rtt1_dq_write)*(rtt2_dq_write + rs2_dq) /
       ((rtt1_dq_write + rs1_dq + rtt2_dq_write + rs2_dq)*(r_on + rpar_write));
-   v_sw_data_write_line =vdd_io * rpar_write / (r_on + rpar_write); 
+   v_sw_data_write_load2 =vdd_io * (rtt2_dq_write)*(rtt1_dq_write + rs1_dq) /
+      ((rtt1_dq_write + rs1_dq + rtt2_dq_write + rs2_dq)*(r_on + rpar_write));
+   v_sw_data_write_line =vdd_io * rpar_write / (r_on + rpar_write);
 
 }
 
@@ -911,17 +911,17 @@ IOTechParam::IOTechParam(InputParameter * g_ip)
 
 
 IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_mem_dq, int mem_data_width
-						, int num_dq, int connection, int num_loads, double freq) 
+						, int num_dq, int connection, int num_loads, double freq)
 {
-  num_mem_ca  = num_mem_dq * (mem_data_width); 
+  num_mem_ca  = num_mem_dq * (mem_data_width);
   num_mem_clk =  num_mem_dq *
-                (num_dq/mem_data_width)/(g_ip->num_clk/2); 
+                (num_dq/mem_data_width)/(g_ip->num_clk/2);
 
   io_type = io_type1;
   frequency = freq;
-  
-  
-  
+
+
+
 
   if (io_type == LPDDR2) { //LPDDR
     //Technology Parameters
@@ -930,64 +930,64 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
     v_sw_clk =  1;
 
     // Loading paramters
-    c_int = 1.5; 
-    c_tx = 2;  
+    c_int = 1.5;
+    c_tx = 2;
     c_data = 1.5;
     c_addr = 0.75;
-    i_bias =  5; 
-    i_leak = 1000; 
+    i_bias =  5;
+    i_leak = 1000;
 
     // IO Area coefficients
 
-    ioarea_c = 0.01; 
-    ioarea_k0 = 0.5; 
-    ioarea_k1 = 0.00008; 
-    ioarea_k2 = 0.000000030; 
-    ioarea_k3 = 0.000000000008; 
+    ioarea_c = 0.01;
+    ioarea_k0 = 0.5;
+    ioarea_k1 = 0.00008;
+    ioarea_k2 = 0.000000030;
+    ioarea_k3 = 0.000000000008;
 
     // Timing parameters (ps)
-    t_ds = 250; 
+    t_ds = 250;
     t_is = 250;
     t_dh = 250;
-    t_ih = 250; 
+    t_ih = 250;
     t_dcd_soc = 50;
-    t_dcd_dram = 50; 
+    t_dcd_dram = 50;
     t_error_soc = 50;
     t_skew_setup = 50;
     t_skew_hold = 50;
-    t_dqsq = 250; 
+    t_dqsq = 250;
     t_soc_setup = 50;
     t_soc_hold = 50;
-    t_jitter_setup = 200; 
-    t_jitter_hold = 200; 
+    t_jitter_setup = 200;
+    t_jitter_hold = 200;
     t_jitter_addr_setup = 200;
     t_jitter_addr_hold = 200;
-    t_cor_margin = 40; 
+    t_cor_margin = 40;
 
-    //External IO Configuration Parameters 
+    //External IO Configuration Parameters
 
     r_diff_term = 480;
-    rtt1_dq_read = 100000; 
-    rtt2_dq_read = 100000; 
-    rtt1_dq_write = 100000; 
-    rtt2_dq_write = 100000; 
-    rtt_ca = 240; 
-    rs1_dq = 0; 
-    rs2_dq = 0; 
-    r_stub_ca = 0; 
-    r_on = 50; 
+    rtt1_dq_read = 100000;
+    rtt2_dq_read = 100000;
+    rtt1_dq_write = 100000;
+    rtt2_dq_write = 100000;
+    rtt_ca = 240;
+    rs1_dq = 0;
+    rs2_dq = 0;
+    r_stub_ca = 0;
+    r_on = 50;
     r_on_ca = 50;
     z0 = 50;
     t_flight = 0.5;
     t_flight_ca = 0.5;
 
     // Voltage noise coeffecients
-    k_noise_write = 0.2; 
-    k_noise_read = 0.2; 
-    k_noise_addr = 0.2; 
-    v_noise_independent_write = 0.1; 
-    v_noise_independent_read = 0.1; 
-    v_noise_independent_addr = 0.1; 
+    k_noise_write = 0.2;
+    k_noise_read = 0.2;
+    k_noise_addr = 0.2;
+    v_noise_independent_write = 0.1;
+    v_noise_independent_read = 0.1;
+    v_noise_independent_addr = 0.1;
 
     //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -1000,7 +1000,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
     k_noise_write_sen = k_noise_write * (1 + 0.2*(r_on/34 - 1) +
@@ -1021,12 +1021,12 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
 
     // PHY Static Power Coefficients (mW)
 
-    phy_datapath_s = 0; 
-    phy_phase_rotator_s = 5; 
-    phy_clock_tree_s = 0; 
-    phy_rx_s = 3; 
-    phy_dcc_s = 0; 
-    phy_deskew_s = 0; 
+    phy_datapath_s = 0;
+    phy_phase_rotator_s = 5;
+    phy_clock_tree_s = 0;
+    phy_rx_s = 3;
+    phy_dcc_s = 0;
+    phy_deskew_s = 0;
     phy_leveling_s = 0;
     phy_pll_s = 2;
 
@@ -1054,69 +1054,69 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
 
 
   }
-   else if (io_type == WideIO) { //WIDEIO 
+   else if (io_type == WideIO) { //WIDEIO
      //Technology Parameters
      vdd_io = 1.2;
      v_sw_clk =  1.2;
 
      // Loading parameters
-     c_int = 0.5; 
-     c_tx = 0.5;  
-     c_data = 0.5;  
-     c_addr = 0.35; 
-     i_bias =  0; 
-     i_leak = 500; 
+     c_int = 0.5;
+     c_tx = 0.5;
+     c_data = 0.5;
+     c_addr = 0.35;
+     i_bias =  0;
+     i_leak = 500;
 
      // IO Area coefficients
-     ioarea_c = 0.003; 
-     ioarea_k0 = 0.2; 
-     ioarea_k1 = 0.00004; 
-     ioarea_k2 = 0.000000020; 
-     ioarea_k3 = 0.000000000004; 
+     ioarea_c = 0.003;
+     ioarea_k0 = 0.2;
+     ioarea_k1 = 0.00004;
+     ioarea_k2 = 0.000000020;
+     ioarea_k3 = 0.000000000004;
 
      // Timing parameters (ps)
-     t_ds = 250; 
-     t_is = 250;  
-     t_dh = 250; 
-     t_ih = 250; 
-     t_dcd_soc = 50;  
-     t_dcd_dram = 50; 
-     t_error_soc = 50; 
-     t_skew_setup = 50;  
-     t_skew_hold = 50;  
-     t_dqsq = 250;  
-     t_soc_setup = 50; 
-     t_soc_hold = 50; 
-     t_jitter_setup = 200; 
-     t_jitter_hold = 200; 
-     t_jitter_addr_setup = 200; 
+     t_ds = 250;
+     t_is = 250;
+     t_dh = 250;
+     t_ih = 250;
+     t_dcd_soc = 50;
+     t_dcd_dram = 50;
+     t_error_soc = 50;
+     t_skew_setup = 50;
+     t_skew_hold = 50;
+     t_dqsq = 250;
+     t_soc_setup = 50;
+     t_soc_hold = 50;
+     t_jitter_setup = 200;
+     t_jitter_hold = 200;
+     t_jitter_addr_setup = 200;
      t_jitter_addr_hold = 200;
-	t_cor_margin = 50; 
+	t_cor_margin = 50;
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100000;
-     rtt1_dq_read = 100000; 
-     rtt2_dq_read = 100000; 
-     rtt1_dq_write = 100000; 
-     rtt2_dq_write = 100000; 
-     rtt_ca = 100000; 
-     rs1_dq = 0; 
-     rs2_dq = 0; 
-     r_stub_ca = 0; 
-     r_on = 75; 
-     r_on_ca = 75; 
+     rtt1_dq_read = 100000;
+     rtt2_dq_read = 100000;
+     rtt1_dq_write = 100000;
+     rtt2_dq_write = 100000;
+     rtt_ca = 100000;
+     rs1_dq = 0;
+     rs2_dq = 0;
+     r_stub_ca = 0;
+     r_on = 75;
+     r_on_ca = 75;
      z0 = 50;
      t_flight = 0.05;
      t_flight_ca = 0.05;
 
      // Voltage noise coeffecients
-     k_noise_write = 0.2; 
-     k_noise_read = 0.2; 
-     k_noise_addr = 0.2; 
-     v_noise_independent_write = 0.1; 
-     v_noise_independent_read = 0.1; 
-     v_noise_independent_addr = 0.1; 
+     k_noise_write = 0.2;
+     k_noise_read = 0.2;
+     k_noise_addr = 0.2;
+     v_noise_independent_write = 0.1;
+     v_noise_independent_read = 0.1;
+     v_noise_independent_addr = 0.1;
 
      //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -1129,24 +1129,24 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
-     k_noise_write_sen = k_noise_write * (1 + 0.2*(r_on/50 - 1) + 
+     k_noise_write_sen = k_noise_write * (1 + 0.2*(r_on/50 - 1) +
          0.2*(num_mem_dq/2 - 1));
-     k_noise_read_sen = k_noise_read * (1 + 0.2*(r_on/50 - 1) + 
+     k_noise_read_sen = k_noise_read * (1 + 0.2*(r_on/50 - 1) +
          0.2*(num_mem_dq/2 - 1));
-     k_noise_addr_sen = k_noise_addr * (1 + 0.2*(r_on/50 - 1) + 
+     k_noise_addr_sen = k_noise_addr * (1 + 0.2*(r_on/50 - 1) +
          0.2*(num_mem_ca/16 - 1));
 
 
-     t_jitter_setup_sen = t_jitter_setup * (1  + 0.1*(r_on/50 - 1) + 
+     t_jitter_setup_sen = t_jitter_setup * (1  + 0.1*(r_on/50 - 1) +
          0.3*(num_mem_dq/2 - 1));
-     t_jitter_hold_sen = t_jitter_hold * (1 + 0.1*(r_on/50 - 1) + 
+     t_jitter_hold_sen = t_jitter_hold * (1 + 0.1*(r_on/50 - 1) +
          0.3*(num_mem_dq/2 - 1));
-     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.1*(r_on/50 - 1) + 
+     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.1*(r_on/50 - 1) +
          0.4*(num_mem_ca/16 - 1));
-     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.1*(r_on/50 - 1) + 
+     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.1*(r_on/50 - 1) +
          0.4*(num_mem_ca/16 - 1));
 
      // PHY Static Power Coefficients (mW)
@@ -1183,52 +1183,52 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
    }
    else if (io_type == DDR3)
    { //Default parameters for DDR3
-     // IO Supply voltage (V) 
+     // IO Supply voltage (V)
      vdd_io = 1.5;
      v_sw_clk =  0.75;
 
      // Loading parameters
-     c_int = 1.5; 
-     c_tx = 2;  
-     c_data = 1.5; 
-     c_addr = 0.75; 
-     i_bias =  15; 
-     i_leak = 1000; 
+     c_int = 1.5;
+     c_tx = 2;
+     c_data = 1.5;
+     c_addr = 0.75;
+     i_bias =  15;
+     i_leak = 1000;
 
      // IO Area coefficients
-     ioarea_c = 0.01; 
-     ioarea_k0 = 0.5; 
-     ioarea_k1 = 0.00015; 
-     ioarea_k2 = 0.000000045; 
-     ioarea_k3 = 0.000000000015; 
+     ioarea_c = 0.01;
+     ioarea_k0 = 0.5;
+     ioarea_k1 = 0.00015;
+     ioarea_k2 = 0.000000045;
+     ioarea_k3 = 0.000000000015;
 
      // Timing parameters (ps)
-     t_ds = 150;  
-     t_is = 150; 
+     t_ds = 150;
+     t_is = 150;
      t_dh = 150;
      t_ih = 150;
-     t_dcd_soc = 50; 
+     t_dcd_soc = 50;
      t_dcd_dram = 50;
-     t_error_soc = 25; 
-     t_skew_setup = 25; 
-     t_skew_hold = 25; 
-     t_dqsq = 100; 
-     t_soc_setup = 50; 
-     t_soc_hold = 50; 
-     t_jitter_setup = 100; 
-     t_jitter_hold = 100; 
+     t_error_soc = 25;
+     t_skew_setup = 25;
+     t_skew_hold = 25;
+     t_dqsq = 100;
+     t_soc_setup = 50;
+     t_soc_hold = 50;
+     t_jitter_setup = 100;
+     t_jitter_hold = 100;
      t_jitter_addr_setup = 100;
      t_jitter_addr_hold = 100;
 	t_cor_margin = 30;
 
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100;
-     
+
      /*
-     rtt1_dq_read = g_ip->rtt_value; 
-     rtt2_dq_read = g_ip->rtt_value; 
+     rtt1_dq_read = g_ip->rtt_value;
+     rtt2_dq_read = g_ip->rtt_value;
      rtt1_dq_write = g_ip->rtt_value;
      rtt2_dq_write = g_ip->rtt_value;
      */
@@ -1255,26 +1255,26 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
 		default:
 			break;
 	 }
-     
-      
-     rtt_ca = 50; 
-     rs1_dq = 15; 
-     rs2_dq = 15; 
-     r_stub_ca = 0; 
-     r_on = g_ip->ron_value; 
-     r_on_ca = 50; 
+
+
+     rtt_ca = 50;
+     rs1_dq = 15;
+     rs2_dq = 15;
+     r_stub_ca = 0;
+     r_on = g_ip->ron_value;
+     r_on_ca = 50;
      z0 = 50;
      t_flight = g_ip->tflight_value;
      t_flight_ca = 2;
 
      // Voltage noise coeffecients
 
-     k_noise_write = 0.2; 
-     k_noise_read = 0.2; 
-     k_noise_addr = 0.2; 
-     v_noise_independent_write = 0.1; 
-     v_noise_independent_read = 0.1; 
-     v_noise_independent_addr = 0.1; 
+     k_noise_write = 0.2;
+     k_noise_read = 0.2;
+     k_noise_addr = 0.2;
+     v_noise_independent_write = 0.1;
+     v_noise_independent_read = 0.1;
+     v_noise_independent_addr = 0.1;
 
      //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -1287,7 +1287,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
      k_noise_write_sen = k_noise_write * (1 + 0.1*(rtt1_dq_write/60 - 1) +
@@ -1302,39 +1302,39 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
          0.2*(r_on/34 - 1) + 0.2*(num_mem_ca/16 - 1));
 
 
-     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) + 
+     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) +
          0.3*(num_mem_dq/2 - 1));
 
-     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 
+     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) +
          0.1*(r_on/34 - 1) + 0.3*(num_mem_dq/2 - 1));
 
-     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
-     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
      // PHY Static Power Coefficients (mW)
-     phy_datapath_s = 0; 
-     phy_phase_rotator_s = 10; 
-     phy_clock_tree_s = 0; 
-     phy_rx_s = 10; 
-     phy_dcc_s = 0; 
-     phy_deskew_s = 0; 
-     phy_leveling_s = 0; 
-     phy_pll_s = 10; 
+     phy_datapath_s = 0;
+     phy_phase_rotator_s = 10;
+     phy_clock_tree_s = 0;
+     phy_rx_s = 10;
+     phy_dcc_s = 0;
+     phy_deskew_s = 0;
+     phy_leveling_s = 0;
+     phy_pll_s = 10;
 
      // PHY Dynamic Power Coefficients (mW/Gbps)
-     phy_datapath_d = 0.5; 
-     phy_phase_rotator_d = 0.01; 
-     phy_clock_tree_d = 0.5; 
-     phy_rx_d = 0.5; 
-     phy_dcc_d = 0.05; 
-     phy_deskew_d = 0.1; 
-     phy_leveling_d = 0.05; 
-     phy_pll_d = 0.05; 
+     phy_datapath_d = 0.5;
+     phy_phase_rotator_d = 0.01;
+     phy_clock_tree_d = 0.5;
+     phy_rx_d = 0.5;
+     phy_dcc_d = 0.05;
+     phy_deskew_d = 0.1;
+     phy_leveling_d = 0.05;
+     phy_pll_d = 0.05;
 
 	//PHY Wakeup Times (Sleep to Active) (microseconds)
 
@@ -1349,55 +1349,55 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
    }
    else if (io_type == DDR4)
    { //Default parameters for DDR4
-     // IO Supply voltage (V) 
+     // IO Supply voltage (V)
      vdd_io = 1.2;
      v_sw_clk =  0.6;
 
      // Loading parameters
-     c_int = 1.5; 
-     c_tx = 2;  
-     c_data = 1; 
-     c_addr = 0.75; 
-     i_bias =  15; 
-     i_leak = 1000; 
+     c_int = 1.5;
+     c_tx = 2;
+     c_data = 1;
+     c_addr = 0.75;
+     i_bias =  15;
+     i_leak = 1000;
 
      // IO Area coefficients
-     ioarea_c = 0.01; 
-     ioarea_k0 = 0.35; 
-     ioarea_k1 = 0.00008; 
-     ioarea_k2 = 0.000000035; 
-     ioarea_k3 = 0.000000000010; 
+     ioarea_c = 0.01;
+     ioarea_k0 = 0.35;
+     ioarea_k1 = 0.00008;
+     ioarea_k2 = 0.000000035;
+     ioarea_k3 = 0.000000000010;
 
      // Timing parameters (ps)
-     t_ds = 30;  
-     t_is = 60; 
+     t_ds = 30;
+     t_is = 60;
      t_dh = 30;
      t_ih = 60;
-     t_dcd_soc = 20; 
+     t_dcd_soc = 20;
      t_dcd_dram = 20;
-     t_error_soc = 15; 
-     t_skew_setup = 15; 
-     t_skew_hold = 15; 
-     t_dqsq = 50; 
-     t_soc_setup = 20; 
-     t_soc_hold = 10; 
-     t_jitter_setup = 30; 
-     t_jitter_hold = 30; 
+     t_error_soc = 15;
+     t_skew_setup = 15;
+     t_skew_hold = 15;
+     t_dqsq = 50;
+     t_soc_setup = 20;
+     t_soc_hold = 10;
+     t_jitter_setup = 30;
+     t_jitter_hold = 30;
      t_jitter_addr_setup = 60;
      t_jitter_addr_hold = 60;
 	t_cor_margin = 10;
 
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100;
      /*
-     rtt1_dq_read = g_ip->rtt_value; 
-     rtt2_dq_read = g_ip->rtt_value; 
+     rtt1_dq_read = g_ip->rtt_value;
+     rtt2_dq_read = g_ip->rtt_value;
      rtt1_dq_write = g_ip->rtt_value;
-     rtt2_dq_write = g_ip->rtt_value; 
+     rtt2_dq_write = g_ip->rtt_value;
      */
-     
+
      switch(connection)
      {
 		 case(0):
@@ -1421,25 +1421,25 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
 		default:
 			break;
 	 }
-     
-     rtt_ca = 50; 
-     rs1_dq = 15; 
-     rs2_dq = 15; 
-     r_stub_ca = 0; 
-     r_on = g_ip->ron_value; 
-     r_on_ca = 50; 
+
+     rtt_ca = 50;
+     rs1_dq = 15;
+     rs2_dq = 15;
+     r_stub_ca = 0;
+     r_on = g_ip->ron_value;
+     r_on_ca = 50;
      z0 = 50;
      t_flight = g_ip->tflight_value;
      t_flight_ca = 2;
 
      // Voltage noise coeffecients
 
-     k_noise_write = 0.2; 
-     k_noise_read = 0.2; 
-     k_noise_addr = 0.2; 
-     v_noise_independent_write = 0.1; 
-     v_noise_independent_read = 0.1; 
-     v_noise_independent_addr = 0.1; 
+     k_noise_write = 0.2;
+     k_noise_read = 0.2;
+     k_noise_addr = 0.2;
+     v_noise_independent_write = 0.1;
+     v_noise_independent_read = 0.1;
+     v_noise_independent_addr = 0.1;
 
      //SENSITIVITY INPUTS FOR TIMING AND VOLTAGE NOISE
 
@@ -1452,7 +1452,7 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
       * table. The sensitivity coefficients are based on channel analysis
       * performed on the channel of interest.Given below is an example of such
       * a sensitivity relationship.
-      * Such a linear fit can be found efficiently using an orthogonal design 
+      * Such a linear fit can be found efficiently using an orthogonal design
       * of experiments method shown in the technical report (), in Chapter 2.2. */
 
      k_noise_write_sen = k_noise_write * (1 + 0.1*(rtt1_dq_write/60 - 1) +
@@ -1467,39 +1467,39 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
          0.2*(r_on/34 - 1) + 0.2*(num_mem_ca/16 - 1));
 
 
-     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) + 
+     t_jitter_setup_sen = t_jitter_setup * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) + 0.1*(r_on/34 - 1) +
          0.3*(num_mem_dq/2 - 1));
 
-     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) + 
-         0.3*(rtt2_dq_write/60 - 1) + 
+     t_jitter_hold_sen = t_jitter_hold * (1 + 0.2*(rtt1_dq_write/60 - 1) +
+         0.3*(rtt2_dq_write/60 - 1) +
          0.1*(r_on/34 - 1) + 0.3*(num_mem_dq/2 - 1));
 
-     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_setup_sen = t_jitter_addr_setup * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
-     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) + 
+     t_jitter_addr_hold_sen = t_jitter_addr_hold * (1 + 0.2*(rtt_ca/50 - 1) +
          0.1*(r_on/34 - 1) + 0.4*(num_mem_ca/16 - 1));
 
      // PHY Static Power Coefficients (mW)
-     phy_datapath_s = 0; 
-     phy_phase_rotator_s = 10; 
-     phy_clock_tree_s = 0; 
-     phy_rx_s = 10; 
-     phy_dcc_s = 0; 
-     phy_deskew_s = 0; 
-     phy_leveling_s = 0; 
-     phy_pll_s = 10; 
+     phy_datapath_s = 0;
+     phy_phase_rotator_s = 10;
+     phy_clock_tree_s = 0;
+     phy_rx_s = 10;
+     phy_dcc_s = 0;
+     phy_deskew_s = 0;
+     phy_leveling_s = 0;
+     phy_pll_s = 10;
 
      // PHY Dynamic Power Coefficients (mW/Gbps)
-     phy_datapath_d = 0.5; 
-     phy_phase_rotator_d = 0.01; 
-     phy_clock_tree_d = 0.5; 
-     phy_rx_d = 0.5; 
-     phy_dcc_d = 0.05; 
-     phy_deskew_d = 0.1; 
-     phy_leveling_d = 0.05; 
-     phy_pll_d = 0.05; 
+     phy_datapath_d = 0.5;
+     phy_phase_rotator_d = 0.01;
+     phy_clock_tree_d = 0.5;
+     phy_rx_d = 0.5;
+     phy_dcc_d = 0.05;
+     phy_deskew_d = 0.1;
+     phy_leveling_d = 0.05;
+     phy_pll_d = 0.05;
 
 	//PHY Wakeup Times (Sleep to Active) (microseconds)
 
@@ -1514,28 +1514,28 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
    }
    else if (io_type == Serial)
    { //Default parameters for Serial
-     // IO Supply voltage (V) 
+     // IO Supply voltage (V)
      vdd_io = 1.2;
      v_sw_clk =  0.75;
 
      // IO Area coefficients
-     ioarea_c = 0.01; 
-     ioarea_k0 = 0.15; 
-     ioarea_k1 = 0.00005; 
-     ioarea_k2 = 0.000000025; 
-     ioarea_k3 = 0.000000000005; 
+     ioarea_c = 0.01;
+     ioarea_k0 = 0.15;
+     ioarea_k1 = 0.00005;
+     ioarea_k2 = 0.000000025;
+     ioarea_k3 = 0.000000000005;
 
      // Timing parameters (ps)
-     t_ds = 15;  
+     t_ds = 15;
      t_dh = 15;
-     t_dcd_soc = 10; 
-     t_dcd_dram = 10; 
-     t_soc_setup = 10; 
-     t_soc_hold = 10; 
-     t_jitter_setup = 20; 
+     t_dcd_soc = 10;
+     t_dcd_dram = 10;
+     t_soc_setup = 10;
+     t_soc_hold = 10;
+     t_jitter_setup = 20;
      t_jitter_hold = 20;
 
-     //External IO Configuration Parameters 
+     //External IO Configuration Parameters
 
      r_diff_term = 100;
 
@@ -1549,24 +1549,24 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
      t_jitter_addr_hold_sen = t_jitter_addr_hold;
 
      // PHY Static Power Coefficients (mW)
-     phy_datapath_s = 0; 
-     phy_phase_rotator_s = 10; 
-     phy_clock_tree_s = 0; 
-     phy_rx_s = 10; 
-     phy_dcc_s = 0; 
-     phy_deskew_s = 0; 
-     phy_leveling_s = 0; 
-     phy_pll_s = 10; 
+     phy_datapath_s = 0;
+     phy_phase_rotator_s = 10;
+     phy_clock_tree_s = 0;
+     phy_rx_s = 10;
+     phy_dcc_s = 0;
+     phy_deskew_s = 0;
+     phy_leveling_s = 0;
+     phy_pll_s = 10;
 
      // PHY Dynamic Power Coefficients (mW/Gbps)
-     phy_datapath_d = 0.5; 
-     phy_phase_rotator_d = 0.01; 
-     phy_clock_tree_d = 0.5; 
-     phy_rx_d = 0.5; 
-     phy_dcc_d = 0.05; 
-     phy_deskew_d = 0.1; 
-     phy_leveling_d = 0.05; 
-     phy_pll_d = 0.05; 
+     phy_datapath_d = 0.5;
+     phy_phase_rotator_d = 0.01;
+     phy_clock_tree_d = 0.5;
+     phy_rx_d = 0.5;
+     phy_dcc_d = 0.05;
+     phy_deskew_d = 0.1;
+     phy_leveling_d = 0.05;
+     phy_pll_d = 0.05;
 
 	//PHY Wakeup Times (Sleep to Active) (microseconds)
 
@@ -1594,24 +1594,24 @@ IOTechParam::IOTechParam(InputParameter * g_ip, Mem_IO_type io_type1, int num_me
    rpar_read =(rtt1_dq_read)*(rtt2_dq_read + rs2_dq)/
         (rtt1_dq_read + rtt2_dq_read + rs2_dq);
 
-	
+
 
    //Swing calculation
-   v_sw_data_read_load1 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read + rs2_dq) / 
-      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read)); 
-   v_sw_data_read_load2 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read) / 
-      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read)); 
-   v_sw_data_read_line =vdd_io * rpar_read / (r_on + rs1_dq + rpar_read); 
-   v_sw_addr =vdd_io * rtt_ca / (50 + rtt_ca); 
-   v_sw_data_write_load1 =vdd_io * (rtt1_dq_write)*(rtt2_dq_write + rs2_dq) / 
-      ((rtt1_dq_write + rs1_dq + rtt2_dq_write + rs2_dq)*(r_on + rpar_write)); 
-   v_sw_data_write_load2 =vdd_io * (rtt2_dq_write)*(rtt1_dq_write + rs1_dq) / 
+   v_sw_data_read_load1 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read + rs2_dq) /
+      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read));
+   v_sw_data_read_load2 =vdd_io * (rtt1_dq_read)*(rtt2_dq_read) /
+      ((rtt1_dq_read + rtt2_dq_read + rs2_dq)*(r_on + rs1_dq + rpar_read));
+   v_sw_data_read_line =vdd_io * rpar_read / (r_on + rs1_dq + rpar_read);
+   v_sw_addr =vdd_io * rtt_ca / (50 + rtt_ca);
+   v_sw_data_write_load1 =vdd_io * (rtt1_dq_write)*(rtt2_dq_write + rs2_dq) /
       ((rtt1_dq_write + rs1_dq + rtt2_dq_write + rs2_dq)*(r_on + rpar_write));
-   v_sw_data_write_line =vdd_io * rpar_write / (r_on + rpar_write); 
+   v_sw_data_write_load2 =vdd_io * (rtt2_dq_write)*(rtt1_dq_write + rs1_dq) /
+      ((rtt1_dq_write + rs1_dq + rtt2_dq_write + rs2_dq)*(r_on + rpar_write));
+   v_sw_data_write_line =vdd_io * rpar_write / (r_on + rpar_write);
 
 }
 
 
 
-IOTechParam::~IOTechParam() 
+IOTechParam::~IOTechParam()
 {}
